@@ -109,7 +109,7 @@ Pattern and headers templates are explained in pattern E.8.
 | **B.5** | **Canonical Reasoning Cycle** | Stable | *Keywords:* reasoning, problem-solving, Abduction-Deduction-Induction, scientific method. *Queries:* "How does FPF model problem-solving?", "What is the canonical reasoning cycle?" | **Builds on:** A.10. **Prerequisite for:** All B.5.x. |
 | B.5.1 | **Explore → Shape → Evidence → Operate** | Stable | *Keywords:* development cycle, lifecycle, state machine, Explore, Shape, Evidence, Operate. *Queries:* "What are the development stages of an artifact in FPF?" | **Builds on:** B.5. |
 | B.5.2 | **Abductive Loop** | Stable | *Keywords:* abduction, hypothesis generation, creativity, innovation. *Queries:* "How does FPF model creative thinking?", "What is the abductive loop?" | **Builds on:** B.5. |
-| B.5.2.1 | **Creative Abduction with NQD (binding)** | Stable | *Keywords:* NQD, novelty, quality, diversity, open-ended search, Pareto front, E/E-LOG. *Queries:* "How to systematically generate creative ideas?", "What is NQD in FPF?" | **Builds on:** B.5.2, C.17, C.18, C.19. |
+| B.5.2.1 | **Creative Abduction with NQD** | Stable | *Keywords:* NQD, novelty, quality, diversity, open-ended search, Pareto front, E/E-LOG. *Queries:* "How to systematically generate creative ideas?", "What is NQD in FPF?" | **Builds on:** B.5.2, C.17, C.18, C.19. |
 | B.5.3 | **Role-Projection Bridge** | Stable | *Keywords:* domain-specific vocabulary, concept bridge, mapping, terminology. *Queries:* "How does FPF integrate domain-specific language?", "What is a Role-Projection Bridge?" | **Builds on:** A.2, C.3. |
 | **B.6** | **Characterisation Families (CHR-use)** | Draft | *Keywords:* characterization, templates, CHR architheories, measurement. *Queries:* "How to use CHR architheories?" | **Builds on:** Part C (CHR). |
 | **B.7** | **Common Logic Suite (LOG-use)** | Draft | *Keywords:* logic, inference, trust propagation, LOG-CAL. *Queries:* "How to apply formal logic in FPF?" | **Builds on:** Part C (LOG-CAL). |
@@ -428,7 +428,7 @@ It is critical, however, to understand the precise nature of this "writing." The
 
 *   **FPF is Not a Tooling or Notation Mandate.** The "pencil and paper" are a metaphor. FPF is fundamentally agnostic to the medium. Whether a team uses a physical whiteboard, a shared text document, a wiki, a version-controlled set of Markdown files, or a sophisticated modeling tool is an implementation detail that lies outside the conceptual core. The framework's value resides in the *structure of the thought* that these forms demand, not in any specific rendering. This is the essence of the **Notational Independence** guard-rail (E.5.2).
 
-*   **FPF is Not a Team Workflow or Data Governance Policy.** The framework does not prescribe how a team should run its meetings, manage its repositories, or version its files. It is not a substitute for methodologies like Agile or for data governance policies. Rather, FPF provides the **conceptual content** that these processes act upon. A team can use its existing Agile workflow to manage the creation of a **Design-Rationale Record (DRR)**, and its existing data governance policy to manage the storage of an **Unified Term Sheet (UTS)**. FPF provides the *what*—the structure of a sound argument—not the *how* of team logistics.
+*   **FPF is Not a Team Workflow or an organisational process policy.** The framework does not prescribe how a team should run its meetings, manage its repositories, or version its files. It is not a substitute for methodologies like Agile or for organisational information policies. Rather, FPF provides the **conceptual content** that these processes act upon. A team can use its existing Agile workflow to manage the creation of a **Design-Rationale Record (DRR)**, and its existing artefact-management conventions to manage the storage of an **Unified Term Sheet (UTS)**. FPF provides the *what*—the structure of a sound argument—not the *how* of team logistics.
 
 The purpose of this discipline is to augment both individual and collective cognition. For the individual, the written artifact acts as an extension of working memory, making it possible to hold and manipulate far more complex models than one could in their head alone. For the team, these shared, tangible artifacts create a common conceptual space. They become the stable ground upon which collective reasoning can occur—a shared object that can be debated, annotated, and iteratively improved.
 
@@ -747,7 +747,7 @@ This pattern **instantiates P‑10 Open‑Ended Evolution** by making *generatio
 
 ### 10) Relations
 
-**Builds on.** **E.2 Pillars** (P‑10, P‑2, P‑6), **A.5** (Open‑Ended Kernel), **B.5/B.5.2.1** (Abductive loops + NQD binding), **C.17–C.19** (Creativity‑CHR, NQD‑CAL, E/E‑LOG).    
+**Builds on.** **E.2 Pillars** (P-10, P-2, P-6), **A.5** (Open-Ended Kernel), **B.5/B.5.2.1** (Abductive loops + NQD integration), **C.17–C.19** (Creativity-CHR, NQD-CAL, E/E-LOG).    
 
 **Coordinates with.** **E.7/E.8** (Archetypal Grounding; Authoring template), **E.10** (LEX‑BUNDLE), **F.17** (UTS), **G.5/G.9–G.12** (set‑returning selectors, **iso‑scale** parity, shipping & refresh).
 **Constrains.** Any generator/selector/portfolio publication on the Core surface: **N‑U‑C‑Diversity_P + policy‑ids; S/Scale‑probe where applicable; parity pins; lawful scales; portfolio‑first where mandated**. (Ties into UTS rows and parity artefacts.)
@@ -1026,7 +1026,7 @@ A `U.BoundedContext` is a composite holon whose *parts* constitute the context�
 #### A.1.1:4.3 - Context interactions with other kernel objects (normative)
 
 * **As a `U.Holon`:** A `U.BoundedContext` has a defined `U.Boundary` and internal parts (`Glossary`, `Invariants`, …). However, **contexts do not form holarchies with each other**: per E.10.D1 (D.CTX), contexts have no is‑a or containment relations; cross-context relationships are expressed only via explicit `Bridges`.
-* **As the semantic frame for `U.RoleAssignment`:** The `context` field of `U.RoleAssignment` identifies the unique semantic frame in which the holder-role binding is interpreted (A.2.1).
+* **As the semantic frame for `U.RoleAssignment`:** The `context` field of `U.RoleAssignment` identifies the unique semantic frame in which the holder-role assignment is interpreted (A.2.1).
 * **As the scope carrier for rules and objectives:** `U.Objective`s and `U.ConstraintRule`s are typically authored and evaluated relative to a specific context’s invariants.
 * **As a change target:** Context evolution (new invariants, revised glosses, deprecated roles) is modeled as a `U.Transformer` acting on the `U.BoundedContext` holon itself. Where time is merely stance (`design`/`run`), treat it as a TimeScope tag, not a new context (C‑7; D.CTX).
 
@@ -1039,7 +1039,7 @@ A `U.BoundedContext` is a composite holon whose *parts* constitute the context�
 * **BC‑3 (Role localization).** Every `U.Role` is defined in the `Roles` taxonomy of at least one `U.BoundedContext`; a "global role" is not a valid kernel object.
 * **BC‑4 (Invariant scope).** Any invariant authored in a Context applies only to holons and processes operating within that Context; cross-context reuse is mediated by Bridges and re‑stated locally.
 * **BC‑5 (Bridge explicitness).** Any interaction or semantic alignment between two Contexts is represented by an explicit `Bridge` artifact.
-* **BC‑6 (RoleAssignment binding).** A `U.RoleAssignment` references exactly one `U.BoundedContext` in its `context` field (cardinality 1..1).
+* **BC-6 (RoleAssignment context field).** A `U.RoleAssignment` references exactly one `U.BoundedContext` in its `context` field (cardinality 1..1).
 * **BC‑7 (Domain is metadata).** "Domain" denotes only an informative family label grouping multiple contexts; it is not a kernel type and does not substitute for `U.BoundedContext` (E.10.D1).
 
 ### A.1.1:5 - Archetypal Grounding
@@ -1181,7 +1181,7 @@ We elevate **Role** to a first‑class semantic construct: a context‑bound *ma
 #### A.2:4.1 - S‑level definitions (normative)
 
 * **`U.Role`** — a **context-bound** capability/obligation schema that a holon **may bear (play)** for a time interval. A role has **no parts** and **no resource deltas** of its own. *(A7 guard)*
-* **`U.RoleAssignment`** — a first‑class binding recording that a holon **bears (plays)** a role **in** a bounded context over an optional **Window**. Keep the signature aligned with **A.2.1 Role Assignment Standard**; governance metadata (authority/justification/provenance) is captured via `U.RoleAssigning` and the evidence graph (A.10).
+* **`U.RoleAssignment`** — a first-class assignment record recording that a holon **bears (plays)** a role **in** a bounded context over an optional **Window**. Keep the signature aligned with **A.2.1 Role Assignment Standard**; governance metadata (authority/justification/provenance) is captured via `U.RoleAssigning` and the evidence graph (A.10).
 
 ```
 U.RoleAssignment {
@@ -1196,7 +1196,7 @@ U.RoleAssignment {
 
 Short form (readable): `Holder#Role:Context@Window`.
 
-> **Why a first‑class binding?** It keeps identity (holon), function (role), context (semantics), and time (run‑window) separate yet linked, preventing the substance/function conflation identified above. The early `playsRoleOf(Holon, Role, span)` relation in the draft is subsumed by `U.RoleAssignment` and extended with **Context** (and optional governance fields).
+> **Why a first-class assignment record?** It keeps identity (holon), function (role), context (semantics), and time (run-window) separate yet linked, preventing the substance/function conflation identified above. The early `playsRoleOf(Holon, Role, span)` relation in the draft is subsumed by `U.RoleAssignment` and extended with **Context** (and optional governance fields).
 
 #### A.2:4.2 - Temporal & behavioural alignment
 
@@ -1208,7 +1208,7 @@ Short form (readable): `Holder#Role:Context@Window`.
 1. **Locality.** `role ∈ Roles(context)`. Outside its context, a role’s meaning is undefined.
 2. **Non‑mereological.** No Role (nor Method/MethodDescription) may appear in any `partOf` chain; holarchies are for substantial holons only.
 3. **Multiplicity.** A holder may **bear** multiple roles concurrently; a role may be **borne** by many holders—subject to each context’s compatibility rules.
-4. **Time anchoring.** `timespan` (if present) is non‑empty and finite for run‑time claims; design‑time bindings are timeless but versioned via `MethodDescription` identity.
+4. **Time anchoring.** `timespan` (if present) is non-empty and finite for run-time claims; design-time assignments are timeless but versioned via `MethodDescription` identity.
 5. **Behavioural coherence.** For any `U.Work` window, the performer plays the Role that binds the executed Method. *(No hidden role swaps.)*
 
 #### A.2:4.4 - Taxonomic frame (within a context)
@@ -1259,7 +1259,7 @@ Lenses tested: **Arch**, **Onto/Epist**, **Prag**, **Did**. Scope: **Universal**
 
 * **Name roles for intent, not mechanics.** Prefer `CoolingCirculatorRole` over `ChannelFluidWithCentrifugalProfile`.
 * **Pin the context early.** If two teams disagree, split contexts and (optionally) define an alignment bridge; do not over‑generalise the role.
-* **Document the binding chain.** For any operational claim, be ready to point to: `RoleAssigning → Method ↔ MethodDescription → Work`. (Readers’ dictionary: *BPMN workflow → MethodDescription; operation/job → Work.*)
+* **Document the enactment chain.** For any operational claim, be ready to point to: `RoleAssigning → Method ↔ MethodDescription → Work`. (Readers’ dictionary: *BPMN workflow → MethodDescription; operation/job → Work.*)
 
 ### A.2:8 - Conformance Checklist (CC‑A2.\*)
 
@@ -1308,7 +1308,7 @@ Recommended for governance‑heavy domains; it improves explainability without c
 | **Category‑error immunity** | Clear firewall between **identity** (holarchies) and **function** (roles) prevents mixing “parts” with “masks”.      | Slight modelling overhead; templates provide checklists (A.7, A.14).                         |
 | **Operational clarity**     | Who does what, when, and under which mask becomes audit‑ready (`performedBy ⊆ playsRoleOf`).                         | Requires spans on Role assignments; mitigated by default “open‑ended” spans in drafts.          |
 | **Epistemic hygiene**       | Knowledge holons contribute as **evidence** or **constraints**, never as doers.                                      | Authors must rewrite anthropomorphic prose; canonical rewrites help.                         |
-| **Cross‑context pluralism** | Same bearer can hold different roles across contexts without contradiction; differences are explicit in the binding. | Requires declaring the **bounded context**; E.10 eases the ceremony with registers/aliases.  |
+| **Cross-context pluralism** | Same bearer can hold different roles across contexts without contradiction; differences are explicit in the assignment. | Requires declaring the **bounded context**; E.10 eases the ceremony with registers/aliases.  |
 | **Γ‑coherence**             | Order/time/aggregation stay in Γ‑operators, not overloaded into “role" edges.                                        | Authors learn when to call Γ\_ctx/Γ\_time; the Part B on‑ramp is short.                      |
 
 ### A.2:11 - Rationale (post‑2015 cross‑domain corroboration)
@@ -1332,7 +1332,7 @@ Recommended for governance‑heavy domains; it improves explainability without c
 | Agency should not be attributed to artifacts; treat evidence/provenance as first‑class. | Safety/assurance and governance treat documents as evidence and constraints; provenance is required for claims. | ISO 26262:2018; NIST SP 800‑53 Rev. 5 (2020). | Supports “episteme as justification” and CC‑A2.2/CC‑A2.9 evidence binding. | **Adopt.** |
 | “Agency” is graded and mediated by active systems + policies. | Cognitive/agentic modeling treats agency as spectrum, mediated by control loops and policies. | Friston et al. (2017), Active Inference; basal cognition surveys (2018+). | Supports separating role labels from behavioural work; aligns with A.13/A.15. | **Adopt (with scope).** Keep obligations in CC. |
 
-> **Note.** Prefer binding to a maintained SoTA synthesis pack for roles/contexts if your Context has one.
+> **Note.** Prefer citing a maintained SoTA synthesis pack for roles/contexts if your Context has one.
 
 ### A.2:13 - Relations
 
@@ -1402,7 +1402,7 @@ Recommended for governance‑heavy domains; it improves explainability without c
 
 #### A.2.1:4.1 - Canonical definition (notation‑free)
 
-**`U.RoleAssignment`** is a **context‑local** binding:
+**`U.RoleAssignment`** is a **context-local assignment:
 
 ```
 RoleAssignment ::=
@@ -1647,7 +1647,7 @@ A.2.1’s only rule is *no substitution by label*: any “`Role_B@B` satisfies `
 
 ### A.2.1:5 - Archetypal Grounding (three disparate arenas)
 
-**Goal.** Show that the same binding **`Holder#Role:Context@Window`**, plus **RCS** (Role‑Characterisation Space) and **RSG** (Role‑State Graph), works uniformly for **operational systems**, **software/service operations**, and **knowledge governance**.
+**Goal.** Show that the same assignment **`Holder#Role:Context@Window`**, plus **RCS** (Role-Characterisation Space) and **RSG** (Role-State Graph), works uniformly for **operational systems**, **software/service operations**, and **knowledge governance**.
 
 Natural systems note. Spontaneous physical phenomena (e.g., Moon orbiting Earth) are modeled as `U.Dynamics`, not as `U.Work`. An observational RoleAssignment like `Moon#SatelliteRole:IAU_2006` is valid classification but does not imply enactment of a method.
 
@@ -2425,7 +2425,7 @@ Aggregation across time uses `Γ_time` policies (union vs convex hull) chosen by
 
 ## A.2.4 - `U.EvidenceRole`
 
-> *This pattern defines how a knowledge artefact (“episteme”) serves as **evidence** for a specific claim or theory **inside a bounded context**. It is a **non‑behavioural** role enacted via `U.RoleAssignment`; the binding **must** declare the **target claim**, the **claim‑scope**, and a **timespan of relevance**. Evidence is a classificatory status of an episteme; it is not an action and it is not an assignment of an actor.*
+> *This pattern defines how a knowledge artefact (“episteme”) serves as **evidence** for a specific claim or theory **inside a bounded context**. It is a **non-behavioural** role enacted via `U.RoleAssignment`; the evidence-role assignment **must** declare the **target claim**, the **claim-scope**, and a **timespan of relevance**. Evidence is a classificatory status of an episteme; it is not an action and it is not an assignment of an actor.*
 
 ### A.2.4:1 - Context and intent
 
@@ -2472,7 +2472,7 @@ RoleAssigning {
 }
 ```
 
-The **normative properties** of the role (e.g., `claimRef`, `claimScope`, `polarity`, `weightModelRef`) are set in the **role’s definition** in the given `U.BoundedContext`, not in the binding.
+The **normative properties** of the role (e.g., `claimRef`, `claimScope`, `polarity`, `weightModelRef`) are set in the **role’s definition** in the given `U.BoundedContext`, not in the evidence-role assignment.
 `U.RoleAssignment` carries only the linkage between a concrete episteme and a role already defined and attributed in that context.
 
 > **Non-behavioural guard.** The holder is an episteme; any actions that produced it are `U.Work` performed by systems. Evidence classifies an artefact’s evidential status; it does not itself enact behaviour.
@@ -2532,11 +2532,11 @@ The **normative properties** of the role (e.g., `claimRef`, `claimScope`, `polar
 ### A.2.4:7 - Core invariants (concept level)
 
 1. **Holder type.** `U.EvidenceRole` is held by a **`U.Episteme`** only; never by a system, work, method, or service.  # [M‑0]
-2. **Context anchor.** Every binding **must** name a `U.BoundedContext`; meaning is local and does not propagate implicitly.
-3. **Target claim.** Every binding **must** reference a resolvable claim or theory statement and declare **polarity** `{supports | refutes | constrains | neutral}`.
-4. **Claim‑scope.** Every binding **must** declare an applicability scope; for the axiomatic line this can be the theory’s domain.
-5. **Timespan.** Every binding **must** declare a relevance interval. Axiomatic roles may be open‑ended **for a fixed theory version**; experimental roles require finite or refreshable windows.  **Gating:** narrative only at **M‑0**; explicit `timespan` & `decayClass` at **M‑2**; version fence & `proofChecks` at **F‑**.  # [M/F]
-6. **Non‑self‑evidence.** The provenance of experimental bindings **must** trace to external `U.Work` performed by systems under roles; an episteme cannot “evidence itself.”
+2. **Context anchor.** Every evidence-role assignment **must** name a `U.BoundedContext`; meaning is local and does not propagate implicitly.
+3. **Target claim.** Every evidence-role assignment **must** reference a resolvable claim or theory statement and declare **polarity** `{supports | refutes | constrains | neutral}`.
+4. **Claim-scope.** Every evidence-role assignment **must** declare an applicability scope; for the axiomatic line this can be the theory’s domain.
+5. **Timespan.** Every evidence-role assignment **must** declare a relevance interval. Axiomatic roles may be open-ended **for a fixed theory version**; experimental roles require finite or refreshable windows.  **Gating:** narrative only at **M-0**; explicit `timespan` & `decayClass` at **M-2**; version fence & `proofChecks` at **F-**.  # [M/F]
+6. **Non-self-evidence.** The provenance of experimental evidence-role assignments **must** trace to external `U.Work` performed by systems under roles; an episteme cannot “evidence itself.”
 7. **No mixing of stances.** Do not mix design‑time proof artefacts and run‑time traces in one provenance chain; relate them via separate bindings if needed.
 8. **No role mereology.** Roles have **no parts**; refine by **specialisation** only. This prevents confusing “sub‑role” with “subsystem”.   **Profile note:** The constraint is universal (applies to **all profiles**).  # [all]
 
@@ -2637,7 +2637,7 @@ If any element in the support chain is `postulative`, the aggregate `epistemicMo
 - `epistemicMode = formal`, `assuranceUse = VA`,  
 - fenced to `TheoryVersion = 3.1` (open-ended relevance as long as that version stands).
 
-**Binding(s)**  
+**Role assignment(s)**  
 `Lemma-12.proof#AxiomaticProofRole:GraphTheory`
 
 **Provenance sketch**  
@@ -2656,7 +2656,7 @@ High **F** (machine-checked proof), **G** = “finite DAG”, **R** from proof-o
 - `epistemicMode = postulative`, `assuranceUse = LA`,  
 - `weightModelRef = KD:SupportMeasure`, `decayPolicy = annual recalibration`.
 
-**Binding(s)**  
+**Role assignment(s)**  
 `Trial-R3.csv#ModelFitEvidenceRole:Cardio_2026`
 
 **Provenance sketch**  
@@ -2671,22 +2671,22 @@ High **F** (machine-checked proof), **G** = “finite DAG”, **R** from proof-o
 `U.EvidenceRole` **MUST** be held by a `U.Episteme` via `U.RoleAssignment`. Systems, services, methods, or works **MUST NOT** hold this role.
 
 **CC-ER-02 (Context)**
-Every binding **MUST** name a `U.BoundedContext`. Role meanings are local and do not propagate without an explicit bridge.
+Every evidence-role assignment **MUST** name a `U.BoundedContext`. Role meanings are local and do not propagate without an explicit bridge.
 
 **CC-ER-03 (Target claim)**
-Every binding **MUST** reference a resolvable `claimRef@version` and declare `polarity ∈ {supports | refutes | constrains | neutral}`.
+Every evidence-role assignment **MUST** reference a resolvable `claimRef@version` and declare `polarity ∈ {supports | refutes | constrains | neutral}`.
 
 **CC-ER-04 (Claim-scope)**
-Every binding **MUST** declare `claimScope`. For formal proofs this may be the theory’s domain; for empirical evidence it is mandatory to state population, environment, and parameter envelope.
+Every evidence-role assignment **MUST** declare `claimScope`. For formal proofs this may be the theory’s domain; for empirical evidence it is mandatory to state population, environment, and parameter envelope.
 
 **CC-ER-05 (Timespan)**
-Every binding **MUST** carry a non-empty `timespan`. Formal line may have open-end **only** if fenced to a fixed theory version; empirical line must have a finite or refreshable end.
+Every evidence-role assignment **MUST** carry a non-empty `timespan`. Formal line may have open-end **only** if fenced to a fixed theory version; empirical line must have a finite or refreshable end.
 
 **CC-ER-06 (Provenance)**
-Every binding **MUST** anchor into the EPV-DAG (A.10). For empirical line, `fromWorkSet` must point to external `U.Work`; self-evidence is prohibited.
+Every evidence-role assignment **MUST** anchor into the EPV-DAG (A.10). For empirical line, `fromWorkSet` must point to external `U.Work`; self-evidence is prohibited.
 
 **CC-ER-07 (Reproducibility)**
-Empirical bindings **MUST** state `reproducibility` ∈ {replicated-independent, replicated-internal, not-replicated, irreproducible}, with references where applicable.
+Empirical evidence-role assignments **MUST** state `reproducibility` ∈ {replicated-independent, replicated-internal, not-replicated, irreproducible}, with references where applicable.
 
 **CC-ER-08 (Weight discipline)**
 If `weight.score` is present, `weight.modelRef` **MUST** be named and all required inputs supplied.
@@ -2729,8 +2729,8 @@ These operators extend E.6.1 citation graph capabilities for evidence analysis i
 `weight(claim, t?, model?) → score`   # returns **ordinal** at M‑mode; **numeric** at M‑2/F‑mode.  # [M/F]
 
 **12.2 Decay and windows**
-`window(claim, [t0,t1])` — filter bindings by `timespan`.
-`decayedWeight(binding, t)` — apply context decay policy.
+`window(claim, [t0,t1])` — filter evidence-role assignments by `timespan`.
+`decayedWeight(assignment, t)` — apply context decay policy.
 
 **12.3 Replication and provenance**
 `replicationLedger(binding) → Ledger`
@@ -2759,7 +2759,7 @@ KD-CAL (knowledge dynamics, assurance cases), Norm-CAL (policy claims with evide
 ### A.2.4:14 - Migration notes (quick wins)
 
 1. **Enumerate claims**: For each evidence collection, identify claims and create explicit bindings with polarity.
-2. **Separate work from reports**: Facts stay on `U.Work`; create report epistemes to bind as evidence.
+2. **Separate work from reports**: Facts stay on `U.Work`; create report epistemes to link as evidence.
 3. **Name the calculus**: Replace free-form confidence with context-declared weight model and required inputs.
 4. **Fence by version/time**: Bindings carry `timespan` and version fences; add decay class if applicable.
 5. **Bridge explicitly**: Cross-context evidence goes through `U.Alignment`, not by fiat.
@@ -2769,7 +2769,7 @@ KD-CAL (knowledge dynamics, assurance cases), Norm-CAL (policy claims with evide
 These are short reminders for non-specialist readers to apply `U.EvidenceRole` correctly:
 
 * **Evidence ≠ Work** — Work is *what happened*; Evidence is a *documented argument* (episteme) about a claim in a context.
-* **Local, not global** — Evidence binds *in a room* (context). Outside that room, you need a bridge (`U.Alignment`).
+* **Local, not global** — Evidence links *in a room* (context). Outside that room, you need a bridge (`U.Alignment`).
 * **Two lines of trust** — Formal line: proof artefacts checked in a declared theory version. Empirical line: observations from Work under a declared method. Both are epistemes wearing `U.EvidenceRole`.
 * **Services are promises; Work proves** — KPIs are measured from Work; service evaluations can be bound as evidence for policy claims.
 * **Specialise, don’t stack** — Use specialisations of `U.EvidenceRole` to refine meaning; never chain behavioural roles into evidence.
@@ -2777,16 +2777,16 @@ These are short reminders for non-specialist readers to apply `U.EvidenceRole` c
 
 ### A.2.4:16 - SCR/RSCR audit stubs (assurance scaffolding)
 
-These stubs allow concept-level validation of bindings, without implying any specific tooling.
+These stubs allow concept-level validation of evidence-role assignments, without implying any specific tooling.
 
-**SCR-A2.4-E1 (Binding integrity)**
+**SCR-A2.4-E1 (Assignment integrity)**
 Assert: `holder` is `U.Episteme`; `context` present; `claimRef` resolves; `timespan` non-empty; provenance anchored to EPV.
 
 **SCR-A2.4-E2 (Weight discipline)**
 Assert: if `weight.score` present → `weight.modelRef` present and all required inputs provided; recompute to check.
 
 **SCR-A2.4-E3 (Traceability)**
-For empirical bindings: binding → `fromWorkSet` → each `U.Work` has performer `U.RoleAssignment` and timestamps; no missing hops.
+For empirical evidence-role assignments: assignment → `fromWorkSet` → each `U.Work` has performer `U.RoleAssignment` and timestamps; no missing hops.
 
 **RSCR-A2.4-R1 (Regression on version bump)**
 When `claimRef` or holder episteme versions change, ensure **new** bindings are created; no in-place mutation.
@@ -2795,7 +2795,7 @@ When `claimRef` or holder episteme versions change, ensure **new** bindings are 
 Bindings past `timespan.to` or with expired `decayClass` are flagged for review per context policy.
 
 
-### A.2.4:17 - Minimal binding schema (informative)
+### A.2.4:17 - Minimal evidence-role assignment schema (informative)
 
 ```yaml
 EvidenceRoleAssigning:
@@ -2811,7 +2811,7 @@ EvidenceRoleAssigning:
 
 ### A.2.4:18 - Memory hooks and acceptance cross-checks (informative)
 
-**Memory hook:** *“Evidence binds a **document** to a **claim** in a **Context**, for a **time**, with a **trail**.”*
+**Memory hook:** *“Evidence links a **document** to a **claim** in a **Context**, for a **time**, with a **trail**.”*
 (document = episteme; claim = scoped thesis; Context = bounded context; time = timespan/decay; trail = provenance)
 
 **Acceptance cross-checks before publishing a binding:**
@@ -7692,7 +7692,7 @@ When you think you need “retargeting” in FPF, ask:
 
 ### A.6.4:End
 
-## A.6.5 -  U.RelationSlotDiscipline - SlotKind/ValueKind/RefKind discipline for n‑ary relations
+## A.6.5 -  U.RelationSlotDiscipline - SlotKind / ValueKind / RefKind discipline for n‑ary relations (with slot‑operation lexicon)
 
 **Plain‑name.** Relation slot discipline.
 
@@ -7700,15 +7700,15 @@ When you think you need “retargeting” in FPF, ask:
 **Placement.** Part A, cluster A.IV “Architheory Kernel”; directly under A.6.0 `U.Signature` and alongside A.6.1–A.6.4.
 **Depends on.**
 – A.1 `U.Holon` (holonic carrier model).
-– A.6.0 `U.Signature` (universal morphism/relationship signatures). 
+– A.6.0 `U.Signature` (universal morphism/relationship signatures).
 – A.7 (Strict Distinction; I/D/S vs Surface).
-– E.8 (pattern authoring order & SoTA discipline). 
-– E.10 (LEX‑BUNDLE: Tech/Plain registers, naming guards). 
+– E.8 (pattern authoring order & SoTA discipline).
+– E.10 (LEX‑BUNDLE: Tech/Plain registers, naming guards).
 
 **Coordinates with.**
 – C.2.1 `U.EpistemeSlotGraph` (episteme slots: DescribedEntity, GroundingHolon, ClaimGraph, Viewpoint, View, ReferenceScheme).
-– C.3.* Kind‑CAL (Kinds, KindSignature, KindBridge). 
-– F.18 (name governance; twin‑register discipline). 
+– C.3.* Kind‑CAL (Kinds, KindSignature, KindBridge).
+– F.18 (name governance; twin‑register discipline).
 
 ### A.6.5:1 - Problem frame
 
@@ -7718,38 +7718,45 @@ FPF relies heavily on **n‑ary relations and morphisms**:
 * role enactment and assignment,
 * method/service signatures,
 * guards and bridges in Part B/C,
-* publication and view operators in Part E, and any other `U.Signature` whose **Vocabulary** row declares n-ary relations or operators across Part A/B/C/E.
+* publication and view operators in Part E, and any other `U.Signature` whose **Vocabulary** row declares n‑ary relations or operators across Part A/B/C/E.
 
 In practice, existing episteme and drafts **frequently conflate**:
-1. the **place** in a relation (“the 2nd argument, named Subject”),
-2. the **kind of value** that may occupy that place (`U.Entity`, `U.Holon`, …), and
+
+1. the **place/position** in a signatured structure (relation/operator/record/port bundle; e.g. “the 2nd argument, named Subject”),
+2. the **kind of value** that may fill that position (`U.Entity`, `U.Holon`, …), and
 3. the **reference/identifier** we actually store there (`…Id`, `…Ref`).
 
-This produces subtle bugs:
-* misuse of “Subject/Object” as slot names for very different kinds,
-* “Ref” suffix attached to both **entities and fields**,
-* mixed reasoning about “role”, “slot”, and “object”,
-* fragile substitution rules (“can I plug this module here?”) that depend on informal judgement.
+This produces subtle bugs (elaborated in A.6.5:2):
 
-`U.RelationSlotDiscipline` pins a **single, reusable discipline** over `U.Signature` so that **every position in a relation** is described with:
+* misuse of “Subject/Object” as SlotKind‑like names for very different ValueKinds (explicitly banned for episteme Tech names by E.10),
+* the `…Ref` suffix attached to both conceptual values and reference fields, erasing ValueKind vs RefKind,
+* mixed reasoning about “role”, “slot”, and “filler” as if they were the same layer,
+* fragile substitution questions (“can I plug this module here?”) that depend on informal judgement rather than SlotSpec laws.
 
-* a **SlotKind** — *where* in the relation,
-* a **ValueKind** — *what sort of thing* may occupy that place, and
-* a **RefKind** — *how we point at it* in episteme (identifier / handle), if at all.
+A second, subtler conflation appears in prose: authors mix **binding / initialization / assignment / substitution / retargeting / mutation / passing** as if they were synonyms for “put something in a slot”. This blurs the intended discipline precisely in the places where FPF must be crisp (signatures, morphisms, bridges, and viewing operators).
 
-This pattern makes slot discipline explicit and shareable across **epistemes, roles, methods, services, bridges, guards, and all other `U.Signature`d calculi**: any “parameter list”, “port list”, or “coordinate tuple” for an n-ary relation in FPF **is** a set of SlotSpecs governed by this discipline.
+`U.RelationSlotDiscipline` pins a **single, reusable discipline** over `U.Signature` so that **every position in an n‑ary signature** is described with:
+
+* a **SlotKind** — *where* in the signature,
+* a **ValueKind** — *what sort of thing* may fill that place, and
+* a **RefKind** — *how we point at it* in episteme (identifier / handle), if at all,
+
+**and** it standardises the **lexicon for operations over slots** so that extension texts can describe “early vs late binding”, “retargeting”, and “by‑value edits” without collapsing layers.
+
+This pattern makes slot discipline explicit and shareable across **epistemes, roles, methods, services, bridges, guards, and all other `U.Signature`d calculi**: any “parameter list”, “port list”, “field set”, or “coordinate tuple” for an n‑ary signature in FPF **is** a set of SlotSpecs governed by this discipline.
 
 ### A.6.5:2 - Problem (symptoms in FPF)
 
 Typical failure modes the pattern is designed to eliminate:
 
 1. **Slot vs value vs ref confusion.**
-   episteme fields such as `DescribedEntityRef` are sometimes treated as:
+   Episteme fields such as `DescribedEntityRef` are sometimes treated as:
 
    * the **slot** (“the described entity position”),
    * the **value kind** (“the described entity type”), and
    * a **reference field** (“this is the pointer we store”).
-     Reasoning about substitution (“can I swap one described entity for another?”) then mixes three levels at once.
+
+   Reasoning about substitution (“can I swap one described entity for another?”) then mixes three levels at once.
 
 2. **Kernel types misused as slot names.**
    Kernel concepts like `U.Entity` or `U.Holon` are used directly as slot names (“the `U.Entity` of this episteme”), hiding the difference between:
@@ -7769,23 +7776,31 @@ Typical failure modes the pattern is designed to eliminate:
    * entity kinds (`U.EntityRef` interpreted as “the entity itself”),
    * episteme fields (`describedEntityRef`),
    * sometimes even to slots (“DescribedEntityRefSlot”).
-     That makes it impossible to read signatures and know whether we talk about:
-   * a **conceptual value** (pass‑by‑value), or
-   * a **reference/identifier** (pass‑by‑reference).
+
+   That makes it impossible to read signatures and know whether we talk about:
+
+   * a **conceptual value** (by‑value), or
+   * a **reference/identifier** (by‑reference via a handle).
 
 5. **Substitution rules not localisable.**
    When the slot/value/ref layers are not separated:
 
    * we cannot state “you may substitute **any instance of ValueKind V** in Slot S”, nor
    * “this Bridge only changes RefKind, not ValueKind”.
-     This blocks clean use of A.6.0 `U.Signature` as a shared calculus for method/role/episteme signatures.
+
+   This blocks clean use of A.6.0 `U.Signature` as a shared calculus for method/role/episteme signatures.
 
 6. **Episteme‑specific slots not standardised.**
-   For epistemes, the positions “what is this about?”, “in which holon is it grounded?”, “what ClaimGraph is inside?” re‑appear across patterns.
-   Without a shared slot discipline, each pattern names these ad‑hoc, breaking the ability to state **universal laws** over episteme morphisms (A.6.2–A.6.4).
+   For epistemes, the positions “what is this about?”, “in which holon is it grounded?”, “what ClaimGraph is inside?” re‑appear across patterns. Without a shared slot discipline, each pattern names these ad‑hoc, breaking the ability to state **universal laws** over episteme morphisms (A.6.2–A.6.4).
+
+7. **Operation‑lexicon drift (slot filling spoken as one verb).**
+   Extension prose introduces ad‑hoc words for “put something in a slot” and then imports unintended semantics. The most common mistakes are:
+
+   * using a single word (e.g. “fill”, “set”, “occupy”, “attach”) to cover **initialization**, **assignment**, **retargeting**, and **by‑value editing**;
+   * using person/role metaphors for slot content (“occupant”) that re‑introduce the “role ≈ slot” confusion;
+   * describing “early vs late binding” without stating **which link** is early/late (name→slot binding vs slot→content filling vs ref→referent resolution).
 
 The result: **local convenience, global incoherence** — exactly what A.6.0 and E.10 are supposed to prevent.
-
 
 ### A.6.5:3 - Forces
 
@@ -7795,59 +7810,72 @@ The result: **local convenience, global incoherence** — exactly what A.6.0 and
   * where a parameter sits,
   * which kinds it can take,
   * whether it’s by value/by reference,
-  * and how substitution behaves.
+  * how substitution behaves,
+  * and (in prose) what kind of slot‑operation is being described.
 
 * **F2 - Cross‑disciplinary reuse.**
   Slot discipline must work for:
+
   * logical relations (KD‑CAL, LOG‑CAL),
   * episteme structures (C.2.1),
   * systems/roles/methods (A/B),
-  * services and APIs (including Method/Service interfaces and ports),
-  * cells in a tables and databases,
+  * services and APIs (including method/service interfaces and ports),
+  * cells in tables and databases,
   * guards, bridges, and flows in E.TGA,
   * and publication operations (E.17).
-    A scheme that is too domain-specific (e.g. “database attributes only”) won’t scale; the same discipline must underlie **all** `U.Signature`d argument/port lists.
+
+  A scheme that is too domain‑specific (e.g. “database attributes only”) won’t scale; the same discipline must underlie **all** `U.Signature`d argument/port lists.
 
 * **F3 - Alignment with existing tooling.**
   Tooling stacks already operate with:
 
   * typed parameters and records,
   * identifiers vs values vs references,
-  * sometimes row‑polymorphic fields or effect annotations.
-    FPF must line up with this practice enough that signatures can be implemented without inventing a parallel type system.
+  * and (in modern typed settings) explicit distinctions between *binding*, *store update*, and *mutation*.
+
+  FPF must line up with this practice enough that signatures can be implemented without inventing a parallel type system.
 
 * **F4 - I/D/S discipline.**
-  Strict distinction (A.7, E.10.D2) already separates **intensional objects**, their **descriptions**, and **specifications**. The same kind of discipline is needed inside relations:
+  Strict distinction (A.7, E.10.D2) already separates **intensional objects**, their **descriptions**, and **specifications**. The same discipline is needed inside relations:
 
   * slot ≠ value ≠ reference,
   * system role ≠ slot name,
-  * describedEntity ≠ guard.
+  * describedEntity ≠ guard,
+  * and “change the reference” ≠ “change the thing referred to”.
 
 * **F5 - Didactic primacy and naming discipline.**
   E.8 and E.10 demand patterns that are:
 
-  * teachable (Tell‑Show‑Show examples, explicit biases), 
-  * lexically guarded (Tech/Plain split, explicit head‑nouns). 
-    Slot discipline must integrate seamlessly with that.
+  * teachable (Tell‑Show‑Show examples, explicit biases),
+  * lexically guarded (Tech/Plain split, explicit head‑nouns).
 
-### A.6.5:4 - Solution — SlotKind / ValueKind / RefKind triple
+  Slot discipline must integrate seamlessly with that.
+
+* **F6 - Binding‑time talk must be unambiguous.**
+  “Early binding / late binding” is meaningful only if the author states **what is being fixed when**. FPF needs a canonical way to speak about:
+
+  * early/late **slot filling**,
+  * early/late **reference resolution / dispatch**,
+  * and (where a language surface is in play) early/late **name binding**.
+
+### A.6.5:4 - Solution — SlotKind / ValueKind / RefKind triple (plus a slot‑operation lexicon)
 
 #### A.6.5:4.1 - Three layers for every argument position
 
-`U.RelationSlotDiscipline` extends `U.Signature` with a **three-layer description** for every argument position (whether we call it “parameter”, “slot”, “coordinate”, or “port” in colloquial prose).
+`U.RelationSlotDiscipline` extends `U.Signature` with a **three‑layer description** for every argument position (whether we call it “parameter”, “slot”, “coordinate”, or “port” in colloquial prose).
 In **normative** text, the canonical word is **slot**, and the canonical carrier is a **SlotSpec** triple (A.6.0).
 
-1. **SlotKind (place in relation).**
-   *How this position is denoted in the Signature and what is fixed about it by the relation’s definition.*
+1. **SlotKind (place in signature).**
+   *How this position is denoted in the Signature and what is fixed about it by the signature’s definition.*
    – Examples: `DescribedEntitySlot`, `GroundingHolonSlot`, `ClaimGraphSlot`, `ViewpointSlot`, `ServiceEndpointSlot`, `CallerHolonSlot`, `MetricSlot`.
-   – SlotKind is **structural**: it picks out **one distinguished place** in the argument/port list of a given relation or operator; it does **not** name a “role” played by the occupant.
-   – For an n-ary relation declared in a `U.Signature`, the pair *(Signature id, SlotKind)* identifies a **slot**; positional indices are merely a presentation-level enumeration of these slots.
-   – What an occupant “does” in that place (its contribution to laws, constraints, effects) is governed by the **laws over the Signature** and by the corresponding ValueKind, not by SlotKind-as-“role”.
+   – SlotKind is **structural**: it picks out **one distinguished place** in the argument/port/field list of a given relation, operator, record, or other signatured bundle; it does **not** name a “role” played by whatever fills the slot.
+   – For an n‑ary relation/operator declared in a `U.Signature`, the pair *(Signature id, SlotKind)* identifies a **slot**; positional indices are merely a presentation‑level enumeration of these slots.
+   – What a filler “does” in that place (its contribution to laws, constraints, effects) is governed by the **laws over the Signature** and by the corresponding ValueKind, not by SlotKind‑as‑“role”.
 
-2. **ValueKind (kind of occupant).**
-   *Which kinds of things may occupy this position in principle (at the intensional level).*
+2. **ValueKind (kind of slot filler).**
+   *Which kinds of things may fill this position in principle (at the intensional level).*
    – Examples: `U.Entity`, `U.Holon`, `U.Method`, `U.Episteme`, `U.ClaimGraph`, `U.Viewpoint`, `U.Characteristic`, `U.ReferenceScheme`.
-   – ValueKind is a **Kind** (C.3.\*) or another kernel‑level type; it is **not** a slot and never carries `*Slot`/`*Ref` suffixes.
+   – ValueKind is a **Kind** (C.3.*) or another kernel‑level type; it is **not** a slot and never carries `*Slot`/`*Ref` suffixes.
 
 3. **RefKind (how we store / refer).**
    *What reference/identifier we actually store in episteme when we fill this slot.*
@@ -7855,16 +7883,20 @@ In **normative** text, the canonical word is **slot**, and the canonical carrier
    – RefKind is **about references, not values**; it usually points to an editioned artifact (A.7, F.15) and carries the `.edition` field when pinning a phase.
 
 **Discipline:**
+
 * Each declared argument position in a `U.Signature` **MUST** be described by:
-   * a SlotKind (name and documentation),
-   * a ValueKind (type of permissible occupants),
-   * and either a RefKind or an explicit declaration “**by‑value**” (no RefKind; the value is embedded).
+
+  * a SlotKind (name and documentation),
+  * a ValueKind (type of permissible fillers),
+  * and either a RefKind or an explicit declaration “**by‑value**” (no RefKind; the value is embedded).
 * SlotKind and ValueKind are **intensional**; RefKind is **representational**. This mirrors I/D/S: *slot* describes structure, *value* describes what can sit there, *ref* describes how we point to concrete instances.
 
 #### A.6.5:4.2 - Naming discipline: `*Slot` and `*Ref`
 
 This pattern introduces the following **lexical constraints**, aligned with E.10:
+
 1. **`*Slot` reserved for SlotKind.**
+
    * Any Tech name ending with `…Slot` **MUST** denote a SlotKind: a named place in a relation/morphism signature.
    * Examples:
      – `DescribedEntitySlot`, `GroundingHolonSlot`, `ClaimGraphSlot`, `ViewpointSlot`, `ViewSlot`, `RepresentationSchemeSlot`, `ReferenceSchemeSlot`.
@@ -7872,7 +7904,9 @@ This pattern introduces the following **lexical constraints**, aligned with E.10
      – ValueKind (e.g. `U.Entity`, `U.Holon`, `U.Method`),
      – RefKind (e.g. `U.EntityRef`),
      – concrete episteme fields (they may be named e.g. `describedEntityRef`, but not `describedEntitySlotField`).
-1. **`*Ref` reserved for RefKind and reference fields.**
+
+2. **`*Ref` reserved for RefKind and reference fields.**
+
    * Any Tech name ending with `…Ref` **MUST** denote either:
      – a **RefKind** (type of references/identifiers), or
      – a **field** whose type is a RefKind (`describedEntityRef : U.EntityRef`).
@@ -7891,60 +7925,189 @@ This pattern introduces the following **lexical constraints**, aligned with E.10
    * In the context of relation signatures, **do not** use “Role” as the head noun for SlotKinds (to avoid conflict with `U.Role`).
    * Use “Slot” or a neutral description: e.g. `EnactorHolonSlot` (ValueKind `U.Holon`) rather than `EnactorRoleSlot`.
 
-These rules become part of the **LEX‑BUNDLE guards** and are enforced by F.18 / name‑acceptance harnesses. 
+These rules become part of the **LEX‑BUNDLE guards** and are enforced by F.18 / name‑acceptance harnesses.
 
 #### A.6.5:4.3 - Integration with `U.Signature` (A.6.0)
 
-`U.Signature` already provides a generic pattern for declaring morphism/relationship signatures (SubjectKind, BaseType, Quantification, ResultKind, Vocabulary, Laws). 
+`U.Signature` already provides a generic pattern for declaring morphism/relationship signatures (SubjectKind, BaseType, Quantification, ResultKind, Vocabulary, Laws).
 
 `U.RelationSlotDiscipline` refines this by adding a **SlotSpec** layer:
 
 *For each parameter position `i` in a signature*:
 
-```text
+```
 SlotSpec_i = ⟨name: SlotKind, value: ValueKind, refMode: {ByValue | RefKind}⟩
 ```
 
 * **SlotKind** — Tech name with `*Slot` suffix, plus documentation.
-* **ValueKind** — a `U.Type` (often a `U.Kind` or kernel type) declaring the intensional universe of occupants.
+* **ValueKind** — a `U.Type` (often a `U.Kind` or kernel type) declaring the intensional universe of admissible fillers.
 * **refMode**:
+
   * `ByValue` — the actual value of ValueKind is embedded (typical for small structured values like `U.ClaimGraph` inside an episteme card).
   * `RefKind` — a **type** of references/identifiers for that ValueKind; e.g. `U.EntityRef` for `U.Entity`, `U.HolonRef` for `U.Holon`. Substitution then operates on references, not directly on the underlying values.
 
 In practice, a `U.Signature` that follows this pattern:
 
 * becomes **self‑documenting**: each parameter has a clear “slot vs value vs ref” story;
-* supports **typed substitution**: replacing references within the same SlotKind requires only ValueKind compatibility;
-* aligns with **tool signatures** in implementation languages (row‑typed records, dependently typed parameters, effect‑typed arguments). ([ACM Digital Library][13])
+* supports **typed substitution**: replacing content within the same SlotKind requires only ValueKind compatibility;
+* aligns with **tool signatures** in implementation languages (row‑typed records, dependently typed parameters, effect‑typed arguments). ([13])
 
 #### A.6.5:4.4 - Typed substitution discipline
 
 Given a relation or morphism `R` with signature Σ and SlotSpecs `{SlotSpec_i}`:
 
-* A **substitution** at slot `i` is a change of the argument that fills SlotKind_i, within or across episteme entries.
+* A **substitution** at slot `i` is a change of the **slot content** that fills SlotKind_i, within or across episteme entries.
 * `U.RelationSlotDiscipline` enforces:
 
 1. **SlotKind invariance.**
-   A substitution **never** changes SlotKind — only the occupant (Value/Ref).
+   A substitution **never** changes SlotKind — only the slot content (Value/Ref).
    – “We put a different dataset into the `DatasetSlot`.”
    – “We switch the grounding holon in `GroundingHolonSlot`.”
 
 2. **ValueKind compatibility.**
-   The new occupant **MUST** be of the same ValueKind (or a declared subkind) as `SlotSpec_i.value`; Kind‑CAL governs this (`⊑` in C.3.1–C.3.2). If a Context uses EoIClass species constraints (C.3.2), those act as additional guards but do **not** change the SlotKind.
+   The new content **MUST** be of the same ValueKind (or a declared subkind) as `SlotSpec_i.value`; Kind‑CAL governs this (`⊑` in C.3.1–C.3.2). If a Context uses EoIClass species constraints (C.3.2), those act as additional guards but do **not** change the SlotKind.
 
 3. **RefKind correctness.**
    If `refMode=RefKind`, the stored field is of that RefKind; substitutions operate on references, not on underlying values. Edition pinning is handled as usual by `.edition` fields in F‑patterns (F.15, etc.).
 
 4. **By‑value vs by‑ref awareness.**
-   Substitutions at by‑value slots (e.g. `ClaimGraphSlot`) are **content changes** to the episteme or relation instance; they may affect formality F or assurance lanes. Substitutions at ref slots are **re‑targetings** of describedEntity or context, and their legality is governed by A.6.2–A.6.4 and Bridge/CL rules. Tooling SHOULD surface this difference explicitly in authoring surfaces (e.g. separate “Ref” vs “embedded content” columns).
+   Substitutions at by‑value slots (e.g. `ClaimGraphSlot`) are **content edits** to the episteme or relation instance; they may affect formality F or assurance lanes. Substitutions at ref slots are **retargetings** of describedEntity or context, and their legality is governed by A.6.2–A.6.4 and Bridge/CL rules. Tooling SHOULD surface this difference explicitly in authoring surfaces (e.g. separate “Ref” vs “embedded content” columns).
 
 These rules give a uniform way to say:
 
 > “You may swap component X with Y in this slot, because they share ValueKind and pass the relevant Kind/Bridge constraints.”
 
+#### A.6.5:4.5 - Slot operation lexicon (binding / filling / assignment / retargeting / mutation)
+
+This subsection standardises **how Core and extensions talk about operations over slots**, without committing FPF to any particular programming language semantics. It is a *lexical* and *didactic* guardrail that preserves the SlotKind/ValueKind/RefKind stratification in prose.
+
+##### A.6.5:4.5.1 - Four‑way separation: Identifier vs Slot vs Slot‑content vs Referent
+
+*Diagram is illustrative; the term distinctions are normative.*
+
+To avoid conflating “binding / assignment / passing / mutation”, FPF authors SHALL keep the following separation in mind:
+
+```
+(1) Identifier/Name  ──binds-to──>  (2) SlotKind  ──in an instance──>  (2′) Slot‑instance  ──filled-with──>  (3) Slot‑content (Value | Ref)
+                                                              └─(if Ref) resolves-to──> (4) Referent value / artifact
+```
+
+**Normative terms**:
+
+* **Identifier** (Surface): a name used in a syntax, table column, record field, port label, or parameter label.
+* **SlotKind** (I‑plane): the signature‑level label for a distinguished place in a relation.
+* **Slot‑instance** (S‑plane / representation): the actual location/cell/position corresponding to a SlotKind inside a specific relation instance, record, port bundle, or episteme card.
+* **Slot‑content** (representation): what is stored in a slot‑instance. It is either:
+
+  * a **by‑value value** of ValueKind, or
+  * a **reference handle** of RefKind.
+* **Referent**: the intensional thing the RefKind points to when resolved (often an editioned artifact).
+
+This separation is the anchor for all “binding time” talk in A.6.5:4.6.
+
+##### A.6.5:4.5.2 - Canonical verbs (Tech register) for slot operations *(normative)*
+
+When a pattern, bridge, or operator description discusses a change or action “with respect to a slot”, it SHALL use (or explicitly map to) the following verbs. Each verb is tied to **which link/layer it affects**.
+
+1. **bind / rebind** (Identifier → SlotKind/slot‑instance).
+   *Use when the subject is an Identifier/Name and the effect is changing what that name designates.*
+   – **bind**: establish a new association of an Identifier to a SlotKind/slot‑instance (or to a value in a language surface).
+   – **rebind**: change an existing association of an Identifier to designate a different slot‑instance or different value.
+   **Guard:** do not use “bind” to mean “write into a slot”. Binding is about *names*, not slots.
+
+2. **fill** (Slot‑instance ← Slot‑content).
+   *The generic, cross‑domain verb meaning “provide slot‑content for a slot‑instance”.*
+   – Fill does **not** by itself imply first‑time vs update, nor by‑value vs by‑ref.
+   – Use **fill** when discussing hardware slots, tuple coordinates, ports, record fields, or parameters uniformly.
+
+3. **initialize** (first fill).
+   *Use when the slot‑instance previously had no content.*
+   – For `refMode=RefKind`: initialization sets the initial reference handle.
+   – For `ByValue`: initialization sets the embedded initial value.
+   **Guard:** do not call initialization “assignment” in normative text.
+
+4. **assign / set / write / update** (subsequent fill; slot‑content replacement).
+   *Use when a slot‑instance already has content and you replace it with new content.*
+   – These verbs are allowed as near‑synonyms, but **SHOULD** be used consistently within one pattern family.
+   **Guard:** when `refMode=RefKind`, prefer **retarget** (below) if the intent is “change what this ref points to”, not “edit content”.
+
+5. **retarget** (Ref slot update, same SlotKind/ValueKind).
+   *Use only for `refMode=RefKind` slots, when the operation replaces one reference handle with another, thereby changing the referent while preserving SlotKind and ValueKind.*
+   – “Retarget `DescribedEntitySlot` from `UserService#staging` to `UserService#prod`.”
+   Retargeting is the canonical FPF verb for “swap the referenced thing in this slot”.
+
+6. **substitute** (typed replacement with explicit compatibility claim).
+   *Use when the statement’s main point is the **compatibility law** (“allowed because ValueKind matches”).*
+   – Substitute is a **discipline word**: it signals that SlotKind is fixed and ValueKind compatibility is being asserted/checked.
+
+7. **resolve / dereference** (Ref → Referent).
+   *Use when a reference handle is mapped to the intensional referent.*
+   – This is where “late binding” often hides in runtime systems (dispatch, dynamic lookup, registry indirection).
+   **Guard:** resolving a reference is distinct from retargeting the reference.
+
+8. **mutate / modify** (Referent internal change; content unchanged).
+   *Use only when the referent itself changes while the slot‑content (the reference handle) does not.*
+   **FPF note:** In edition‑disciplined contexts, prefer to describe intentional change as **revise / re‑edition** + **retarget**, rather than “mutate”, because the Core treats editioned artifacts as stable per edition (A.7, F.15).
+
+9. **pass** (parameter slot filling).
+   *Use for method/service signatures when an argument fills a parameter slot at a call boundary.*
+   – Passing is a specialised instance of **fill**, typically realised as parameter binding + slot filling in implementation languages. In FPF text, “pass into SlotKind” is acceptable if SlotKind names the parameter position.
+
+##### A.6.5:4.5.3 - Canonical nouns *(normative)*
+
+To prevent role metaphors from re‑entering slot talk:
+
+* Use **slot‑content** (preferred) or **slot filler** for “the thing currently in the slot”.
+* Avoid person/role metaphors such as **occupant** in normative writing. If a Context insists on using such a word in Plain register, it SHALL define it explicitly as a synonym for slot‑content and SHALL NOT derive role semantics from it.
+* Use **target**/**referent** for what a Ref points to; use **retargeting** for changing the target by changing the Ref.
+* Use **by‑value edit** (or **embedded content edit**) for changes to a `ByValue` slot such as `ClaimGraphSlot`.
+
+##### A.6.5:4.5.4 - Operator naming guidance for slot‑writing operators *(normative, but intentionally lightweight)*
+
+When naming an operator/morphism/bridge whose primary effect is a slot change, the Tech name SHOULD make two things legible:
+
+1. **Which SlotKind(s) it writes**, and
+2. **Which operation class it is**, using the canonical verbs above.
+
+Recommended patterns (examples only; Contexts may adopt their own naming style via F.18):
+
+* `Retarget<SlotQualifier>` for ref‑slot retargeting (e.g. `RetargetDescribedEntity`, `RetargetGroundingHolon`).
+* `Edit<SlotQualifier>` / `Update<SlotQualifier>` for by‑value content edits (e.g. `EditClaimGraph`).
+* `Substitute<SlotQualifier>` when the operator exists to enforce/declare ValueKind compatibility (e.g. `SubstituteDataset`).
+* `Resolve<SlotQualifier>` when the operator is about resolving a Ref to a referent (e.g. `ResolveServiceEndpoint`).
+
+This rule is a lexical enforcement of A.6.5:4.4 (typed substitution discipline): the name should tell the reader whether the operator is a **retargeting** (ref change) or a **content edit** (by‑value change).
+
+#### A.6.5:4.6 - Binding time and “early vs late binding” *(normative framing, informative examples)*
+
+In cross‑domain slot talk, “early binding / late binding” is meaningful only if the author states **which link is being fixed when**. Under A.6.5:4.5, there are three distinct “times” that writers must not conflate:
+
+1. **SlotSpec time (signature time).**
+   SlotKind / ValueKind / refMode are fixed when the `U.Signature` is declared. This is “early” by definition in FPF Core.
+
+2. **Slot filling time (initialization / assignment / retargeting).**
+   A particular relation instance / episteme card / parameter bundle acquires slot‑content for a SlotKind.
+   – *Early‑filled* means: chosen at authoring/spec time (e.g. configuration pins a specific `U.HolonRef`).
+   – *Late‑filled* means: chosen at runtime or late in a workflow (e.g. service endpoint selected by policy at deployment).
+
+3. **Resolution / dispatch time (resolve RefKind; select referent).**
+   Even if a ref handle is present, the referent may be resolved early or late.
+   – *Eager resolution* means: resolve now, cache/commit to a referent.
+   – *Lazy resolution* means: resolve on demand.
+   – *Dynamic dispatch* is a special case: the “method slot” is resolved at call time based on a receiver/context, rather than being statically selected.
+
+**Rule (lexical guard):**
+Any use of “early binding” / “late binding” in Core or extensions SHALL specify which of the above it refers to, using one of:
+
+* **early/late‑filled** (slot filling),
+* **eager/lazy‑resolved** (resolution),
+* **early/late name‑binding** (Identifier binding, if a language surface is being discussed).
+
+This preserves the A.6.5 stratification and prevents importing accidental semantics from a specific programming language.
+
 ### A.6.5:5 - Archetypal Grounding (Tell‑Show‑Show)
 
-Following E.7, we ground the pattern in a **System** example and an **Episteme** example. 
+Following E.7, we ground the pattern in a **System** example and an **Episteme** example.
 
 #### A.6.5:5.1 - System example — authentication pipeline signature
 
@@ -7962,17 +8125,17 @@ Consider an `AuthPipelineSpecKind` (system‑level episteme describing an authen
   – ValueKind: `U.ClaimGraph`.
   – refMode: `ByValue` (ClaimGraph stored inside the episteme card).
 
-Substitutions:
+Substitutions / retargetings:
 
-* Changing `AuthProviderComponentSlot` from `Auth_OIDC` to `Auth_LDAP`:
+* **Retargeting** `AuthProviderComponentSlot` from `Auth_OIDC` to `Auth_LDAP`:
   – SlotKind fixed (`AuthProviderComponentSlot`).
   – ValueKind unchanged (`U.Holon`, `AuthProviderSystem ⊑ U.Holon`).
   – RefKind unchanged (`U.HolonRef`).
-  – Semantically: “swap one provider holon for another in the same slot”.
+  – Semantically: “retarget the ref that fills the same slot”.
 
-* Changing `DescribedEntitySlot` from `UserService#staging` to `UserService#prod`:
+* **Retargeting** `DescribedEntitySlot` from `UserService#staging` to `UserService#prod`:
   – Same SlotKind and ValueKind.
-  – Different `U.HolonRef` occupant.
+  – Different `U.HolonRef` slot‑content.
   – May require different grounding and assurance episteme, but the slot discipline is identical.
 
 #### A.6.5:5.2 - Episteme example — model evaluation result
@@ -8000,17 +8163,19 @@ Consider `ModelEvaluationResultKind` as an episteme kind:
   – refMode: `ByValue`; the numeric thresholds and results live inside `content : U.ClaimGraph`.
 
 Typical moves:
-* `DatasetSlot`: replace `Dataset_A` with `Dataset_B` to test generalisation.
-* `TargetCharacteristicSlot`: replace `Accuracy` with `F1` to focus on class imbalance.
-* `ClaimGraphSlot`: change thresholds from “`P95Latency ≤ 200 ms`” to “`≤ 150 ms`” — a **pass‑by‑value** ClaimGraph change, not a slot change.
 
-The SlotKind/ValueKind/RefKind discipline makes these substitutions **local and explicit**: the pattern describes which moves are allowed where, and A.6.2–A.6.4 then constrain how episteme morphisms may change ClaimGraphs and references.
+* `DatasetSlot`: **retarget** `Dataset_A` → `Dataset_B` to test generalisation.
+* `TargetCharacteristicSlot`: **retarget** `Accuracy` → `F1` to focus on class imbalance.
+* `ClaimGraphSlot`: **by‑value edit** thresholds from “`P95Latency ≤ 200 ms`” to “`≤ 150 ms`” — a `ByValue` content edit, not a ref retargeting.
 
-#### A.6.5:5.3 - Didactic micro‑examples — substitution by SlotKind / ValueKind / RefKind  *(informative)*
+The SlotKind/ValueKind/RefKind discipline makes these moves **local and explicit**: the pattern describes which moves are allowed where, and A.6.2–A.6.4 then constrain how episteme morphisms may change ClaimGraphs and references.
+
+#### A.6.5:5.3 - Didactic micro‑examples — substitution by SlotKind / ValueKind / RefKind *(informative)*
 
 The following short examples are intended for a didactic guide or for cross‑references from A.6.0/A.6.x/C.2.1. In all of them:
-* **SlotKind** names the **place in the relation** (position/cell in the tuple).
-* **ValueKind** is the **kind of value** admissible at that place (what can ever sit there).
+
+* **SlotKind** names the **place/position in the structure** (slot/field/coordinate in a tuple/record/port bundle).
+* **ValueKind** is the **kind of value** admissible at that place.
 * **RefKind** is the **reference/identifier type** used in episteme when that slot is filled (absent when the slot is by‑value).
 * `GroundingHolon` is **not** a separate kernel type: it is simply a `U.Holon` used as the ValueKind of `GroundingHolonSlot`.
 
@@ -8021,93 +8186,107 @@ Example names like `FurnitureSafetyDescriptionKind`, `AuthPipelineSpecKind`, `Mo
 *EpistemeKind:* `FurnitureSafetyDescriptionKind`.
 
 *SlotKind / ValueKind / RefKind:*
+
 * `DescribedEntitySlot` — SlotKind “what this description is about”; ValueKind `U.Entity` with EoIClass ⊑ `U.Holon` (stool as a furniture holon); RefKind `U.EntityRef` (identifier of a concrete stool `S_i`).
 * `GroundingHolonSlot` — SlotKind “where the test happens”; ValueKind `U.Holon` (test rig `LabRig_j`); RefKind `U.HolonRef`.
 * `ClaimGraphSlot` — SlotKind for the internal content; ValueKind `U.ClaimGraph`; refMode `ByValue` (graph embedded in the episteme).
 
 *Substitutions (all under the **same** SlotKinds):*
+
 * Episteme `E₁`: `describedEntityRef = S_1`, `groundingHolonRef = LabRig_A`.
-* Episteme `E₂`: `describedEntityRef = S_2`, `groundingHolonRef = LabRig_A` — **substitute another stool in the same `DescribedEntitySlot`** (different `U.EntityRef` in the same slot).
+* Episteme `E₂`: `describedEntityRef = S_2`, `groundingHolonRef = LabRig_A` — **substitute another stool in the same `DescribedEntitySlot`** (different `U.EntityRef` slot‑content).
 * Episteme `E₃`: `describedEntityRef = S_1`, `groundingHolonRef = LabRig_B` — **substitute another test rig in `GroundingHolonSlot`** while keeping the same object‑of‑talk.
 
-In all three cases the SlotKinds (and ValueKinds) are stable; only the **Refs that occupy those slots** change. This matches the engineering idiom “drop another module into the same slot”.
+In all three cases the SlotKinds (and ValueKinds) are stable; only the **Refs that fill those slots** change. This matches the engineering idiom “drop another module into the same slot”.
 
 ##### A.6.5:5.3.2 - Microservices — switching the authentication provider
 
-*EpistemeKind:* `AuthPipelineSpecKind` (episteme describing an authentication pipeline for a service).
+*EpistemeKind:* `AuthPipelineSpecKind`.
 
 *SlotKind / ValueKind / RefKind:*
+
 * `DescribedEntitySlot` — ValueKind `U.Holon` with EoIClass = “`UserService` holon”; RefKind `U.HolonRef` (e.g. `UserService#prod`).
 * `AuthProviderComponentSlot` — SlotKind “which auth provider component is used in this pipeline”; ValueKind `U.Holon` with EoIClass = “`AuthProviderSystem` holon”; RefKind `U.HolonRef` (e.g. `Auth_OIDC`, `Auth_LDAP`).
 * `ClaimGraphSlot` — ValueKind `U.ClaimGraph`; refMode `ByValue` (pipeline invariants and flow logic).
 
-*Substitutions:*
+*Substitutions / retargetings:*
+
 * Episteme `Spec_OIDC`: `describedEntityRef = UserService#prod`, `authProviderComponentRef = Auth_OIDC`.
 * Episteme `Spec_LDAP`: same `describedEntityRef = UserService#prod`, but `authProviderComponentRef = Auth_LDAP`.
-Here **SlotKind is identical** (`AuthProviderComponentSlot`); ValueKind is “any auth‑provider holon”; the episteme change is purely in the **`U.HolonRef` occupant**. This illustrates substitution of one component holon for another in the same slot, without inventing a separate ontology of “component roles”.
+
+Here SlotKind is identical (`AuthProviderComponentSlot`); ValueKind is “any auth‑provider holon”; the episteme change is purely a **retargeting** of the `U.HolonRef` slot‑content.
 
 ##### A.6.5:5.3.3 - Data/ML — swapping dataset or target characteristic
 
 *EpistemeKind:* `ModelEvaluationResultKind`.
+
 *SlotKind / ValueKind / RefKind:*
-* `DescribedEntitySlot` — ValueKind `U.Method` (the ML model as an intensional method); RefKind `U.MethodRef` (e.g. `Model_v3`).
-* `DatasetSlot` — SlotKind “evaluation dataset”; ValueKind `U.Entity` with EoIClass = “dataset”; RefKind `U.EntityRef` (`Dataset_A`, `Dataset_B`, …).
-* `TargetCharacteristicSlot` — SlotKind “which characteristic is being measured”; ValueKind `U.Characteristic` (`Accuracy`, `F1`, `AUROC`); RefKind `U.CharacteristicRef`.
-* `GroundingHolonSlot` — ValueKind `U.Holon` (evaluation cluster / infra holon); RefKind `U.HolonRef`.
-* `ClaimGraphSlot` — ValueKind `U.ClaimGraph`; refMode `ByValue` (evaluation results and thresholds as content).
-*Substitutions:*
+
+* `DescribedEntitySlot` — ValueKind `U.Method`; RefKind `U.MethodRef` (e.g. `Model_v3`).
+* `DatasetSlot` — ValueKind `U.Entity` with EoIClass = “dataset”; RefKind `U.EntityRef` (`Dataset_A`, `Dataset_B`, …).
+* `TargetCharacteristicSlot` — ValueKind `U.Characteristic`; RefKind `U.CharacteristicRef`.
+* `GroundingHolonSlot` — ValueKind `U.Holon`; RefKind `U.HolonRef`.
+* `ClaimGraphSlot` — ValueKind `U.ClaimGraph`; refMode `ByValue`.
+
+*Substitutions / retargetings:*
+
 * `Eval_1`: `describedEntityRef = Model_v3`, `datasetRef = Dataset_A`, `targetCharacteristicRef = Accuracy`, `groundingHolonRef = EvalCluster#1`.
-* `Eval_2`: same model / characteristic / cluster, but `datasetRef = Dataset_B` — **substitute another dataset in `DatasetSlot` at fixed target characteristic**.
-* `Eval_3`: same model and dataset, but `targetCharacteristicRef = F1` — **substitute another characteristic in `TargetCharacteristicSlot`** while keeping the rest fixed.
-`TargetCharacteristicSlot` here shows `U.Characteristic` as ValueKind: the episteme changes which characteristic it is “looking at”, without changing the method or the holon; only the `U.CharacteristicRef` occupant changes.
+* `Eval_2`: same model / characteristic / cluster, but `datasetRef = Dataset_B` — **substitute another dataset in `DatasetSlot`** (retarget the dataset ref).
+* `Eval_3`: same model and dataset, but `targetCharacteristicRef = F1` — **substitute another characteristic in `TargetCharacteristicSlot`**.
 
 ##### A.6.5:5.3.4 - Operational practice — the same runbook in different operating centres
 
-*EpistemeKind:* `IncidentRunbookSpecKind` (runbook specification for major incidents).
-*SlotKind / ValueKind / RefKind:*
-* `DescribedEntitySlot` — ValueKind `U.Method` (the runbook as a method, e.g. `MajorIncidentRunbook`); RefKind `U.MethodRef`.
-* `GroundingHolonSlot` — SlotKind “operational environment where this runbook is validated and in force”; ValueKind `U.Holon` (NOC centre, datacentre, cloud cluster, …); RefKind `U.HolonRef`.
-* `ClaimGraphSlot` — ValueKind `U.ClaimGraph` (steps, invariants, assumptions of the runbook); refMode `ByValue`.
+*EpistemeKind:* `IncidentRunbookSpecKind`.
 
-*Substitutions:*
+*SlotKind / ValueKind / RefKind:*
+
+* `DescribedEntitySlot` — ValueKind `U.Method`; RefKind `U.MethodRef`.
+* `GroundingHolonSlot` — ValueKind `U.Holon`; RefKind `U.HolonRef`.
+* `ClaimGraphSlot` — ValueKind `U.ClaimGraph`; refMode `ByValue`.
+
+*Substitutions / retargetings:*
+
 * `Runbook_DC1`: `describedEntityRef = MajorIncidentRunbook`, `groundingHolonRef = DC1_NOC`.
 * `Runbook_DC2`: same `describedEntityRef`, but `groundingHolonRef = DC2_NOC`.
 
-Intuitively this is the case “one and the same method is specified and verified in two different operational environments”. SlotKind is the same (`GroundingHolonSlot`), ValueKind is the same (`U.Holon`); only the **`U.HolonRef` occupant** differs — a clean example of substituting one holon‑environment in the same slot, without introducing a special `GroundingHolon` type.
+This is “one and the same method is specified and validated in two different operational environments”: SlotKind and ValueKind are stable; only the `U.HolonRef` slot‑content differs.
 
 ##### A.6.5:5.3.5 - SLO/SLA requirements — changing the target characteristic vs changing the threshold
 
 *EpistemeKind:* `ServiceSLARequirementKind`.
 
 *SlotKind / ValueKind / RefKind:*
-* `DescribedEntitySlot` — ValueKind `U.Holon` with EoIClass = “service”; RefKind `U.HolonRef` (e.g. `CheckoutService#prod`).
-* `TargetCharacteristicSlot` — SlotKind “which service characteristic this SLA talks about”; ValueKind `U.Characteristic` (`P95Latency`, `Availability`, `ErrorRate`); RefKind `U.CharacteristicRef`.
-* `ClaimGraphSlot` — ValueKind `U.ClaimGraph`; refMode `ByValue`. Numeric thresholds such as `≤ 200 ms` or `≥ 99.9%` live **inside the ClaimGraph as literals**, not as RefKinds.
 
-*Substitutions:*
-* `SLA_latency_200`: `describedEntityRef = CheckoutService#prod`, `targetCharacteristicRef = P95Latency`; `ClaimGraph` contains the inequality `P95Latency ≤ 200 ms`.
-* `SLA_latency_150`: same `describedEntityRef` and `targetCharacteristicRef`, but the ClaimGraph threshold is `P95Latency ≤ 150 ms`. This is a **by‑value change inside ClaimGraph**: SlotKinds and ValueKinds/RefKinds are untouched; only the embedded literal changes.
-* `SLA_availability_99_9`: same `describedEntityRef`, but `targetCharacteristicRef = Availability`; ClaimGraph states `Availability ≥ 99.9%`. Here we **substitute another characteristic in `TargetCharacteristicSlot`** (different `U.CharacteristicRef`), while thresholds remain by‑value in the ClaimGraph.
+* `DescribedEntitySlot` — ValueKind `U.Holon`; RefKind `U.HolonRef` (e.g. `CheckoutService#prod`).
+* `TargetCharacteristicSlot` — ValueKind `U.Characteristic`; RefKind `U.CharacteristicRef`.
+* `ClaimGraphSlot` — ValueKind `U.ClaimGraph`; refMode `ByValue`. Numeric thresholds live **inside the ClaimGraph as literals**, not as RefKinds.
 
-This example highlights the difference between:
-* changing the **target characteristic** (substituting another `U.CharacteristicRef` in `TargetCharacteristicSlot` with ValueKind `U.Characteristic`), and
-* changing the **numeric threshold** **inside** `ClaimGraph` (editing literals in a by‑value slot, with no RefKind involvement).
+*Moves:*
+
+* `SLA_latency_200`: `describedEntityRef = CheckoutService#prod`, `targetCharacteristicRef = P95Latency`; ClaimGraph contains `P95Latency ≤ 200 ms`.
+* `SLA_latency_150`: same refs, but ClaimGraph threshold is `P95Latency ≤ 150 ms`. This is a **by‑value edit** of `ClaimGraphSlot`.
+* `SLA_availability_99_9`: same `describedEntityRef`, but `targetCharacteristicRef = Availability`; ClaimGraph states `Availability ≥ 99.9%`. This is a **retargeting** of `TargetCharacteristicSlot`.
 
 ### A.6.5:6 - Bias‑Annotation
+
 **Lenses tested and scope.** This pattern was read through all five Principle‑Taxonomy lenses (`Gov`, `Arch`, `Onto/Epist`, `Prag`, `Did`) and is intended as a **universal** discipline for n‑ary relation and morphism signatures across Parts A/B/C/E. It leans toward the `Arch` and `Onto/Epist` lenses (typed signatures, explicit kinds), but mitigates this by (a) keeping the discipline notation‑agnostic, (b) aligning with existing tooling rather than prescribing any, and (c) grounding the rules in System/Episteme examples with clear didactic intent. No domain‑specific scope limitation is claimed.
 
 * **Typed‑language bias.**
-+  The pattern leans on intuitions from typed programming languages (parameter types, records, references). This is intentional: it aligns FPF signatures with mainstream tooling and with post‑2015 typed effect/row systems. The pattern remains **notation‑agnostic** and does not commit to any specific PL or logic.
+
+  * The pattern leans on intuitions from typed programming languages (parameter types, records, references). This is intentional: it aligns FPF signatures with mainstream tooling and with post‑2015 typed effect/row systems. The pattern remains **notation‑agnostic** and does not commit to any specific PL or logic.
 
 * **Slot‑first bias.**
-+  We treat *slot* as the primary abstraction and discourage role‑style or object‑style naming for argument positions. This favours structural clarity over conversational metaphors (“subject/object/role”) and keeps `U.Role` free for RoleEnactment rather than param‑slots.
+
+  * We treat *slot* as the primary abstraction and discourage role‑style or object‑style naming for argument positions. This favours structural clarity over conversational metaphors (“subject/object/role”) and keeps `U.Role` free for RoleEnactment rather than param‑slots.
 
 * **By‑value/by‑ref honesty.**
   We explicitly separate ValueKind and RefKind instead of hiding “by‑reference” behind the type system. This increases verbosity but makes reasoning about edition pinning, caching, and re‑targeting more robust, and keeps I/D/S distinctions visible inside signatures.
 
+* **Lexicon bias (precision over metaphor).**
+  We standardise the slot‑operation lexicon (bind/fill/initialize/assign/retarget/resolve/mutate) and discourage metaphors that smuggle role semantics back into SlotKinds. This increases didactic load, but directly reduces cross‑pattern ambiguity, especially in “binding time” discussions.
+
 * **Episteme‑first describedEntity.**
   The examples and cross‑references prioritise episteme use‑cases (C.2.1, A.6.2–A.6.4) where describedEntity and retargeting are subtle. System‑only usages (e.g. method signatures) are absolutely allowed but not the driving case; they inherit the same discipline without additional obligations.
-
 
 ### A.6.5:7 - Conformance Checklist (normative)
 
@@ -8122,6 +8301,7 @@ Any Tech name ending with `…Ref` **MUST** denote either a RefKind or a field w
 
 **CC‑A.6.5‑4 - ValueKind purity.**
 ValueKinds **MUST** be declared without `*Slot`/`*Ref` suffixes and **MUST** be FPF types (often `U.Kind` or kernel‑level types). Any existing type whose name violates this rule must be either:
+
 * reclassified as a RefKind, or
 * renamed to drop the suffix.
 
@@ -8146,6 +8326,7 @@ When the same conceptual position is used across patterns (e.g. “describedEnti
 
 **CC‑A.6.5‑9 - Migration of legacy `…Ref`/`…Slot` usage.**
 Contexts adopting this pattern **MUST** maintain a migration table for legacy types/fields whose names contain `Ref` or `Slot` but do not comply with the new discipline. Each entry shall state:
+
 * old name and role,
 * new SlotKind/ValueKind/RefKind,
 * whether the old name becomes an alias (deprecated) or is removed.
@@ -8153,21 +8334,34 @@ Contexts adopting this pattern **MUST** maintain a migration table for legacy ty
 **CC‑A.6.5‑10 - Pattern integration.**
 New or revised patterns in Part A/B/C/E that introduce n‑ary relations, morphisms, or signatures **SHALL** reference A.6.5 in their Relations section and attest that they follow SlotKind/ValueKind/RefKind discipline.
 
+**CC‑A.6.5‑11 - Slot‑content terminology.**
+Normative text that refers to “what is in a slot” **SHALL** use **slot‑content** (or **slot filler**) and **SHALL NOT** rely on role/person metaphors (e.g. “occupant”) unless explicitly defined as a strict synonym for slot‑content with no added semantics.
+
+**CC‑A.6.5‑12 - Slot‑operation verb discipline.**
+Any normative description of a change “to a slot” **MUST** specify which operation class it is (initialize vs assign/set vs retarget vs by‑value edit vs resolve vs mutate/revise), using the canonical verbs in A.6.5:4.5.2 or explicitly mapping local terms to them.
+
+**CC‑A.6.5‑13 - Binding‑time clarity.**
+Any use of “early binding / late binding” (or equivalent) **MUST** specify whether it refers to:
+
+* Identifier binding (name‑binding),
+* Slot filling (early/late‑filled),
+* Reference resolution / dispatch (eager/lazy‑resolved).
+
 ### A.6.5:8 - Consequences
 
 **Benefits**
 
-* **Uniform language for arguments.**
-  Any n‑ary relation (episteme, role, method, service, guard) can be described with the same SlotKind/ValueKind/RefKind triple.
+* **Uniform language for arguments and for operations.**
+  Any n‑ary relation (episteme, role, method, service, guard) can be described with the same SlotKind/ValueKind/RefKind triple **and** with a stable operation lexicon (fill/initialize/assign/retarget/resolve).
 
 * **Safer substitutions.**
-  Substitution, retargeting, and viewing laws (A.6.2–A.6.4) can be stated in terms of *which SlotKinds* they read/write and *which ValueKinds* they preserve or retarget.
+  Substitution, retargeting, and viewing laws (A.6.2–A.6.4) can be stated in terms of *which SlotKinds* they read/write and *which ValueKinds* they preserve or retarget, without accidentally collapsing into “just replace the thing”.
 
 * **Cleaner naming and migration.**
   Misuses of `*Ref`, `*Slot`, “Role”, “Subject”, “Object” in signatures become guard‑detectable; migration strategies can be described as re‑factoring SlotKinds and ValueKinds rather than ad‑hoc renames.
 
 * **Tool alignment.**
-  Implementation languages with **row‑typed records, dependent types, and algebraic effects** map naturally to the SlotKind/ValueKind/RefKind layers, easing code generation and static analysis. ([ACM Digital Library][13])
+  Implementation languages with **row‑typed records, dependent types, and algebraic effects** map naturally to the SlotKind/ValueKind/RefKind layers, easing code generation and static analysis. ([13])
 
 **Trade‑offs / mitigations**
 
@@ -8178,76 +8372,82 @@ New or revised patterns in Part A/B/C/E that introduce n‑ary relations, morphi
   Some legacy names will need migration (`EpistemicObject`, ad‑hoc `…Ref` types). Mitigation: migration notes in F.18 and dedicated anti‑pattern sections; transitional aliases allowed but marked deprecated.
 
 * **Learning curve.**
-  Authors must learn to think “SlotKind/ValueKind/RefKind” before writing `id` or `subject`. Mitigation: Tell‑Show‑Show examples and a didactic micro‑guide on slots and describedEntity referenced from A.6.0/C.2.1/E.17.0.
+  Authors must learn to think “SlotKind/ValueKind/RefKind” *and* distinguish “retarget vs edit vs resolve” before writing `id` or `subject`. Mitigation: Tell‑Show‑Show examples and a didactic micro‑guide on slot operations referenced from A.6.0/C.2.1/E.17.0.
 
 ### A.6.5:9 - Rationale
 
-**Why a SlotKind/ValueKind/RefKind triple at all.** At architheory level, this pattern makes `U.Signature` behave like a lightweight dependently‑typed record discipline: SlotKind plays the role of an index or label, ValueKind is the family of admissible occupants at that position, and RefKind captures the representation choice (by‑value or via a handle). This mirrors the way post‑2015 work on row‑polymorphic data and effect rows treats labels and field kinds as first‑class, while keeping the Core notation‑neutral.
+**Why a SlotKind/ValueKind/RefKind triple at all.**
+At architheory level, this pattern makes `U.Signature` behave like a lightweight dependently‑typed record discipline: SlotKind plays the role of an index or label, ValueKind is the family of admissible fillers at that position, and RefKind captures the representation choice (by‑value or via a handle). This mirrors the way post‑2015 work on row‑polymorphic data and effect rows treats labels and field kinds as first‑class, while keeping the Core notation‑neutral.
 
-**Why separate ValueKind from RefKind.** In practice, “Ref” types tend to be quietly used as if they were values, eroding the I/D/S split and making edition discipline invisible. By insisting that ValueKind is always the conceptual kind (“what sort of thing is this about?”) and RefKind is always the reference/identifier kind (“how do we point at it in Episteme?”), the pattern aligns with E.10.D2’s intension/description/specification discipline and with modern resource‑aware logics that keep values and resources distinct.
+**Why separate ValueKind from RefKind.**
+In practice, “Ref” types tend to be quietly used as if they were values, eroding the I/D/S split and making edition discipline invisible. By insisting that ValueKind is always the conceptual kind (“what sort of thing is this about?”) and RefKind is always the reference/identifier kind (“how do we point at it in Episteme?”), the pattern aligns with E.10.D2’s intension/description/specification discipline and with modern resource‑aware logics that keep values and resources distinct.
 
-**Why standardise episteme SlotKinds.** describedEntity and grounding recur across epistemes; standard SlotKinds (`DescribedEntitySlot`, `GroundingHolonSlot`, `ClaimGraphSlot`, etc.) let A.6.2–A.6.4 and C.2.1 talk about substitutions and retargetings once, instead of re‑defining “what this is about” in every pattern. This is the same move that SoTA specification frameworks make when they stabilise their core judgement forms and then vary only instances and laws.
+**Why add a slot‑operation lexicon.**
+The triple only buys safety if authors and tools can see it at a glance **and** can narrate changes without collapsing layers. A.6.5:4.5 makes the common “put something in a slot” moves explicit: initialization vs assignment vs retargeting vs by‑value editing vs resolution. This directly reduces ambiguity in episteme morphism descriptions (A.6.2–A.6.4) and prevents accidental imports from a specific PL’s terminology.
 
-**Why lexical rules (`*Slot`, `*Ref`, no “Role” heads).** The triple only buys safety if authors and tools can see it at a glance. Reserving `*Slot` for SlotKinds and `*Ref` for RefKinds/fields gives a cheap, syntax‑level guard against conflating places, kinds, and handles. Banning “Role” as a SlotKind head prevents clash with `U.Role` and the RoleEnactment calculus, preserving the clean separation between “mask worn by a system” and “position in a relation”.
+**Why standardise episteme SlotKinds.**
+describedEntity and grounding recur across epistemes; standard SlotKinds (`DescribedEntitySlot`, `GroundingHolonSlot`, `ClaimGraphSlot`, etc.) let A.6.2–A.6.4 and C.2.1 talk about substitutions and retargetings once, instead of re‑defining “what this is about” in every pattern.
+
+**Why lexical rules (`*Slot`, `*Ref`, operation verbs, no “Role” heads).**
+The discipline must be cheap to apply. Reserving `*Slot` for SlotKinds and `*Ref` for RefKinds/fields gives a syntax‑level guard against conflating places, kinds, and handles. Standardising operation verbs (initialize/retarget/resolve) prevents prose from re‑introducing the same conflation by different words.
 
 ### A.6.5:10 - SoTA‑Echoing (post‑2015 practice alignment)
 
 **Purpose.** To situate SlotKind/ValueKind/RefKind discipline with respect to contemporary typed and relational approaches, without importing any external calculus into the Core. All items are used as conceptual comparators; concrete reuse in a `U.BoundedContext` would happen only via explicit Bridges (F.9) with declared CL penalties.
 
-1. **Row‑typed, extensible data / effect rows (adopt/adapt).**  
-   Post‑2015 work on row polymorphism and extensible data/effect rows treats records and variants as labelled collections of fields whose presence and type can evolve independently.   
-   **Adopted:** the idea that **positions** (labels) are first‑class and carry their own typing discipline.  
+1. **Row‑typed, extensible data / effect rows (adopt/adapt).**
+   Post‑2015 work on row polymorphism and extensible data/effect rows treats records and variants as labelled collections of fields whose presence and type can evolve independently.
+   **Adopted:** the idea that **positions** (labels) are first‑class and carry their own typing discipline.
    **Adapted:** instead of row kinds, FPF uses SlotKind/ValueKind/RefKind triples for n‑ary relations and epistemic slots; the pattern is notation‑agnostic and applies equally to episteme structures, role relations, and service signatures. ([13])
 
-2. **Dependent type systems engineered via macros (adopt/adapt).**  
-   Macro‑based dependent type systems such as Turnstile+ separate structural indices, value‑level types, and evidence, while allowing them to be related by construction.   
-   **Adopted:** the separation between **indices/labels** and **values**, and the intuition that signatures should expose both explicitly.  
-   **Adapted:** SlotKind corresponds to a structural index, ValueKind to the ordinary type of occupants, and RefKind to runtime‑level identifiers; the discipline is phrased at the architheory level and kept independent of any particular PL.
+2. **Dependent type systems engineered via macros (adopt/adapt).**
+   Macro‑based dependent type systems such as Turnstile+ separate structural indices, value‑level types, and evidence, while allowing them to be related by construction.
+   **Adopted:** the separation between **indices/labels** and **values**, and the intuition that signatures should expose both explicitly.
+   **Adapted:** SlotKind corresponds to a structural index, ValueKind to the ordinary type of fillers, and RefKind to runtime‑level identifiers; the discipline is phrased at the architheory level and kept independent of any particular PL.
 
-3. **Relational models of types‑and‑effects (adapt).**  
-   Relational models for types‑and‑effects distinguish value positions from effect/resource annotations and track substitution separately across these layers.   
-   **Adopted:** the insistence that reasoning about **substitution and equality** must be stratified (values vs additional structure).  
+3. **Relational models of types‑and‑effects (adapt).**
+   Relational models for types‑and‑effects distinguish value positions from effect/resource annotations and track substitution separately across these layers.
+   **Adopted:** the insistence that reasoning about **substitution and equality** must be stratified (values vs additional structure).
    **Adapted:** A.6.5 stratifies *slot / value / reference* instead of *value / effect*, and applies the discipline not only to programs but also to epistemes, roles, methods, and services. ([15])
 
-4. **Optics / lenses as disciplined projections (echo).**  
-   Profunctor optics formalise get/put pairs where a fixed “focus” position within a larger structure is manipulated under composition laws.   
+4. **Optics / lenses as disciplined projections (echo).**
+   Profunctor optics formalise get/put pairs where a fixed “focus” position within a larger structure is manipulated under composition laws.
    **Echoed:** SlotKind plays the role of the focus coordinate; ValueKind is the focus type; RefKind determines whether the focus is stored by value or via a handle. This perspective informs later use of SlotKind discipline in EpistemicViewing (A.6.3) and multi‑view publication (E.17). ([16])
 
 **Cross‑Context reuse and Bridges.** When a `U.BoundedContext` chooses to adopt a concrete row‑typing discipline, relational logic, or optics library, it **SHALL** do so via explicit Bridges (F.9) with CL and (for plane crossings) `Φ(CL)`/`Φ_plane` policy‑ids, keeping numerical policies and notations Context‑local. A.6.5 only constrains the **slot discipline** that such Bridges must respect.
 
-Overall, `U.RelationSlotDiscipline` echoes post‑2015 typed and relational work — *labelled positions, explicit kinds, layered references* — while staying notation‑neutral and tuned to FPF’s holonic and epistemic ontology.
-
 ### A.6.5:11 - Relations (with other patterns)
 
-**Builds on A.6.0 `U.Signature`.**  
+**Builds on A.6.0 `U.Signature`.**
 Refines parameter declarations with SlotSpec triples `⟨SlotKind, ValueKind, refMode⟩` while leaving the rest of the signature structure (SubjectKind, BaseType, Quantification, ResultKind, Laws) unchanged. SlotKinds become the canonical labels for argument positions.
 
-**Constrains C.2.1 `U.EpistemicMediationGraph`.**  
+**Constrains C.2.1 `U.EpistemeSlotGraph`.**
 Fixes core episteme SlotKinds (`DescribedEntitySlot`, `GroundingHolonSlot`, `ClaimGraphSlot`, `ViewpointSlot`, `ViewSlot`, `ReferenceSchemeSlot`) and their ValueKinds/`ByValue` vs Ref discipline. C.2.1 and its extensions SHALL use these SlotKinds (or documented refinements) so that episteme morphisms can be expressed uniformly over slots.
 
-**Supports A.6.2–A.6.4 (episteme morphisms and viewing).**  
-DescribedEntity‑preserving vs describedEntity‑retargeting morphisms can now be stated as constraints on which SlotKinds’ ValueKinds/RefKinds they may change. Retargeting becomes “substitution at `DescribedEntitySlot` under a Kind‑Bridge” rather than an ad‑hoc parameter tweak.
+**Supports A.6.2–A.6.4 (episteme morphisms and viewing).**
+DescribedEntity‑preserving vs describedEntity‑retargeting morphisms can now be stated as constraints on which SlotKinds’ ValueKinds/RefKinds they may change. Retargeting becomes “retargeting at `DescribedEntitySlot` under a Kind‑Bridge” rather than an ad‑hoc parameter tweak. The operation lexicon in A.6.5:4.5 makes “retarget vs edit vs resolve” explicit in these morphism descriptions.
 
-**Coordinates with B.5.* (RoleEnactment).**  
+**Coordinates with B.5.* (RoleEnactment).**
 Role/assignment relations may declare SlotKinds such as `HolderHolonSlot`, `RoleSlot`, `ContextSlot`, `WindowSlot` with clear ValueKinds/RefKinds, instead of overloading “role” for both holonic roles and relation positions. This keeps `U.Role` semantics (A.2, F.6) separate from slot discipline.
 
-**Coordinates with E.17 `U.MultiViewDescribing`.**  
+**Coordinates with E.17 `U.MultiViewDescribing`.**
 `Viewpoint` and `View` positions are governed by SlotKind/ValueKind/RefKind; view‑changing operations can be described as substitutions at specific SlotKinds that preserve ClaimGraph content while re‑indexing viewpoints and views.
 
-**Feeds F.18 (LEX‑BUNDLE) and E.10 (LEX).**  
-Provides lexical guards for `*Slot` and `*Ref`, clarifying that:
-* `*Slot` is reserved for SlotKinds only;  
-* `*Ref` is reserved for RefKinds and reference fields;  
-* ValueKinds and Kind names MUST NOT carry either suffix.  
-Name‑acceptance and migration harnesses in Part F can detect legacy violations and drive renames.
+**Feeds F.18 (LEX‑BUNDLE) and E.10 (LEX).**
+Provides lexical guards for `*Slot` and `*Ref`, and (via A.6.5:4.5) for operation verbs:
 
-**Used by A.19 `CharacteristicSpace` and measurement patterns.**  
+* `*Slot` reserved for SlotKinds only;
+* `*Ref` reserved for RefKinds and reference fields;
+* ValueKinds and Kind names MUST NOT carry either suffix;
+* slot‑operation verbs must not collapse retargeting into “editing”.
+
+**Used by A.19 `CharacteristicSpace` and measurement patterns.**
 Characteristic‑space slots already behave as positions with attached kinds; slot discipline in A.6.5 gives a uniform story for how such slots appear inside relation signatures, episteme cards, and service definitions, and how substitution over those slots is checked.
 
-[13]: https://dl.acm.org/doi/pdf/10.1145/3290325 "Abstracting extensible data types: or, rows by any other name"
-[14]: https://www.williamjbowman.com/resources/wjb2019-depmacros.pdf "Dependent Type Systems as Macros"
-[15]: https://iris-project.org/pdfs/2017-popl-effects-final.pdf "A Relational Model of Types-and-Effects in Higher-Order … "
-[16]: https://arxiv.org/pdf/1809.00738 "Categories of Optics"
+[13] https://dl.acm.org/doi/pdf/10.1145/3290325
+[14] https://www.williamjbowman.com/resources/wjb2019-depmacros.pdf
+[15] https://iris-project.org/pdfs/2017-popl-effects-final.pdf
+[16] https://arxiv.org/pdf/1809.00738
 
 ### A.6.5:End
 
@@ -15867,7 +16067,7 @@ It directly implements the **Primacy of Abduction** (from ADR-005) by placing hy
 
 ### B.5.2:End
 
-## B.5.2.1 - Creative Abduction with NQD (binding)
+## B.5.2.1 - Creative Abduction with NQD
 
 **Status.** Normative **binding** to **B.5.2 Abductive Loop** that delegates candidate generation to **Γ_nqd.generate** (**C.18 NQD-CAL**) and exploration/exploitation policy to **E/E-LOG (C.19)**; the kernel remains unchanged.
 
@@ -22169,7 +22369,7 @@ Publish: UTS twin labels; RSCR triggers on method edition change.
 
 ### C.21:End
 
-## C.22 - Problem Typing & TaskSignature Binding (Problem‑CHR)
+## C.22 - Problem Typing & TaskSignature Assignment (Problem-CHR)
 
 **Purpose.** Give FPF a **lawful, minimal, and portable** way to speak about “the problem we face” so that the **selector** (G.5) can legally admit/abstain without prose or guesswork. We do this by (i) **typing problems** with CHR‑grounded traits and (ii) **binding** them to a **TaskSignature (S2)** that downstream architheories can consume. The Standard is **Context‑local**, evidence‑anchored, tri‑state‑aware, and bridge‑savvy. TaskSignature is *minimal* but sufficient for **eligibility**, **acceptance**, and **policy‑governed** choice. 
 
@@ -24646,7 +24846,7 @@ IDs/instances: **flat with delimiters** (context‑defined) but never collide wi
 * **Role** is always **Role Enactment for the `U.Holon`/`U.System` kind** (agentive use).
 * **Param‑slot / relation‑endpoint guard.** Do **not** use the morpheme **`Role`** for **formal parameter positions** in operator algebra declarations (`OperationAlgebra`) or Signature arguments. Reserve **`Role`** for **agentive kinds** only (A.2/F.4/F.6). Prefer SlotKinds + SlotSpecs (A.6.5) to type formal slots; if a didactic list is useful, use a `ValueKindView` (name→ValueKind) projection derived from SlotSpecs/SlotIndex. Same for similar situations (table columns, tuple placements): use MG-DA with domain‑**specific** terminology, never “Role”. 
 
-#### E.10:8.2 - Forbidden suffixes & the DevOps and Data Governance Lexical Firewall
+#### E.10:8.2 - Forbidden suffixes & the DevOps, Data Governance and Repository-Workflow Lexical Firewall
 
 **M‑F (Forbidden in Kernel tokens).** In KernelToken names, do **not** use: *…Function*, *…Process*, *…Task*, *…Activity*. These are ambiguous or vacuous—map using § 6 typing rules (often to `Method`, `MethodDescription`, or `Work`).
 
@@ -32673,7 +32873,7 @@ Part C architheories (Sys‑CAL, KD‑CAL, Method‑CAL, Kind-CAL, LCA‑CAL) wh
 
 ### F.11:End
 
-## F.12 — Service Acceptance Binding
+## F.12 — Service Acceptance–Work Evidence Link
 
 **“Judge promises on what happened, not on what was planned.”**
 **Status.** Architectural pattern, architheory‑agnostic.
