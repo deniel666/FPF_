@@ -42,6 +42,8 @@ Pattern and headers templates are explained in pattern E.8.
 | A.2.5 | **`U.RoleStateGraph`: The Named State Space of a Role**| Stable | *Keywords:* state machine, RSG, role state, enactability, lifecycle. *Queries:* "How to model the state of a role?", "What is a Role State Graph?" | **Builds on:** A.2.1. **Prerequisite for:** A.15. |
 | A.2.6 | **Unified Scope Mechanism (USM): Context Slices & Scopes**| Stable | *Keywords:* scope, applicability, ClaimScope (G), WorkScope, set-valued. *Queries:* "How to define the scope of a claim or capability?", "What is G in F-G-R?" | **Builds on:** A.1.1. **Constrains:** A.2.2, A.2.3, B.3. |
 | A.2.7 | **`U.RoleAlgebra`: In-Context Role Relations (`≤`, `⊥`, `⊗`)** | New | *Keywords:* role algebra, specialization (`≤`), incompatibility (`⊥`), bundles (`⊗`), separation of duties (SoD), requiredRoles substitution. *Queries:* "What does `RoleS ≤ RoleG` mean in FPF?", "How do I encode Separation of Duties with `⊥`?", "How do role bundles (`⊗`) work?" | **Builds on:** A.2. **Prerequisite for:** A.15, A.2.5. |
+| A.2.8 | **`U.Commitment`: Deontic Commitment Object** | Stable | *Keywords:* commitment, deontics, obligation/permission/prohibition, modality normalization, scope+validity window, adjudication hooks, evidenceRefs, BCP‑14 (RFC 2119/8174). *Queries:* "How to represent MUST/SHALL as a lintable object?", "How to keep deontics separate from admissibility gates?", "How to make commitments auditable via evidence hooks?" | **Refines:** A.2. **Builds on:** A.2.1, A.2.3, A.2.6, A.7, A.15.1. **Used by:** A.6.B (Quadrant D), A.6.C. |
+| A.2.9 | **`U.SpeechAct`: Communicative Work Object** | Stable | *Keywords:* speech act, communicative work, approval/authorization/publication/revocation, provenance, act≠utterance≠carrier, judgement context, window/freshness, institutes.*. *Queries:* "How to model approvals/authorizations as Work?", "How to separate act vs utterance vs carrier?", "How to link commitments to instituting acts without commitment-by-publication?" | **Refines:** A.2. **Builds on:** A.2.1, A.2.6, A.7, A.10, A.15.1. **Used by:** A.2.8, A.6.C (utterance/instituting-act hook). |
 | ***Cluster A.II - Transformation Engine*** | | | | |
 | A.3 | **Transformer Constitution (Quartet)** | Stable | *Keywords:* action, causality, change, System-in-Role, MethodDescription, Method, Work. *Queries:* "How does FPF model an action or a change?", "What is the transformer quartet?" | **Builds on:** A.2. **Prerequisite for:** A.3.1, A.3.2, A.15. |
 | A.3.1 | **`U.Method`: The Abstract Way of Doing** | Stable | *Keywords:* recipe, how-to, procedure, abstract process. *Queries:* "What is a Method in FPF?", "Difference between Method and Work." | **Refines:** A.3. **Prerequisite for:** A.15. |
@@ -52,19 +54,20 @@ Pattern and headers templates are explained in pattern E.8.
 | ***Cluster A.IV - Kernel Modularity*** | | | | |
 | A.5 | **Open-Ended Kernel & Architheory Layering** | Stable | *Keywords:* micro-kernel, plug-in, CAL/LOG/CHR, modularity, extensibility. *Queries:* "What is the architecture of FPF?", "How are new domains added?" | **Builds on:** P-4, P-5. **Prerequisite for:** A.6.A, all Part C. |
 | ***Cluster A.IV.A - Signature Stack & Boundary Discipline (A.6.*)*** | | | | |
-| A.6 | **Signature Stack & Boundary Discipline** | Draft | *Keywords:* boundary, signature stack, routing, laws, admissibility, deontics, evidence, claim register, MVPK, view/viewpoint, surface. *Queries:* "What is the Signature Stack in FPF?", "How do I route boundary statements (laws vs gates vs duties vs evidence)?", "How to avoid contract-soup drift in boundary descriptions?" | **Builds on:** E.8, A.6.0, A.6.1, A.6.3, E.17.0, E.17, A.7, F.18, E.10.D2, E.10/L-SURF. **Coordinates with:** A.6.A, A.6.5, A.6.6, A.6.7, E.19. |
-| A.6.B | **Boundary Norm Square (Laws / Admissibility / Deontics / Work-Effects)** | Draft | *Keywords:* boundary norm square, atomic claims, L/A/D/E routing, laws vs gates, commitments, evidence carriers, no upward dependencies, claim IDs, triangle decomposition. *Queries:* "What is the Boundary Norm Square in FPF?", "How to decompose a mixed sentence into gate/duty/evidence claims?", "Where do RFC keywords belong in FPF patterns?" | **Builds on:** E.8, A.6.0, A.6.1, A.6.3, E.17.0, E.17, A.7, F.18, E.10.D2, E.10/L-SURF. **Used by:** A.6 (cluster overview). |
+| A.6 | **Signature Stack & Boundary Discipline** | Stable | *Keywords:* boundary, signature stack, routing, laws, admissibility, deontics, evidence, claim register, MVPK, view/viewpoint, surface. *Queries:* "What is the Signature Stack in FPF?", "How do I route boundary statements (laws vs gates vs duties vs evidence)?", "How to avoid contract-soup drift in boundary descriptions?" | **Builds on:** E.8, A.6.0, A.6.1, A.6.3, E.17.0, E.17, A.7, F.18, E.10.D2, E.10/L-SURF. **Coordinates with:** A.6.A, A.6.5, A.6.6, A.6.7, E.19. |
+| A.6.B | **Boundary Norm Square (Laws / Admissibility / Deontics / Work-Effects)** | Stable | *Keywords:* boundary norm square, atomic claims, L/A/D/E routing, laws vs gates, commitments, evidence carriers, no upward dependencies, claim IDs, triangle decomposition. *Queries:* "What is the Boundary Norm Square in FPF?", "How to decompose a mixed sentence into gate/duty/evidence claims?", "Where do RFC keywords belong in FPF patterns?" | **Builds on:** E.8, A.6.0, A.6.1, A.6.3, E.17.0, E.17, A.7, F.18, E.10.D2, E.10/L-SURF. **Used by:** A.6 (cluster overview). |
+| A.6.C | **Contract Unpacking for Boundaries** | Stable | *Keywords:* contract unpacking, SLA/guarantee, Service≠Work, promise/utterance/commitment, Boundary Norm Square (L/A/D/E), RFC keyword placement, MVPK faces “no new semantics”. *Queries:* "How to unpack contract language into L/A/D/E?", "How to prevent interface-as-agent / contract soup mistakes?", "How to stop MVPK faces becoming ‘second contracts’?" | **Builds on:** A.6, A.6.B, A.7, A.2.3, A.2.8, A.2.9, E.17. **Coordinates with:** F.12, F.18. |
 | A.6.0| **U.Signature — Universal, law‑governed declaration** | Stable | *Keywords:* signature, vocabulary, laws, applicability, bounded context. *Queries:* "What is the universal signature block?", "Where do laws vs. implementations live?" | **Placement:** Kernel; **Coordinates:** A.6.A, A.6.1. |
 | A.6.A | **Architheory Signature & Realization** | Stable | *Keywords:* architheory, signature, realization, Γ-export, invariants. *Queries:* "What is an Architheory signature?", "How do I export Γ?", "What belongs in the signature vs realization?" | **Builds on:** A.5, E.10, E.8. **Prerequisite for:** Part C catalogue. |
 | A.6.1 | **U.Mechanism - Law‑governed application to a SubjectKind over a BaseType** | Stable | Keywords: Mechanism, OperationAlgebra, LawSet, AdmissibilityConditions, Transport, Bridge‑only. Queries: "How to define a mechanism like USM/UNM?", "Where do operational guards live?", "How to handle cross‑context transport?" | **Builds on:** A.6.A, E.10.D1. **Instances:** USM (A.2.6), UNM (A.19). |
 | A.6.2 | **U.EffectFreeEpistemicMorphing — Effect-Free Morphisms of Epistemes** | Stable | *Keywords:* episteme, effect-free, morphism, functoriality, describedEntity, lenses, reproducibility. *Queries:* "How to transform descriptions/specs without mechanisms?", "What are conservative episteme-to-episteme transforms in FPF?", "How do Describe_ID / Specify_DS fit into a general morphism class?" | **Builds on:** A.1 (Holon), A.7 (Strict Distinction, Object≠Description≠Carrier), A.6.0 (U.Signature), A.6.5 (U.RelationSlotDiscipline), E.10.D2 (I/D/S discipline), C.2.1 (U.EpistemeSlotGraph). **Used by:** A.6.3 (U.EpistemicViewing), A.6.4 (U.EpistemicRetargeting), E.17.0 (U.MultiViewDescribing), E.17 (MVPK), E.18 (E.TGA StructuralReinterpretation), KD-CAL mapping rules. |
 | A.6.3 | **U.EpistemicViewing — describedEntity-Preserving Morphism** | Stable | *Keywords:* episteme, view, EpistemicViewing, describedEntity preservation, ClaimGraph, Viewpoint, RepresentationScheme, CorrespondenceModel, Direct vs Correspondence Viewing, optics, displayed fibration. *Queries:* "How to define a view of an artefact without adding new claims?", "What is an EpistemicViewing in FPF terms?", "How do ISO 42010 views and SysML v2 views-as-queries sit in FPF?" | **Builds on:** A.6.0 (U.Signature), A.6.2 (U.EffectFreeEpistemicMorphing), A.6.5 (U.RelationSlotDiscipline), A.7 (Strict Distinction; I/D/S vs Surface), E.10.D2 (I/D/S discipline), C.2.1 (U.EpistemeSlotGraph), C.2 (KD-CAL: describedEntity & ReferencePlane). **Used by:** E.17.0 (U.MultiViewDescribing), E.17 (MVPK), E.17.1/E.17.2 (ViewpointBundleLibrary & TEVB), E.18 (E.TGA viewpoint families), B.5.3 (Role-Projection Bridge), KD-CAL view operators. |
 | A.6.4 | **U.EpistemicRetargeting — describedEntity-Retargeting Morphism** | New | *Keywords:* retargeting, subject retargeting, describedEntity shift, KindBridge, SquareLaw-retargeting, StructuralReinterpretation. *Queries:* "How to change the object-of-talk without losing truth?", "What is StructuralReinterpretation in FPF terms?", "When is a Fourier-like transform a retargeting rather than a new Γ-construction?" | **Builds on:** A.6.2 (effect-free episteme morphisms), A.1 (Holon: System/Episteme split), F.9 (Bridges & CL, including CL^plane and KindBridge), C.2.1 (U.EpistemeSlotGraph; DescribedEntity/GroundingHolon), C.2 (KD-CAL: ReferencePlane & CL propagation), E.18:5.9/E.18:5.12 (E.TGA crossings & StructuralReinterpretation rules). **Used by:** E.18 (StructuralReinterpretation node in E.TGA as species of U.EpistemicRetargeting), KD-CAL/LOG-CAL retargeting rules, Fourier-style transforms and data↔model re-targetings in discipline packs. |
-| A.6.P | **U.RelationalPrecisionRestorationSuite — Relational Precision Restoration (RPR) — Kind‑Explicit Qualified Relation Discipline** | Draft | *Keywords:* relation precision restoration, under‑specified relations, umbrella verbs, RelationKind, QualifiedRelationRecord, hidden arity, polarity, change‑class lexicon, lexical guardrails. *Queries:* "What is A.6.P in FPF?", "How do I rewrite under‑specified relational prose?", "How do A.6.5 and A.6.6 specialise the RPR suite?" | **Builds on:** A.6, A.6.B, A.6.S, A.6.0, A.6.5, E.8, E.10, F.18. **Coordinates with:** A.2.6, A.10, C.3.3, E.17, F.9. **Specialised by:** A.6.5, A.6.6 (and future A.6.x). |
+| A.6.P | **U.RelationalPrecisionRestorationSuite — Relational Precision Restoration (RPR) — Kind‑Explicit Qualified Relation Discipline** | Stable | *Keywords:* relation precision restoration, under‑specified relations, umbrella verbs, RelationKind, QualifiedRelationRecord, hidden arity, polarity, change‑class lexicon, lexical guardrails. *Queries:* "What is A.6.P in FPF?", "How do I rewrite under‑specified relational prose?", "How do A.6.5 and A.6.6 specialise the RPR suite?" | **Builds on:** A.6, A.6.B, A.6.S, A.6.0, A.6.5, E.8, E.10, F.18. **Coordinates with:** A.2.6, A.10, C.3.3, E.17, F.9. **Specialised by:** A.6.5, A.6.6 (and future A.6.x). |
 | A.6.5 | **U.RelationSlotDiscipline - SlotKind / ValueKind / RefKind discipline for n‑ary relations (with slot‑operation lexicon)** | Stable | *Keywords:* slot, argument position, value, reference, signature, substitution, pass-by-value, pass-by-reference. *Queries:* “How do I declare positions and references in relations?”, “How do we stop mixing roles, values and ids in signatures?”, “How does SlotKind/ValueKind/RefKind interact with I/D/S and Epistemes?” | **Builds on:** A.6.0 (U.Signature), A.1 (Holon), A.7 (Strict Distinction), E.8 (pattern authoring discipline), E.10 (LEX-BUNDLE; Tech/Plain registers). **Used by:** C.2.1 (U.EpistemeSlotGraph), A.6.2–A.6.4 (episteme morphisms), B.5.* (RoleEnactment), C.3.* (Kinds & KindSignature), E.17.0 (U.MultiViewDescribing), discipline-packs for methods/services. |
 | A.6.6 | **U.BaseDeclarationDiscipline - Kind-explicit, scoped, witnessed base declaration discipline (with base-change lexicon)** | New | *Keywords:* base declaration, basedness, baseRelation, SWBD, witnesses, scope, Γ_time, anchoring, rebase, retime, rescope. *Queries:* "What is U.BaseDeclarationDiscipline?", "How to model base-dependence without anchoring?", "What is a ScopedWitnessedBaseDeclaration (SWBD)?" | **Builds on:** A.6.0, A.6.5, A.2.6, A.2.4, A.7, E.8, E.10. **Coordinates with:** A.10, A.14, C.2.1, A.6.3–A.6.4, C.3.3, E.18, F.9, F.15, F.18. **Used by:** base-relative admissibility/calibration/attribution patterns; anchor* rewrites into explicit `baseRelation(dependent, base)`. |
-| A.6.7 | **`MechSuiteDescription` — Description of a set of distinct mechanisms** | Draft | *Keywords:* mechanism suite, distinct mechanisms, suite obligations, contract pins, CN-Spec, CG-Spec, P2W, planned baseline, crossing visibility. *Queries:* "What is a MechSuiteDescription?", "How to describe a bundle of distinct mechanisms without using MechFamilyDescription?", "How do suite obligations differ from gate decisions?" | **Builds on:** E.8, A.6.1, A.6.5, E.10, E.19. **Coordinates with:** E.18, A.21. **Used by:** Part G universalization; CHR mechanism stacks. |
-| A.6.S | **U.SignatureEngineeringPair — Constructive signature engineering (ConstructorSignature + TargetSignature)** | Draft | *Keywords:* signature engineering, TargetSignature, ConstructorSignature, two-signature arrangement, EFEM, editioning, retargeting, slot/base change lexicon, MVPK views (no new semantics), claim register, no epistemic agency. *Queries:* "What is U.SignatureEngineeringPair in FPF?", "How do I model TargetSignature vs ConstructorSignature (and keep Work out of edits)?", "How do slot/base change verbs compose into a reproducible signature evolution workflow?" | **Builds on:** A.6.0, A.6.2, A.6.3, A.6.4, A.6.5, A.6.6, A.6.B, A.3, A.7, A.12, C.2.1, E.17, E.10. **Coordinates with:** E.18, E.19. |
+| A.6.7 | **`MechSuiteDescription` — Description of a set of distinct mechanisms** | Stable | *Keywords:* mechanism suite, distinct mechanisms, suite obligations, contract pins, CN-Spec, CG-Spec, P2W, planned baseline, crossing visibility. *Queries:* "What is a MechSuiteDescription?", "How to describe a bundle of distinct mechanisms without using MechFamilyDescription?", "How do suite obligations differ from gate decisions?" | **Builds on:** E.8, A.6.1, A.6.5, E.10, E.19. **Coordinates with:** E.18, A.21. **Used by:** Part G universalization; CHR mechanism stacks. |
+| A.6.S | **U.SignatureEngineeringPair — Constructive signature engineering (ConstructorSignature + TargetSignature)** | Stable | *Keywords:* signature engineering, TargetSignature, ConstructorSignature, two-signature arrangement, EFEM, editioning, retargeting, slot/base change lexicon, MVPK views (no new semantics), claim register, no epistemic agency. *Queries:* "What is U.SignatureEngineeringPair in FPF?", "How do I model TargetSignature vs ConstructorSignature (and keep Work out of edits)?", "How do slot/base change verbs compose into a reproducible signature evolution workflow?" | **Builds on:** A.6.0, A.6.2, A.6.3, A.6.4, A.6.5, A.6.6, A.6.B, A.3, A.7, A.12, C.2.1, E.17, E.10. **Coordinates with:** E.18, E.19. |
 | ***Cluster A.V - Constitutional Principles of the Kernel*** | | | | |
 | A.7 | **Strict Distinction (Clarity Lattice)** | Stable | *Keywords:* category error, Object ≠ Description, Role ≠ Work, ontology. *Queries:* "How to avoid common modeling mistakes?", "What are FPF's core distinctions?" | **Builds on:** A.1, A.2, A.3. **Constrains:** all patterns. |
 | A.8 | **Universal Core (C-1)** | Stable | *Keywords:* universality, transdisciplinary, domain-agnostic, generalization. *Queries:* "How does FPF ensure its concepts are universal?" | **Builds on:** P-8. **Constrains:** Kernel-level `U.Type`s. |
@@ -77,7 +80,7 @@ Pattern and headers templates are explained in pattern E.8.
 | A.15 | **Role–Method–Work Alignment (Contextual Enactment)** | Stable | *Keywords:* enactment, alignment, plan vs reality, design vs run, MIC, WorkPlan. *Queries:* "How do roles, methods, and work connect?", "How does an intention become an action in FPF?" | **Integrates:** A.2, A.3, A.4. **Prerequisite for:** all operational models. |
 | A.15.1 | **`U.Work`: The Record of Occurrence** | Stable | *Keywords:* execution, event, run, actuals, log, occurrence. *Queries:* "What is a Work record?", "Where are actual resource costs stored?" | **Refines:** A.15. **Used by:** B.1.6, all Part D. |
 | A.15.2 | **`U.WorkPlan`: The Schedule of Intent** | Stable | *Keywords:* plan, schedule, intent, forecast. *Queries:* "How to model a plan or schedule?", "Difference between a WorkPlan and a MethodDescription." | **Refines:** A.15. **Informs:** `U.Work`. |
-| A.16 | **Formality–Openness Ladder (FOL): Building Closed Worlds Inside an Open World** | Draft/Stub | *Keywords:* formality levels, rigor, proof, specification, sketch, F0-F9. *Queries:* "How to measure the formality of a document?", "What are the F0-F9 levels?" | **Builds on:** A.1. **Informs:** B.3. |
+| A.16 | **Formality–Openness Ladder (FOL): Building Closed Worlds Inside an Open World** | Stub | *Keywords:* formality levels, rigor, proof, specification, sketch, F0-F9. *Queries:* "How to measure the formality of a document?", "What are the F0-F9 levels?" | **Builds on:** A.1. **Informs:** B.3. |
 | A.17 | **A.CHR-NORM — Canonical “Characteristic” & rename (Dimension/Axis → Characteristic)** | Stable | *Keywords:* characteristic, measurement, property, attribute, dimension, axis. *Queries:* "What is the correct term for a measurable property?", "How to define a metric?" | **Prerequisite for:** A.18, A.19, C.16. |
 | A.18 | **A.CSLC-KERNEL — Minimal CSLC in Kernel (Characteristic/Scale/Level/Coordinate)** | Stable | *Keywords:* CSLC, scale, level, coordinate, measurement Standard. *Queries:* "What is the CSLC Standard?", "How to ensure measurements are comparable?" | **Builds on:** A.17. **Prerequisite for:** all metric-based patterns. |
 | A.19 | **A.CHR-SPACE — CharacteristicSpace & Dynamics hook** | Stable | *Keywords:* state space, CharacteristicSpace, dynamics, state model, RSG. *Queries:* "How to define a system's state space?", "How does FPF model change over time?" | **Builds on:** A.17, A.18, A.2.5. **Prerequisite for:** A.3.3. |
@@ -4405,6 +4408,620 @@ Role algebra relates **role types** inside **one** `U.BoundedContext`. It is **n
 * **D.2** ethics/governance patterns — encode SoD and independence via `⊥`.
 
 ### A.2.7:End
+
+## A.2.8 - `U.Commitment` (Deontic Commitment Object)
+
+> **Type:** Definitional (D)
+> **Status:** Stable
+> **Normativity:** Normative (unless explicitly marked informative)
+> **Placement:** Part A → **A.2 Roles & Agency Kernel**
+> **Refines:** A.2 (Role Taxonomy)
+> **Builds on:** E.8 (authoring template), A.2.1 (RoleAssignment), A.2.6 (Scope & `Γ_time`), A.7 (Object≠Description≠Carrier), A.2.3 (`U.Service` as promise), A.15.1 (`U.Work`)
+> **Purpose (one line):** Provide a minimal, reusable kernel object for deontic commitments (who is accountable, under what modality, in what scope/window, with respect to which referents, with which adjudication hooks), **explicitly separating the commitment object from its utterance descriptions** (A.7), so deontics stop “living” in naming patterns and become stable across A.6 and later governance patterns.
+
+### A.2.8:0 - Terminology: “binding” is overloaded (normative)
+
+The word family “bind/binding” is used throughout FPF for **technical binding** (name/slot binding, parameter binding, etc.). This pattern introduces a narrower lexical constraint: **do not use “binding” as the Tech-level term for deontic governance relations.** Use **commitment** and model it as `U.Commitment`. If source material uses “binding contract/promise” rhetoric, rewrite it into explicit `U.Commitment` fields (`subject`, `modality`, `scope/window`, `referents`, and—when auditable—`adjudication`).
+
+This pattern therefore treats **commitment** as the canonical Tech-level term and uses `U.Commitment` as the kernel object.
+
+If your source material uses “binding” rhetoric (e.g., “binding contract”, “legally binding promise”), treat it as Plain-level phrasing that **MUST** be rewritten into explicit `U.Commitment` fields (`subject`, `modality`, `scope/window`, `referents`, and—when auditable—`adjudication`).
+
+### A.2.8:1 - Problem frame
+
+FPF needs to express boundary governance and socio-technical obligations in a way that is:
+
+* **role/agent-grounded** (someone is accountable),
+* **scope-and-window explicit** (where/when the commitment holds),
+* **reference-based** (no paraphrase drift; refer to claim IDs),
+* **adjudicable** (if intended to be checkable, it has an evidence story).
+
+In practice, texts use “MUST/SHALL/should”, “commits to”, “guarantees”, “SLA”, “contract”, etc. Without a stable kernel object for “the deontic binding”, authors either:
+
+* assign agency to descriptions (“the API guarantees…”),
+* smuggle admissibility gates into deontics (or vice versa),
+* treat evidence as semantic truth,
+* or create multiple inconsistent “contracts” across faces.
+
+A.6.B provides routing discipline (L/A/D/E), and A.6.C provides contract-language unpacking, but both benefit from a **kernel-level** object that pins down what a `U.Commitment` is structurally (so “contract/binding” rhetoric does not leak back in as ontology).
+
+### A.2.8:2 - Problem
+
+How can FPF represent a deontic commitment relation so that:
+
+1. **The accountable subject is explicit** (role or role-enactor; not “the spec/interface/service”),
+2. **Modality is explicit and lintable** (obligation / permission / prohibition / strength),
+3. **Scope and validity window are explicit** (bounded context + time + conditions),
+4. **The content is referenceable** via stable referent claim IDs (service clauses, gates, evidence targets, etc.),
+5. **Adjudication hooks exist** when the binding is meant to be testable/auditable (links to evidence claims and carrier expectations),
+6. **Conflicts can be represented** (without requiring this pattern to solve them).
+
+### A.2.8:3 - Forces
+
+| Force                          | Tension                                                                                                                                             |
+| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Minimality                     | The object must be small enough to use routinely, not a full legal-contract model.                                                                  |
+| Generality                     | It must work for software specs, protocols, hardware boundaries, and socio-technical governance.                                                    |
+| Layering discipline            | It must not collapse “law / gate / duty / evidence”; it should enable routing rather than replace it.                                               |
+| Local meaning                  | Defaults should be bounded-context local; cross-context bindings must be explicit.                                                                  |
+| Auditability                   | Some commitments are aspirational; others are auditable. The representation must support both, without implying auditability by default.            |
+| Multi-level governance reality | People/orgs/states can issue incompatible commitments; the model must represent issuer/authority/priority without “solving politics” inside Part A. |
+
+### A.2.8:4 - Solution
+
+`U.Commitment` is the **kernel object** representing a **deontic commitment relation**: it links an accountable subject (role/role-enactor) to one or more referents via an explicit modality within an explicit scope/window, optionally with adjudication hooks.
+
+This pattern defines:
+
+* a **normative minimal structure** for `U.Commitment`,
+* how `U.Commitment` relates to `U.Service`, `U.Work`, and evidence,
+* how it is used as the canonical payload for **D-quadrant** claims (A.6.B),
+* and what must be stated for a commitment to be considered **auditable**.
+
+#### A.2.8:4.1 - Normative definition
+
+A **`U.Commitment`** is a **governance object** representing a **deontic relation** that constrains an **accountable subject** (role or role-enactor) with respect to one or more **referents** under an explicit **modality** and explicit **scope/window**, optionally with explicit **adjudication hooks**.
+
+Per A.7, a `U.Commitment` is **not** the text that states it: it is an object that is typically **instituted by** (and recorded via) one or more **speech acts and utterance descriptions** and may be carried by artifacts.
+
+#### A.2.8:4.2 - Minimal structure (normative)
+
+A conforming `U.Commitment` **SHALL** be representable by the following minimal record (field names are illustrative; the presence/meaning constraints are normative). **Required fields** are: `id`, `subject`, `modality`, `scope`, `validityWindow`, `referents`. `adjudication` and `source` are optional (but may become required by other patterns when auditability or authority must be made explicit).
+
+```text
+U.Commitment ::=
+  {
+    id: CommitmentId,                  // stable identifier; can align with D-* claim ID
+    subject: CommitmentSubject,         // accountable role or role-enactor (not an episteme)
+    owedTo: optional<set<CounterpartyRef>>, // who the commitment is owed to / intended beneficiary (optional; governance-facing, not required)
+    modality: DeonticModalityToken,     // deontic modality (normalized; lintable)
+    scope: U.ClaimScope,               // bounded context for applicability + non-temporal delimiters (same primitive as claim scopes; commitments are not epistemes)
+    validityWindow: U.QualificationWindow, // Γ_time slice + conditions under which it applies / is in force
+    referents: set<ReferentRef>,        // what is being bound (by reference, not paraphrase)
+    adjudication: optional<AdjudicationHooks>, // evidence hooks if auditable
+    source: optional<CommitmentSource>, // what instituted/authorized it (issuer + instituting act + utterance description), when provenance matters
+    notes: optional<InformativeText>    // explicitly informative; not part of the binding
+  }
+
+CommitmentSubject ::=
+  RoleRef | RoleAssignmentRef | PartyRef
+  // At minimum: a RoleRef that denotes an accountable role kind in a bounded context.
+  // If a concrete party/holder is known, prefer RoleAssignmentRef or PartyRef.
+  // If multiple subjects are independently accountable, authors SHOULD model separate commitments (one per subject),
+  // unless a joint obligation is explicitly modeled as a single PartyRef.
+
+CounterpartyRef ::=
+  PartyRef | RoleRef | RoleAssignmentRef
+  // Optional “to whom”/beneficiary/counterparty handle. Keep minimal: do not treat it as a full legal-party model.
+
+DeonticModalityToken ::=
+  MUST | MUST_NOT | SHOULD | SHOULD_NOT | MAY
+  // Interpreted as in RFC 8174 keyword discipline when used normatively.
+  // **Normalization rule:** if authors use synonyms (e.g., SHALL, REQUIRED, RECOMMENDED, OPTIONAL),
+  // they MUST be mapped to this normalized set for linting and comparison.
+  //
+  // **Normalization mapping (normative; illustrative table):**
+  // - SHALL, REQUIRED        -> MUST
+  // - SHALL NOT, PROHIBITED  -> MUST_NOT
+  // - RECOMMENDED            -> SHOULD
+  // - NOT RECOMMENDED        -> SHOULD_NOT
+  // - OPTIONAL               -> MAY
+
+ReferentRef ::=
+  ClaimIdRef | ServiceRef | MethodDescriptionRef | WorkRef
+  // Prefer ClaimIdRef when a routed claim ID exists (L-*, A-*, D-*, E-*).
+  // Use ServiceRef when the commitment is about satisfying a promise-content clause (`U.Service`).
+  // Use MethodDescriptionRef (preferred) when the commitment is about performing/avoiding a work-kind (work-to-be-done).
+  // Use WorkRef only when the commitment is about an already executed/ongoing Work occurrence (rare).
+
+ServiceRef ::=
+  ObjectIdRef
+  // MUST resolve to a `U.Service` object (A.2.3). (Some chapters may call this a “service clause”.)
+
+AdjudicationHooks ::=
+  {
+    evidenceRefs: set<ClaimIdRef>,      // typically E-* claim IDs
+    carrierRefs: optional<set<CarrierClassRef>>,  // if evidence carriers are part of the hook
+    evaluationNotes: optional<InformativeText>    // how adjudication is done; informative unless normed elsewhere
+  }
+
+DescriptionRef ::=
+  ClaimIdRef | EpistemeRef
+  // A pointer to an utterance description that states/records the commitment (e.g., spec clause, policy text).
+
+SpeechActRef ::=
+  ObjectIdRef
+  // MUST resolve to a `U.SpeechAct` Work occurrence (A.2.9).
+
+CommitmentSource ::=
+  {
+    issuer: optional<PartyRef>,         // who issued/authorized the commitment (can be distinct from subject)
+    speechActRef: optional<SpeechActRef>, // instituting communicative act, when available
+    descriptionRef: optional<DescriptionRef>, // where it is stated/recorded (utterance description)
+    authorityClass: optional<AuthorityTag>, // e.g., policy, contract, statute, standard (informative tag)
+    precedence: optional<PriorityTag>   // used for conflict handling elsewhere; not a truth claim
+  }
+```
+
+**Normative constraints:**
+
+* **(C1) Subject must be accountable.** `subject` **MUST** resolve to an accountable role/party; it **MUST NOT** be “the interface/spec/service/system” as an episteme.
+* **(C2) Modality must be explicit and normalized.** `modality` **MUST** be present for normative commitments and **MUST** be normalized to `DeonticModalityToken`.
+* **(C3) Scope + validity must be explicit.** `scope` and `validityWindow` **MUST** be present. Defaults are allowed only when an explicit context policy is cited as the source of those defaults (do not rely on “implied defaults”). `validityWindow` expresses *in-force* conditions; per-action admissibility gates belong in referenced `A-*` predicates.
+* **(C4) Referents must be non-empty.** `referents` **MUST** contain at least one referent (what is being obligated/permitted/prohibited).
+* **(C5) Referents must be by reference when possible.** If the bound content already exists as claim IDs, `referents` **SHOULD** cite those IDs rather than restating them.
+* **(C6) Auditable commitments must have adjudication hooks.** If a commitment is intended to be audited/adjudicated by observation, `adjudication.evidenceRefs` **SHALL** include the evidence claim IDs (typically `E-*`) that carry the adjudication substrate.
+* **(C7) Evidence belongs in adjudication by default.** If an `E-*` claim is referenced **only** to define *how to measure/verify* a commitment, it **SHALL** be listed in `adjudication.evidenceRefs` (not in `referents`). An `E-*` claim **MAY** appear in `referents` only when the commitment’s content is itself an evidence-producing/retaining duty (e.g., “MUST retain traces”).
+* **(C8) Default auditability stance is explicit.** If `adjudication` is absent, the commitment SHALL be treated as **non-auditable by default** (aspirational / governance-only), unless another pattern or Context policy explicitly supplies adjudication hooks by reference.
+
+#### A.2.8:4.3 - Interaction rules (normative)
+
+1. **`U.Service` is promise content; `U.Commitment` is the governance relation.**
+   A service promise clause (what is promised) is not, by itself, an accountable commitment. A `U.Commitment` makes an accountable subject responsible for providing/satisfying the service promise (or for satisfying other governance clauses).
+
+
+2. **`U.Commitment` is not `U.Work`.**
+   Work is execution; commitment is governance. A commitment may reference evidence targets, but it does not “contain” evidence.
+
+3. **Commitments may reference admissibility predicates; they must not become predicates.**
+   If compliance requires satisfying a gate predicate, the commitment should reference the gate (`A-*`) as a referent, rather than rewriting the predicate as prose inside the commitment.
+
+4. **A `U.Commitment` is a governance object, not a law.**
+   Commitments are not truth-conditional invariants. If something is intended to be an invariant, it belongs as law/definition (L), and a commitment can reference it.
+
+5. **Lifecycle changes are explicit (no silent mutation).**
+   When a commitment is updated, narrowed, broadened, superseded, or revoked, the change **SHOULD** be represented as a new `U.Commitment` (new ID) and an instituting `U.SpeechAct` (A.2.9) that references the affected commitment IDs (e.g., via `U.Commitment.source.speechActRef` and a status/supersession claim), rather than editing a published commitment in place without an auditable change record.
+
+#### A.2.8:4.4 - Canonical use in boundary claim registers (recommended)
+
+When using the A.6 stack, represent each **D-quadrant** atomic claim as a `U.Commitment` payload with:
+
+* `id = D-*`,
+* `subject = accountable role/party`,
+* `modality = DeonticModalityToken` (normalized from RFC-keyword family usage),
+* `referents = {ServiceRef, MethodDescriptionRef, L-*, A-* … as needed}` (content/targets),
+* `adjudication.evidenceRefs = {E-* …}` when the commitment is meant to be checkable.
+ 
+
+### A.2.8:5 - Archetypal Grounding (Tell–Show–Show)
+
+#### A.2.8:5.1 - Tell (universal rule)
+
+A deontic statement becomes stable and reviewable when it is represented as a `U.Commitment` with an accountable subject, an explicit modality, explicit scope/window, referent claim IDs, and—if auditable—explicit evidence hooks.
+
+#### A.2.8:5.2 - Show #1 (system archetype: incident response SLO discipline, post‑2015 SRE practice)
+
+A production org states: “Severity‑1 incidents must be responded to within 4 hours.”
+
+A routable commitment:
+
+* `subject`: `RoleAssignmentRef(OpsTeam as ProviderRole)` (or at least `RoleRef(ProviderRole)`),
+* `modality`: `MUST`,
+* `scope`: bounded context `IncidentManagement`,
+* `validityWindow`: `calendarYear2026` (or “while contract edition X is active”),
+* `referents`: `{ServiceClauseRef(SVC-SLO-RESP-4H), A-SEV1-CLASS-1}`
+   where `A-SEV1-CLASS-1` is the admissibility predicate for “counts as Sev‑1”.
+* `adjudication.evidenceRefs`: `{E-SLO-RESP-1}`
+   where `E-SLO-RESP-1` defines the measurement substrate and evidence carriers (tickets + timestamps + clock source).
+
+This makes the statement auditable by construction and keeps “classification gate” separate from “duty”.
+
+#### A.2.8:5.3 - Show #2 (episteme archetype: protocol specification with behavioural typing motif)
+
+A protocol spec states: “Participants MUST follow the state machine; violations are rejected; traces are retained for audit.”
+
+Model as:
+
+* A set of `L-*` claims defining the state machine and safety/progress properties within the model,
+* `A-*` claims defining what runtime checks count as “admissible trace”,
+* `D-*` commitments instantiated as `U.Commitment` with:
+
+  * `subject = RoleRef(ParticipantImplementer)`
+  * `modality = MUST`
+  * `referents = {L-STATE-MACHINE-1, A-TRACE-VALID-1, MethodDescriptionRef(TraceRetentionProcedure_v1)}`
+  * `adjudication.evidenceRefs = {E-TRACE-LOG-1}`
+
+This mirrors common post‑2015 “protocols as types” practice: semantics and progress live in the model; compliance is agent governance; evidence is trace-based.
+
+### A.2.8:6 - Bias-Annotation
+
+Lenses tested: **Gov**, **Arch**, **Onto/Epist**, **Prag**, **Did**. Scope: **Kernel universal** (any place FPF needs deontic binding).
+
+* **Gov bias:** prioritizes accountable subjects and adjudication hooks; may increase authoring overhead.
+* **Arch bias:** pushes reference-by-ID and explicit scope/window to preserve evolvability and reduce drift.
+* **Onto/Epist bias:** enforces “descriptions don’t promise”; commitments bind agents/roles.
+* **Prag bias:** aligns with common spec-language practice (RFC keywords) but makes the structure explicit.
+* **Did bias:** favors a small record that can be taught and linted.
+
+### A.2.8:7 - Conformance Checklist (normative)
+
+1. **CC‑A.2.8‑1 (Accountable subject).** A normative `U.Commitment` **MUST** name an accountable `subject` (role/role-enactor/party) and **MUST NOT** use an episteme (spec/interface/document) as subject.
+
+2. **CC‑A.2.8‑2 (Explicit modality).** A normative `U.Commitment` **MUST** specify `modality` as `DeonticModalityToken` (with any RFC-keyword synonyms normalized to it).
+
+3. **CC‑A.2.8‑3 (Scope & validity explicit).** A normative `U.Commitment` **MUST** specify `scope` (`U.ClaimScope`) and `validityWindow` (`U.QualificationWindow`), or explicitly cite the context policy that supplies defaults (do not rely on “implied defaults”).
+
+4. **CC‑A.2.8‑4 (Referents present and by ID).** `referents` **MUST** be non‑empty. If the bound content exists as claim IDs, the commitment **SHOULD** reference those IDs in `referents` rather than restating their content.
+
+5. **CC‑A.2.8‑5 (Auditable commitments have hooks).** If the commitment is intended to be auditable, it **SHALL** include `adjudication.evidenceRefs` referencing the evidence claims (typically `E-*`) that make adjudication possible.
+6. **CC‑A.2.8‑6 (Evidence separation).** If an `E-*` claim is referenced only for measurement/verification, it **SHALL** appear in `adjudication.evidenceRefs` (not in `referents`).
+
+### A.2.8:8 - Common Anti-Patterns and How to Avoid Them
+
+| Anti-pattern                                        | Why it fails                                               | Repair                                                                                |
+| --------------------------------------------------- | ---------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| **Episteme-as-subject** (“the API SHALL…”)          | assigns agency to descriptions                             | use an accountable role/party as `subject`; keep the spec as `source.descriptionRef`  |
+| **Missing scope/window**                            | commitments become unreviewable (“always/never” ambiguity) | declare `scope` + `validityWindow`; if global, say so explicitly via a policy/default |
+| **Paraphrase drift**                                | drift across faces and docs                                | reference via `referents` using claim IDs; avoid restating the same constraint        |
+| **Auditable rhetoric** (“guaranteed”) without hooks | not adjudicable                                            | add `adjudication.evidenceRefs` pointing to `E-*` claims and carrier expectations     |
+| **Gate-as-duty**                                    | confuses admissibility with obligation                     | put predicate in `A-*`; make commitment reference it (`D→A`)                          |
+
+### A.2.8:9 - Consequences
+
+**Benefits**
+
+* Makes deontic statements **first-class and lintable** (subject/modality/scope/referents/hooks).
+* Enables clean integration with boundary routing (A.6.B) and contract unpacking (A.6.C) without embedding ontology in naming patterns.
+* Improves auditability by making evidence expectations explicit *only when intended*.
+
+**Trade-offs / mitigations**
+
+* Adds structure to authoring; mitigated by allowing conceptual evidence hooks and default scope policies.
+* Does not resolve conflicts between commitments; mitigated by capturing `source/precedence` tags and delegating resolution to governance patterns (Part D) and context policy.
+
+### A.2.8:10 - Rationale
+
+The triad “promise / utterance / commitment” is useful for language discipline, but deontic ontology should not be anchored in a naming-focused pattern. A kernel object:
+
+* stabilizes what a “commitment” structurally is,
+* ensures “MUST/SHALL” talk is representable without category mistakes,
+* and provides the missing bridge between governance claims and adjudication (via explicit hooks), which is essential for boundary engineering and for later ethics/governance work.
+
+### A.2.8:11 - SoTA-Echoing (informative; post‑2015 alignment)
+
+> **Informative.** Alignment notes; not normative requirements.
+
+* **BCP 14 (RFC 2119 + RFC 8174) / modern spec-language discipline (2017+).** Treating modality tokens as a controlled family is standard; `U.Commitment.modality` makes this family explicit and lintable.
+* **Policy-as-code ecosystems (2016+).** Modern governance stacks often encode gates as code (e.g., Kubernetes admission controls, OPA/Rego-style policy evaluation) and obligations as process controls; the `U.Commitment` structure helps keep “gate predicates” separate from “actor duties”, while still linking them by reference.
+* **ODRL-style duty/permission/prohibition modeling (W3C ODRL 2.2, 2018).** The minimal “subject + modality + constraint/window + target” shape is widely used; `U.Commitment` adopts the kernel of that idea while keeping FPF’s boundary routing and evidence discipline.
+* **Trace-based compliance and audit (2018+ supply-chain / reproducibility practice).** “Compliance is evidenced by artifacts” is mainstream; `adjudication.evidenceRefs` captures this without turning evidence into semantics.
+* **Supply-chain attestations (2021+).** Attestation-oriented schemes (e.g., SLSA-style provenance, transparency logs) operationalize “claims + evidence carriers”; `adjudication.evidenceRefs` is the bridge point without collapsing evidence into truth.
+
+### A.2.8:12 - Relations
+
+**Uses / builds on**
+
+* A.2.1 for identifying accountable roles vs role-enactors (role assignments).
+* A.2.6 for expressing scope and time/window (`U.ClaimScope`, `U.QualificationWindow`).
+* A.7 for keeping “binding” distinct from “utterance” and from “carriers”.
+
+**Used by**
+
+* A.6.B (Quadrant D) as the canonical payload shape for deontic statements.
+* A.6.C (Contract Unpacking) as the formal anchor for the “Commitment” component of the bundle.
+* Part D governance/ethics patterns (future work) for expressing layered, conflicting, multi-authority commitments.
+
+**Coordinates with**
+
+* A.2.3 (`U.Service`): services are promise clauses; commitments bind accountable subjects to those clauses.
+* **A.2.9 (`U.SpeechAct`)**: `U.Commitment.source.speechActRef` points to the instituting communicative work occurrence when provenance matters.
+* A.15.1 (`U.Work`) and evidence patterns: adjudication hooks refer to evidence in work, not to text.
+
+### A.2.8:End
+
+
+## A.2.9 — `U.SpeechAct` (Communicative Work Object)
+
+> **Type:** Definitional (D)
+> **Status:** Stable
+> **Normativity:** Normative (unless explicitly marked informative)
+> **Placement:** Part A → **A.2 Roles & Agency Kernel**
+> **Refines:** A.2 (Role Taxonomy)
+> **Builds on:** A.2.1 (RoleAssignment), A.2.6 (`Γ_time` / windows), A.7 (Object≠Description≠Carrier), A.10 (SCR/RSCR carrier discipline), A.15.1 (`U.Work`)
+> **Purpose (one line):** Provide a minimal, lintable kernel object for **communicative enactments** (approvals, authorizations, revocations, notices, declarations, publications) as **`U.Work`**, explicitly separating the **act** from its **utterance descriptions** and **evidence carriers**, so governance and gating can cite `SpeechActRef` without “contract soup” or episteme‑as‑agent mistakes.
+
+> FPF already treats communicative acts as observable events used in role-state checklists and grounding (“presence of act: AuthorizationSpeechAct exists…”, and `U.SpeechAct` is listed as an observable basis for state assertions).
+> The spec’s micro-examples and conformance gates distinguish **communicative Work** (“performed a SpeechAct”) from **operational Work** (“executed Work”) while keeping both inside `U.Work` (cf. CC‑A15‑10 GateSplit).
+> F.18 currently frames `U.SpeechAct` as the “utterance” label in the promise/utterance/commitment triad; A.2.9 keeps that as **naming intuition** while putting the ontology and conformance discipline in Part A where it can be linted and reused.
+
+### A.2.9:1 — Problem frame
+
+FPF repeatedly needs to reference “someone said/did the approving/authorizing/declaring thing”:
+
+* Role eligibility and enactability checklists often depend on the **presence of an approval/authorization act** within a freshness window.
+* Governance patterns and boundary writing (A.6 stack) need **provenance**: “this obligation/commitment/permission was instituted by *that* act”.
+* Operational patterns need auditable **notices** (“depletion notice”, “override invoked”) whose existence and timing matter.
+
+Without a **first‑class kernel object** for such communicative events, authors tend to:
+
+* attribute agency to descriptions (“the spec approves…”, “the interface guarantees…”),
+* collapse “utterance text” and “speech act event”,
+* leave provenance dangling as “if modeled”,
+* encode gates as prose obligations, or treat obligations as gates.
+
+This pattern makes “speech act” an explicit, queryable **Work‑kind** with clear boundaries to `U.Commitment` and to utterance surfaces.
+
+### A.2.9:2 — Problem
+
+How can FPF represent communicative enactments so that:
+
+1. **Agency is explicit:** a concrete accountable subject performs the act (role/role‑enactor), not a document/spec/interface.
+2. **The act is locatable in time:** the act has an explicit Window (and thus freshness can be evaluated).
+3. **The act is locatable in meaning:** the act is recognized inside a declared **bounded context** (the `U.Work` judgement context), not via `U.ClaimScope` (which expresses applicability of claims/commitments, not the judgement context for Work occurrences).
+4. **The act is auditable:** it has at least one declared utterance description and/or evidence carrier when used for gating or governance.
+5. **Institutional effects are linkable:** the act can institute (or update/revoke) commitments, role assignments, statuses, etc., by reference.
+6. **Ambiguity is handled pragmatically:** the model supports multi‑function / multi‑party communication without requiring full linguistic pragmatics.
+
+### A.2.9:3 — Forces
+
+| Force                  | Tension                                                                                                                 |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Minimality             | Needs to be light enough for routine modeling and linting; not a full pragmatics or legal-contract system.              |
+| Auditability           | If used as a gate, it must be evidence-backed; but not all communicative acts are equally observable or retainable.     |
+| Context locality       | Meaning and “institutional force” are context-local; cross-context reuse must remain explicit (Bridge-only discipline). |
+| Multi-party reality    | Many real boundaries are multiparty (protocols, organizations); dyadic “speaker-hearer” is too narrow.                  |
+| Multi-function reality | One utterance can carry multiple recognizable functions; “one act = one force” is often false.                          |
+| Separation discipline  | Must preserve A.7 splits: **act object** ≠ **utterance description** ≠ **carrier/traces**.                              |
+
+### A.2.9:4 — Solution
+
+`U.SpeechAct` is a **kernel Work object**: a recorded communicative enactment performed by an accountable role‑enactor within a bounded context, optionally addressed to others, that is **recognized** (in that context) as updating an information and/or governance state. The act is **not** the utterance text; it points to utterance descriptions and evidence carriers.
+
+#### A.2.9:4.1 — Normative definition
+
+A **`U.SpeechAct`** is a **`U.Work`** occurrence whose primary (intended) effect is **communicative**: it places an utterance into a context in a way that is recognized by that context’s institutional semantics (policies, procedures, protocol rules) as potentially:
+
+* asserting/informing,
+* requesting/directing,
+* promising/committing (as an instituting act),
+* declaring/authorizing/revoking (status-changing acts),
+* notifying (event announcement relevant for downstream work).
+
+Per A.7, `U.SpeechAct` is an **object/event**; its **utterance descriptions** are descriptions (epistemes/spec clauses/messages‑as‑content), and its **carriers** are artifacts/traces that support observation and audit. *(Note: “Surface” is reserved for MVPK publication/interoperability surfaces; do not use it here.)*
+
+Whether a given `actType` institutes commitments/permissions/status changes is **entirely context‑policy dependent**. Absent an explicit policy, treat a `U.SpeechAct` as a communicative Work occurrence with observable provenance only; do not infer deontic bindings from the act by default.
+
+#### A.2.9:4.2 — Minimal structure (normative)
+
+A conforming `U.SpeechAct` **SHALL** be representable by the following minimal record (field names are illustrative; the constraints are normative):
+
+```
+U.SpeechAct <: U.Work
+
+Invariant: U.Work.kind = Communicative
+
+U.SpeechAct ::=
+  U.Work
+  & {
+      actTypes: set<SpeechActTypeRef>,               // ≥1 act types (supports multi-function)
+      addressedTo: optional<set<AddresseeRef>>,      // optional: who is addressed / audience
+      utteranceRefs: optional<set<DescriptionRef>>,  // where the utterance content is stated/recorded (A.7: Description)
+      carrierRefs: optional<set<CarrierRef>>,        // evidence carriers/traces (A.7: Carrier; use A.10 when evidentiary)
+      institutes: optional<InstitutedEffects>,       // references to objects/claims instituted/updated by this act
+      notes: optional<InformativeText>               // explicitly informative
+    }
+
+DescriptionRef ::=
+  ClaimIdRef | EpistemeRef
+  // Pointer to an utterance description (e.g., spec clause claim ID, a policy episteme, a message-content episteme).
+
+SpeechActTypeRef ::=
+  ContextLocalTokenRef
+  // Must be defined/recognized in the Work’s judgement context (bounded context).
+
+AddresseeRef ::=
+  PartyRef | RoleRef | RoleAssignmentRef
+
+InstitutedEffects ::=
+  {
+    commitments: optional<set<CommitmentIdRef>>,
+    roleAssignments: optional<set<RoleAssignmentRef>>,
+    statusClaims: optional<set<ClaimIdRef>>,         // e.g., “StandardStatus=Approved” if modeled as claims
+    other: optional<set<ObjectIdRef>>
+  }
+```
+
+**Normative constraints:**
+
+* **(SA‑C0) Work conformance applies.** Because `U.SpeechAct <: U.Work`, a speech‑act record **MUST** satisfy `U.Work` conformance (A.15.1), including the required anchors (`isExecutionOf`, `performedBy`, `executedWithin`, `window`, and state‑plane / judgement‑context anchoring). A speech act **MUST** have at least one `affected` referent (the thing it is *about/updates*), even if it is purely governance‑state.
+* **(SA‑C1) PerformedBy must be an accountable actor.** `performedBy` **MUST** resolve to a `RoleAssignmentRef` whose holder is an accountable system/party in the named scope. It **MUST NOT** be a spec/interface/document as an episteme.
+* **(SA‑C2) ActTypes are required and context-local.** `actTypes` **MUST** contain at least one `SpeechActTypeRef` recognized in the Work’s judgement context (local meaning). Free‑text verbs are nonconformant unless registered as a context token.
+* **(SA‑C3) Time honesty.** `window` **MUST** be explicit (or inherited from the parent `U.Work` record) so freshness rules can be evaluated.
+* **(SA‑C4) If used for gating/audit, it must be observable.** If a speech act is used as a checklist criterion, guard condition, or provenance hook for a `U.Commitment`, the model **SHALL** include at least one observable handle: `utteranceRefs` and/or `carrierRefs`. When the act is used as evidence, at least one carrier reference **SHOULD** be SCR/RSCR‑resolvable per A.10.
+* **(SA‑C5) Institutional effects are references, not paraphrases.** When the act is intended to institute/update commitments, role assignments, or statuses, `institutes.*` **SHOULD** reference the corresponding object IDs/claim IDs rather than restating content.
+* **(SA‑C6) Cross-context use is Bridge-only.** If a `SpeechActRef` is used for checking/gating/provenance in a **different bounded context** than the act’s judgement context, the referencing object **MUST** satisfy the spec’s cross-context discipline by citing an explicit Bridge/policy that licenses the interpretation (and surfacing congruence vs loss where applicable), rather than assuming equivalence by label.
+
+#### A.2.9:4.3 — `SpeechActRef` discipline (normative)
+
+A **`SpeechActRef`** is a reference to `U.SpeechAct.id`.
+
+* If another object (e.g., `U.Commitment.source.speechActRef`) cites a `SpeechActRef`, the referenced `U.SpeechAct` **MUST** satisfy **SA‑C0…SA‑C4** (and SA‑C6 when used cross‑context).
+* A `SpeechActRef` **MUST NOT** be replaced by an `EpistemeRef` (“see the document”) when provenance is needed; the episteme is an utterance description, not the act.
+* If a system cannot record a full `U.SpeechAct`, it may record a **stub** that still satisfies **SA‑C0…SA‑C4** (minimal `actTypes`, performer, judgement context, window, `affected`, plus at least one observable handle). When a required `U.Work` anchor is unknown, the stub **MUST** use an explicit placeholder (e.g., an “AdHocCommunication” MethodDescription) rather than omitting the field.
+
+#### A.2.9:4.4 — Separation rules with `U.Commitment` and `U.Service` (normative)
+
+1. **Speech act is not the deontic binding.**
+   A speech act may **institute** a `U.Commitment`, but the deontic relation itself is the `U.Commitment` object (A.2.8). Do not encode obligations/permissions inside `U.SpeechAct` as prose; instead, create/point to `U.Commitment` IDs in `institutes.commitments`.
+
+2. **Speech act is not the service promise clause.**
+   `U.Service` / service clauses are promise content; a speech act may be the act of offering/issuing that promise, but the promise content lives in the service/service clause objects and is referenced from the resulting commitments.
+
+3. **Speech act is not the carrier.**
+   A “signed approval PDF”, “ticket record”, “Slack message”, or “API call log” is a carrier (and may carry an episteme as utterance content); the speech act is the Work occurrence that produced/issued it.
+
+4. **Publishing a spec is not a commitment by default.**
+   **Default interpretation rule (normative).** A conformant model/interpreter **MUST NOT** infer `U.Commitment` objects solely from `Publish`/`Approve` speech acts. Publication MAY institute publication/status claims (e.g., “Published”, “Approved”, “Deprecated”), but any obligations/permissions on implementers/operators/providers **MUST** be modeled explicitly as `U.Commitment` objects (A.2.8). If a Context defines a policy that maps publication acts to commitment-instituting effects (e.g., a named `SpecPublicationPolicy@Context`), that policy **MUST** be named and cited where the implication is used.
+
+#### A.2.9:4.5 — Multi-function and multi-party support (normative)
+
+* **Multi-function:** `actTypes` is a **set**. If one utterance performs multiple recognizable acts (e.g., “approve + instruct + warn”), the model may either:
+
+   * represent one `U.SpeechAct` with multiple `actTypes` entries, or
+   * represent multiple `U.SpeechAct` records that share the same `carrierRefs/utteranceRefs`.
+   In either case, institutional effects must remain referenceable (SA‑C5).
+
+* **Multi-party:** `addressedTo` is a set and may include roles/parties/assignments. If addressees matter for validity (e.g., “approval by CAB chair to deployment bot”), they should be explicit.
+
+### A.2.9:5 — Archetypal Grounding (Tell–Show–Show)
+
+#### A.2.9:5.1 — Tell (universal rule)
+
+When governance or gating depends on “someone said/did X”, model **that saying/doing** as a `U.SpeechAct` (a Work occurrence), and keep the utterance text and carriers separate. If the saying/doing creates obligations, model those obligations as `U.Commitment` objects instituted by the speech act.
+
+#### A.2.9:5.2 — Show #1 (system archetype: change-control approval gates a deployment)
+
+**Situation (messy prose):**
+“Change is approved, so the pipeline may deploy.”
+
+**Conformant modeling sketch:**
+
+* `U.SpeechAct SA-Approve-4711`
+
+  * `actTypes = {SpeechActTypeRef(Approval@ChangeControl)}`
+  * `performedBy = RoleAssignmentRef(CAB_Chair as ApproverRole@ChangeControl)`
+  * `isExecutionOf = MethodDescriptionRef(ChangeApprovalProcedure_v3)`
+  * `executedWithin = ChangeControlBoardSystem`
+  * `window = [t,t]`
+  * `affected = {ChangeRequestId(4711), WorkRef(Deploy-4711)}`
+  * `utteranceRefs = {EpistemeRef(ChangeTicket#4711)}`
+  * `carrierRefs = {CarrierRef(TicketSystemRecord#4711)}`
+  * `institutes.commitments = {CommitmentIdRef(D-Deploy-Authorized)}`
+
+* `U.Commitment D-Deploy-Authorized`
+
+  * `subject = RoleAssignmentRef(OpsBot#DeployerRole:CD_Pipeline_v7)`
+  * `modality = MAY` (permission to enact)
+  * `referents = {A-Gate-Deploy-4711}`
+  * `source.speechActRef = SA-Approve-4711`
+
+* Gate predicate `A-Gate-Deploy-4711` may include:
+  `exists SpeechAct(type=Approval, affected includes ChangeRequestId(4711), performedBy role=ApproverRole, within 90d)`.
+
+This preserves:
+
+* act vs text vs carrier,
+* explicit performer,
+* time window for freshness,
+* explicit provenance from commitment back to the instituting act.
+
+#### A.2.9:5.3 — Show #2 (episteme archetype: publishing a spec edition without making the spec an agent)
+
+**Situation (anti-pattern):**
+“The interface spec declares MUST/SHALL requirements.”
+
+**Conformant modeling sketch:**
+
+* `U.SpeechAct SA-Publish-API-v12`
+
+  * `actTypes = {SpeechActTypeRef(Publish@APISpecContext), SpeechActTypeRef(DeclareNorms@APISpecContext)}`
+  * `performedBy = RoleAssignmentRef(StandardsEditor as PublisherRole@APISpecContext)`
+  * `isExecutionOf = MethodDescriptionRef(SpecReleaseProcedure_v12)`
+  * `executedWithin = SpecPublicationSystem`
+  * `window = [t,t]`
+  * `affected = {EpistemeRef(APISpec_v12)}`
+  * `utteranceRefs = {EpistemeRef(APISpec_v12)}`
+  * `carrierRefs = {CarrierRef(GitTag:v12), CarrierRef(SignedReleaseArtifact:v12)}`
+  * `institutes.statusClaims = {ClaimIdRef(D-StdStatus-APISpec_v12-Published)}` (if modeled)
+
+Norms live in the **published utterance surfaces** (spec clauses as routed claims), but the **act of publication** is a speech act performed by an accountable role. This avoids “the spec promises/commits” category errors while preserving auditability.
+
+### A.2.9:6 — Bias-Annotation
+
+Lenses tested: **Gov**, **Arch**, **Onto/Epist**, **Prag**, **Did**. Scope: **Kernel universal** for speech-act usage that matters for governance, eligibility, gating, provenance, and protocol boundaries.
+
+* **Gov bias:** favors explicit accountable performers and auditable records; increases clarity but adds modeling overhead.
+* **Arch bias:** optimizes evolvability by keeping institutional effects referenceable rather than embedded in prose.
+* **Onto/Epist bias:** enforces act≠utterance≠carrier and prevents episteme-as-agent metaphors.
+* **Prag bias:** models only what is needed for decisions/audit (not full intention/sincerity/perlocutionary psychology).
+* **Did bias:** keeps the record minimal and queryable for state checklists and boundary reviews.
+
+### A.2.9:7 — Conformance Checklist (normative)
+
+1. **CC‑A.2.9‑1 (Accountable performer).** A normative `U.SpeechAct` record **MUST** identify `performedBy` as an accountable `RoleAssignmentRef` and **MUST NOT** use an episteme (spec/interface/document) as performer.
+2. **CC‑A.2.9‑2 (ActTypes declared).** A `U.SpeechAct` record **MUST** include at least one `SpeechActTypeRef` recognized in its judgement context.
+3. **CC‑A.2.9‑3 (Window explicit).** A `U.SpeechAct` record **MUST** have an explicit `window` (or inherit a window from its parent work record) so freshness and gating can be evaluated.
+4. **CC‑A.2.9‑4 (Observable when used for gating/provenance).** If a speech act is cited by a checklist/guard or by `U.Commitment.source.speechActRef`, it **SHALL** have at least one `utteranceRef` or `carrierRef` that supports observation/audit in the given context; evidence‑critical uses **SHOULD** anchor at least one carrier via SCR/RSCR per A.10.
+5. **CC‑A.2.9‑5 (Effects by reference).** If the act is intended to institute/update commitments/roles/statuses, those effects **SHOULD** be referenced in `institutes.*` by stable IDs.
+6. **CC‑A.2.9‑6 (Bridge-only cross-context use).** If a `SpeechActRef` is interpreted for gating/provenance in a different bounded context than the act’s judgement context, the referencing object **MUST** cite the Bridge/policy that licenses that cross-context interpretation (no “same label implies same force”).
+
+
+### A.2.9:8 — Common Anti-Patterns and How to Avoid Them
+
+| Anti-pattern                                                              | Why it fails                         | Repair                                                                                   |
+| ------------------------------------------------------------------------- | ------------------------------------ | ---------------------------------------------------------------------------------------- |
+| **Episteme-as-actor** (“the spec approves/declares”)                      | assigns agency to descriptions       | represent the publishing/approving act as `U.SpeechAct(performedBy=RoleAssignment)`      |
+| **Carrier-as-act** (“the signed PDF is the approval”)                     | conflates carrier with act           | model `U.SpeechAct` and point to PDF as `carrier`/`utteranceSurface`                     |
+| **Free-text type** (“type=‘approved-ish’”)                                | not lintable; drifts across faces    | register `SpeechActTypeRef` in the context and use it                                    |
+| **Act carries obligations** (obligations embedded as prose in speech act) | collapses act and deontic binding    | model obligations as `U.Commitment` objects instituted by the act                        |
+| **Gating without window**                                                 | cannot evaluate freshness            | add explicit `window` and reference it in the guard/checklist                            |
+| **Hidden multi-act** (one event silently creates multiple commitments)    | loses traceability; creates disputes | represent multi-function via `actTypes` set or multiple speech acts sharing the same carrier |
+
+### A.2.9:9 — Consequences
+
+**Benefits**
+
+* Makes approvals/authorizations/notices **first-class and queryable**, enabling clean RSG checklists and guard rules.
+* Provides stable provenance: commitments and status transitions can cite the **instituting act** explicitly.
+* Prevents recurring category errors: “documents promise”, “interfaces commit”, “logs prove”.
+
+**Trade-offs / mitigations**
+
+* Requires recording a small structured object for communicative events; mitigated by allowing minimal stubs that still satisfy CC‑A.2.9‑1…4.
+* Requires context-local `SpeechActTypeRef` registration; mitigated by starting with a small set (Approve, Revoke, Publish, Notify, Authorize) and extending as needed.
+
+### A.2.9:10 — Rationale
+
+FPF already relies on communicative acts (approvals, notices, overrides) as operationally meaningful events, but without a kernel object they blur into examples, naming choices, or prose. A.2.9 anchors speech acts where they belong: as a **Work-kind** with explicit performer, scope, and time, and with disciplined links to utterance surfaces, carriers, and deontic bindings (`U.Commitment`).
+
+This also improves modularity:
+
+* **F.18** can remain a **lexical anchor** for naming (why “SpeechAct/utterance” as a label family is useful),
+* while **A.2.9** carries the ontology and conformance discipline for how speech acts behave as objects and how they connect to commitments and evidence.
+
+### A.2.9:11 — SoTA‑Echoing (informative; post‑2015 alignment)
+
+> **Informative.** Alignment notes; not normative requirements.
+
+* **Adopt — ISO 24617‑2:2020 / multi-dimensional communicative functions.** Modern dialogue‑act standards treat communicative behavior as potentially multi‑functional. A.2.9 mirrors this by allowing `actTypes` to be a **set** and by supporting shared carriers across multiple acts.
+* **Adapt — commitment-based semantics for communication (multi-agent/protocol practice, 2015+).** A pragmatic way to avoid mental-state modeling is to track communication by its **social/institutional effects**, especially on commitments and protocol states. A.2.9 reflects this via `institutes.commitments` and explicit links to `U.Commitment` without modeling sincerity or intention.
+* **Adopt (warning) — illocutionary pluralism in multiparty discourse (2015+).** One utterance commonly performs multiple recognizable functions. A.2.9 avoids the “single force” trap by permitting multi‑type acts and/or multiple acts sharing the same utterance and carriers.
+
+### A.2.9:12 — Relations
+
+**Uses / builds on**
+
+* Uses **A.15.1 (`U.Work`)** for the event/work backbone (performedBy + window + stance).
+* Uses **A.7** for the strict act≠description≠carrier split.
+* Coordinates with **A.2.6** for scope/window discipline.
+
+**Used by**
+
+* **A.2.8 (`U.Commitment`)** as a concrete target for `source.speechActRef` provenance.
+* **A.2.5 (RSG checklists/guards)** when “presence of authorization/approval act” is a criterion.
+* **A.6.C (Contract unpacking)** as the “utterance/instituting act” hook that prevents episteme-as-agent claims and improves provenance.
+
+### A.2.9:End
  
 ## A.3 - Transformer Constitution (Quartet)
 
@@ -5694,7 +6311,7 @@ The “hour‑glass” brings two further advantages:
 ## A.6 - Signature Stack & Boundary Discipline
 
 > **Type:** Architectural (A)
-> **Status:** Draft
+> **Status:** Stable
 > **Normativity:** Mixed (normative only where explicitly marked; routing semantics live normatively in A.6.B)
 > **Placement:** Part A → A.6.\* (cluster overview; coordinates A.6.0 / A.6.1 / A.6.3 / A.6.B / A.6.A / A.6.5 / A.6.6 / A.6.7)
 > **Builds on:** E.8 (authoring template), A.6.B (Boundary Norm Square — quadrant semantics & link discipline), A.6.0 (U.Signature), A.6.1 (U.Mechanism), A.6.3 (U.EpistemicViewing — views as episteme-level projections under viewpoints), E.17.0 (U.MultiViewDescribing), E.17 (MVPK — fixed face kinds & “no new semantics” publication), A.7 (Object≠Description≠Carrier), F.18 (promise/utterance/commitment), E.10.D2 (I/D/S vs Surface), E.10/L‑SURF (Surface token discipline)
@@ -5833,6 +6450,11 @@ Default landing zones (quadrant → stack layer / section):
 * **D →** Norms/Commitments (agent/role duties; publication/accountability duties)
 * **E →** Evidence/Carriers (claims adjudicated against work via carriers; the publication face for these is typically `AssuranceLane`)
 
+**Integration stitches (informative; this cluster is a routing hub, not a standalone philosophy):**
+* **A.6.1 ↔ A‑quadrant:** `U.Mechanism.AdmissibilityConditions` is the canonical home for `A-*` gate/admissibility claims.
+* **A.10 / B.3 ↔ E‑quadrant:** `E-*` claims should be anchored to evidence carriers + provenance (A.10); without an explicit evidence anchor they are treated as `AssuranceLevel:L0 (Unsubstantiated)` in the Trust & Assurance calculus (B.3).
+* **A.2.3 / F.12 ↔ D/E separation:** a `U.Service` promise is not evidence; promise acceptance is linked to work evidence via F.12, and role obligations to maintain admissibility are expressed as `D-*` duties referencing `A-*` and/or `E-*` by ID.
+
  A stack is useful because the intended direction of change is clear:
 
 * Lower layers (realizations, audit formats, transport mechanisms) are expected to change more frequently and can often evolve without forcing higher‑layer changes, provided higher‑layer commitments remain satisfied.
@@ -5895,25 +6517,25 @@ A disciplined stack therefore requires:
 
 * Every published face is a **Description** (A.7) that is *about* an Object and is carried by some Carrier; do not conflate these layers.
 * Each face must declare the viewpoint that justifies its projection (ISO/42010 discipline operationalised by MVPK).
-* Per **E.17** (“no new semantics”), a face **MUST NOT** introduce new semantic commitments beyond the boundary’s **canonical routed claim set** (the authoritative `L-* / A-* / D-* / E-*` statements at their canonical locations). A face **MAY** add informative explanation, examples, and cross‑references, provided they are clearly marked as informative. Where possible, faces **SHOULD** cite routed statements by ID instead of re‑stating them.
+* Per **E.17** (“no new semantics”), a face **MUST NOT** introduce new semantic commitments beyond the boundary’s **canonical routed claim set** (the authoritative `L-* / A-* / D-* / E-*` statements at their canonical locations). A face **MAY** add informative explanation, examples, and cross‑references, provided they are clearly marked as informative. Any **normative** sentence on a face **MUST** cite the routed claim ID(s) it depends on (or be moved into the canonical claim set); paraphrase is allowed only as explicitly informative text.
 * Per **E.17 / L‑SURF** (face‑kind closure), a publication package that claims MVPK alignment **MUST NOT** mint additional MVPK face kinds (e.g., “EvidenceCard”, “NormsCard”) as if they were first‑class kinds; if you need local headings, keep them as sections within the canonical face kinds.
 
 #### A.6:4.4 - “Contract” unpacking: avoid assigning agency to epistemes
 
-When practitioners say “the API contract”, they usually compress three different things into one word:
+When practitioners say “the API contract”, they usually compress multiple distinct things into one word. The core naming split is the **F.18:16.1** triad; boundary engineering adds the missing adjudication substrate (see also **A.6.C**):
 
-* **Service**: what is actually done (work).
-* **Speech act / utterance**: what is said/published (a description).
-* **Commitment**: what an agent is bound to (a normative relation).
+* **Service clause (promise content; `U.Service`, A.2.3):** what is promised to be made available to eligible consumers — **a promise, not execution** (`U.Work`).
+* **Utterance package (published descriptions + instituting act):** what is said/published and versioned (signature/mechanism + MVPK faces), plus the `U.SpeechAct <: U.Work` that published/approved it when provenance matters (A.2.9).
+* **Commitment (deontic binding; `U.Commitment`, A.2.8):** what an accountable role/agent is obligated/permitted/prohibited to do (often: to satisfy a service clause).
+* **Work + Evidence (adjudication substrate; `U.Work` + carriers):** what actually happens and what carriers/traces can adjudicate whether commitments and operational guarantees were met.
 
 In A.6 terms:
 
-* The **signature** is the *utterance substrate* for a contract; it is not itself the promiser.
-* **Deontics** belong to agents (or role‑enactors), even if expressed in a spec.
-* **Effects/evidence** belong to work and carriers, not to the text.
+* The **signature** is the *utterance substrate* for the boundary; it is not itself a promiser or obligor (A.7).
+* Deontics belong to accountable roles/agents and should be expressed as `D-*` commitments (`U.Commitment`) that reference `L-*`/`A-*`/`E-*` by ID (A.6.B, A.2.8).
+* Operational “guarantees” are empty rhetoric unless they are routed as either **L** (truth‑conditional law), **D** (agent commitment), or **E** (measured property with evidence).
 
-This resolves the chronic misplacement of “guarantees”: a “guarantee” is either (a) a truth‑conditional law in the model, or (b) a commitment by an agent, or (c) a measured property evidenced by traces. The routing matrix forces you to decide which one you mean.
-
+This paragraph is a compact reminder; the reusable expansion (including “Service ≠ Work” discipline, claim‑ID link hygiene, and MVPK face projection rules) is **A.6.C — Contract Unpacking for Boundaries**.
 #### A.6:4.5 - Where statements go (routing examples)
 
 > **Informative.** Routing examples for learning the discipline; they do not add requirements beyond A.6:7.
@@ -6031,9 +6653,9 @@ Lenses tested: **Gov**, **Arch**, **Onto/Epist**, **Prag**, **Did**. Scope: **Un
 | **CC‑A.6.1 (Stack declaration).**        | A conforming boundary description **SHALL** identify its stack layers (Signature, Mechanism, Realization/Work evidence, Publication faces) and state which artefacts belong to which layer.                                                                                                    | Prevents “one doc contains everything” ambiguity.                   |
 | **CC‑A.6.2 (Square discipline).**        | A conforming boundary description **SHALL** conform to **A.6.B** (Boundary Norm Square), including atomicity, quadrant routing, and explicit cross‑quadrant references by claim ID.                                                                                                           | Makes the stack operational; prevents “contract soup” drift. |
 | **CC‑A.6.5 (A.7 separation).**           | A conforming boundary description **SHALL** respect Object≠Description≠Carrier; statements about logs/metrics **SHALL** be written as carrier‑anchored evidence claims/policies, not as properties of the text itself. | Prevents category errors and improves auditability.                 |
-| **CC‑A.6.6 (Viewpoint accountability).** | Every published MVPK face (`U.View`) **SHALL** specify `viewRef` and `viewpointRef`, and faces **MUST NOT** introduce new semantic commitments beyond the underlying signature/mechanism (per **E.17** “no new semantics”). | Preserves viewpoint discipline and prevents view‑forking.    |
+| **CC‑A.6.6 (Viewpoint accountability).** | Every published MVPK face (`U.View`) **SHALL** specify `viewRef` and `viewpointRef`. Faces **SHALL** be projections of the boundary’s canonical routed claim set (A.6.B); normative content on faces **MUST** be expressed as citations to routed claim IDs (not re‑stated prose), and faces **MUST NOT** introduce new semantic commitments beyond the underlying signature/mechanism (per **E.17** “no new semantics”). | Preserves viewpoint discipline and prevents view‑forking.    |
 | **CC‑A.6.6a (MVPK face‑kind discipline).**  | A publication that claims MVPK alignment **MUST** conform to **E.17 / L‑SURF** face‑kind closure (i.e., use only `{PlainView, TechCard, InteropCard, AssuranceLane}` and **MUST NOT** mint additional face kinds). Local “cards” may exist only as headings/sections inside those face kinds. | Aligns with MVPK/L‑SURF; prevents new‑face drift.            |
-| **CC‑A.6.7 (Contract unpacking).**       | When using “contract/guarantee/promise” language, a conforming text **SHOULD** disambiguate whether it refers to service (work), utterance (published description), or commitment (agent obligation), consistent with F.18.                                                                    | Stops agency attribution errors; clarifies responsibility.          |
+| **CC‑A.6.7 (Contract unpacking).**       | When using “contract/guarantee/promise” language, a conforming text **SHOULD** apply the reusable discipline in **A.6.C** to disambiguate whether it refers to a service clause as promise content (`U.Service`, not execution), an utterance package (published descriptions / speech acts), a deontic commitment (`U.Commitment`), and/or work‑effects/evidence, and then route each atomic statement via **A.6.B** (L/A/D/E) with explicit claim‑ID references (no paraphrase drift). (**F.18** is a lexical anchor only.) | Stops agency attribution errors; clarifies responsibility.          |
 
 
 ### A.6:8 - Common Anti‑Patterns and How to Avoid Them
@@ -6043,7 +6665,7 @@ Lenses tested: **Gov**, **Arch**, **Onto/Epist**, **Prag**, **Did**. Scope: **Un
 | **Gate‑as‑law**                | Preconditions written as “laws” in the signature                | Breaks substitution; violates A.6.0’s separation of signature vs mechanism gates | Move predicates to Mechanism.AdmissibilityConditions; keep signature laws truth‑conditional. |
 | **RFC‑keywords in invariants** | “MUST” appears inside `Definition:` blocks                      | Confuses deontics with mathematical admissibility; undermines auditability       | Rewrite as declarative predicate; reference predicate IDs from CC when needed.               |
 | **Paraphrase drift**           | Same constraint restated in multiple faces with new wording      | Creates hidden divergence; breaks routing discipline and evidence accountability | Use `…-*` IDs + Claim Register; faces reference IDs rather than restating text.              |
-| **Interface‑as‑promiser**      | “The interface promises…” without identifying an agent          | Ontological category error; contracts are agent commitments                      | Apply F.18 unpacking: who commits, via which published utterance, to what service.           |
+| **Interface‑as‑promiser**      | “The interface promises…” without identifying an agent          | Ontological category error; contracts are agent commitments                      | Apply **F.18:16.1** unpacking: who commits, via which published utterance, to what service clause.           |
 | **Evidence‑free guarantees**   | “Guaranteed latency” without measurement/evidence story         | Effects exist only in work; without carriers it’s non‑testable                   | Bind to carriers (metrics/traces) and specify the evidence surface (what gets logged).       |
 | **View without viewpoint**     | A “view” is published but no viewpoint accountability is stated | Readers cannot interpret omissions; multi‑view discipline collapses              | Require `viewpointRef` with every face; treat view as projection under viewpoint.            |
 | **System‑as‑agent deontics**   | “The system/service SHALL …” used where no accountable role is named | Blurs behavior semantics with enforcement; hides responsibility                   | Rewrite as (`E-*`) behavior/evidence semantics + (`D-*`) duty on implementers/operators.     |
@@ -6104,7 +6726,7 @@ The stack creates a default **direction of dependence**: higher layers constrain
 ## A.6.B — Boundary Norm Square (Laws / Admissibility / Deontics / Work‑Effects)
 
 > **Type:** Architectural (A)
-> **Status:** Draft
+> **Status:** Stable
 > **Normativity:** Normative (unless explicitly marked informative)
 > **Placement:** Part A → A.6.B (matrix module; referenced by A.6 cluster overview)
 > **Builds on:** E.8 (authoring template), A.6.0 (`U.Signature`), A.6.1 (`U.Mechanism`), A.6.3 (`U.EpistemicViewing`), E.17.0/E.17 (MVPK + “no new semantics” faces), A.7 (Object≠Description≠Carrier), F.18 (promise/utterance/commitment), E.10.D2 (I/D/S vs Surface), E.10/L‑SURF (Surface token discipline)
@@ -6265,9 +6887,19 @@ This section is the normative “API” of the square: what each quadrant is for
 * “Operators **SHALL** retain carriers …”
 * “Provider **SHALL** meet `E-…` under exclusions …”
 
+**Canonical payload (recommended; lintable).** When a `D-*` claim is intended to be lintable/reusable, it **SHOULD** be representable as a `U.Commitment` record (A.2.8). Default fields to make explicit:
+
+* `id` (often the `D-*` claim ID),
+* `subject` (accountable role/party; never an episteme),
+* `modality` (BCP‑14/RFC keyword family normalized),
+* `scope` + `validityWindow`,
+* `referents` (by ID; e.g., `SVC-*`, `L-*`, `A-*`, `E-*`, `MethodDescriptionRef(...)`),
+* optional `adjudication.evidenceRefs` when the commitment is meant to be auditable,
+* optional `source` when authority/provenance matters.
+
 **Prohibitions.**
 
-* A `D-*` statement **MUST NOT** use “the system/service/interface” as the grammatical subject unless an accountable role is explicitly identified (per F.18 unpacking).
+* A `D-*` statement **MUST NOT** use “the system/service/interface/spec” as the grammatical subject unless the accountable role/party is explicitly named (so the statement is representable as a `U.Commitment` with an explicit `subject`, A.2.8). (**F.18** is a lexical anchor only.)
 * A `D-*` statement **MUST NOT** restate `L-*` or `A-*` predicates in new words when an ID exists; it **SHOULD** reference the ID.
 * A `D-*` statement **MUST NOT** pretend that commitments are laws. A commitment is an agent relation, not a truth‑conditional invariant.
 
@@ -6277,7 +6909,6 @@ This section is the normative “API” of the square: what each quadrant is for
 
 * If a `D-*` statement imposes compliance with a gate, it **MUST** reference the relevant `A-*` ID(s).
 * If a `D-*` statement is meant to be auditable, it **SHOULD** reference the `E-*` claim(s) that provide evidence and the carrier classes involved.
-
 #### A.6.B:5.4 — Quadrant E: Work‑Effects & Evidence
 
 **Intent.** State what happens in work and how it can be evidenced: observed effects, emitted events, traces/logs/metrics, produced reports, measurement outcomes.
@@ -6424,6 +7055,246 @@ A published “evaluation protocol” boundary (common in modern ML governance) 
 
 The square keeps “must use dataset vX” (D) separate from “evaluation is admissible iff dataset license matches” (A), and both separate from “a run produced report carrier R with hash h” (E).
 
+#### A.6.B:8.4 — Worked Rewrite Kit (informative, recommended)
+
+> **Informative.** This kit is a worked, copy‑pasteable restatement of A.6.B’s rules (atomicity, L/A/D/E routing, explicit references, triangle decomposition, and no‑upward dependencies). If anything here conflicts with A.6.B, **A.6.B is authoritative**.
+
+##### A.6.B:8.4.0 - Goal
+
+Convert a boundary-ish sentence that mixes “laws / gates / duties / evidence” into:
+
+1. **atomic routed claims** (L/A/D/E),
+2. **explicit references by claim ID** (no paraphrase duplication),
+3. **a readable recomposition** (Tech + Plain),
+4. **a minimal anti-pattern lint** (things we forbid / flag).
+
+##### A.6.B:8.4.1 - Micro-procedure (Atomize → Route → Triangle → Link → Anchor → Recompose)
+
+**Step 1 — Atomize.** Split mixed prose into atomic claims; each must route to exactly one quadrant.
+
+**Step 2 — Route (L/A/D/E).**
+
+* **L** if the claim is **truth‑conditional** and adjudicable *in‑description* (inspection, proof/type validation, or model reasoning **over declared assumptions**): definitions, invariants, typing/well‑formedness constraints.  
+  **Guardrails:** `L-*` MUST NOT (i) use RFC deontic keywords as operators, (ii) encode runtime entry predicates (those are `A-*`), or (iii) assert evidence existence/measurement outcomes (those are `E-*`).
+* **A** if it is an *in‑work* **gate predicate**: what the mechanism admits/permits at application time (“admissible iff …”). It is not a duty and MUST NOT be phrased as one.  
+  **Guardrails:** `A-*` SHOULD be written in predicate form and MUST NOT (i) use RFC deontic keywords as if it were an agent obligation, (ii) claim that evidence/carriers exist (that is `E-*`), or (iii) assign responsibility/enforcement (that is `D-*`).  
+  *(Do not confuse this with `Signature.Applicability`: applicability scopes intended meaning/use; it is not a runtime entry gate.)*
+* **D** if it assigns **duties/commitments** to an accountable role/agent (RFC keywords belong here; “the interface/system promises” does not).  
+  **Guardrails:** `D-*` MUST name an accountable subject and SHOULD reference `L-*`/`A-*`/`E-*` by ID rather than restating them in new words (to prevent paraphrase drift).
+* **E** if it is an *in‑work* truth‑conditional claim about adjudicable effects/evidence: what carriers exist, under what observation conditions, and/or what was observed.  
+  **Minimum fields (recommended):** (1) observation/measurement conditions, (2) carrier class/schema reference, and (3) viewpoint/consumer.  
+  **Guardrails:** `E-*` SHOULD NOT use RFC deontic keywords, MUST NOT hide a gate predicate (that is `A-*`), and MUST NOT cite `D-*`.  
+  *(If the sentence is “Role SHALL measure/retain/expose …”, route that obligation to **D**, even if it is about evidence.)*
+
+**Step 3 — Triangle decomposition.** If the original sentence mixes (i) an entry condition, (ii) an obligation/commitment, and (iii) an observability expectation (a common failure mode with “guarantee/ensure/approved/aligned”), decompose it into:
+
+* **A**: the admissibility predicate (what must be true to treat the claim as applicable),
+* **D → A**: who is responsible for keeping/ensuring the predicate,
+* **E → A**: what evidence/traces are used to adjudicate the predicate.
+
+**Note (routing sanity).** `D-*` claims are authored in the description even when their compliance is audited via `E-*` claims. Auditing via evidence does not move `D-*` into quadrant E.
+
+**Guideline.** Keep gate semantics independent of specific evidence carriers: write the gate predicate in `A-*`, then bind observability in `E-*` that references the gate (`E → A`). `A-*` claims MUST NOT reference `E-*` (no upward dependencies), even though `E-*` is used to adjudicate gate satisfaction.
+
+**Step 4 — Link by ID, not by paraphrase.** Allowed directions (no upward deps):
+
+* `A-*` may cite `L-*`
+* `E-*` may cite `L-*` and `A-*`
+* `D-*` may cite `L-*`, `A-*`, `E-*`
+* Forbidden: `L-*` citing anything; `A-*` or `E-*` citing `D-*`.
+
+**Common link motifs (informative).** The most reusable boundary rewrites use the canonical motifs: `D→A`, `E→A`, `D→E`, `A/E→L`, and `D→L`.
+
+**Step 5 — Anchor (minimal A.7 discipline).**
+
+* Anchor **L** claims in `Signature.Laws` (and mechanism‑local semantic laws if present), and **A** claims in `Mechanism.AdmissibilityConditions`.
+* Anchor **D** claims to accountable roles/agents and prefer ID references (no restatement of `L-*` / `A-*` content in new words).
+* Anchor **E** claims to carriers + observation conditions and **SHOULD** include viewpoint/consumer (minimum: conditions + carrier class/schema + consumer/viewpoint).
+
+**Optional drift-control.** Add each routed claim verbatim to a Claim Register row (A.6.B:7) with canonical location + references so faces can cite by ID without paraphrase.
+
+**Step 6 — Recompose into readable text.**
+Produce two surfaces:
+
+* **Tech surface**: a short **routed claim bundle** (sometimes called a “contract skeleton”) listing routed claims + ID references.
+* **Plain surface**: a one-paragraph narrative that *summarizes* the bundle and points to IDs (**no new semantics**). If you need a new constraint, add a new atomic routed claim; do not smuggle it into Plain.
+
+##### A.6.B:8.4.2 - Anti-pattern (quick)
+
+* **AP-1 Evidence-free guarantees.** “X guarantees Y” with no E-claims.
+* **AP-2 Interface-as-promiser.** Non-agent objects “promise/commit”.
+* **AP-3 Gate-as-evidence.** Treating the gate predicate (A) as if it were an observation (E).
+* **AP-4 Gate-as-law.** Entry predicates as signature “laws/definitions” (L) instead of `A-*`.
+* **AP-5 Adjective smuggling.** “fast/secure/approved/aligned” used instead of qualifiers/slots.
+* **AP-6 Paraphrase drift.** Restating L/A content in D or E with changed meaning (instead of citing by ID).
+* **AP-7 Deontics in predicates.** RFC keywords (“MUST/SHALL/…”) used as operators inside `L-*` or `A-*` predicates (should be `D-*` that references `L-*`/`A-*`).
+* **AP-8 View-fork semantics.** Recomposition/face text introduces new `L/A/D/E` meaning not present in the routed claim set (violates “no new semantics” discipline).
+* **AP-9 Applicability-as-gate.** Using `Signature.Applicability` (intended use) as a substitute for `A-*` runtime admission predicates.
+
+##### A.6.B:8.4.3 - Example 1 — Software engineering (SLO-ish API latency)
+
+###### A.6.B:8.4.3.1 - Draft sentence (non-conformant)
+
+> “This API guarantees p95 latency < 200ms.”
+
+###### A.6.B:8.4.3.2 - Atomize + Route (L/A/D/E)
+
+**L-API-01 (Definition).**
+`p95_latency(window W, population P, unit U, method M)` is defined as … (formal measurement definition).
+*(Lives in Signature.Laws or a referenced measurement definition pack.)*
+
+**L-API-02 (Interface signature).**
+The API endpoints and parameters are as declared (including parameter passing discipline / units).
+*(Signature-level structure.)*
+
+**A-API-01 (Gate predicate: admissibility).**
+The claim “p95 < 200ms” is admissible **only under** declared load/profile + deployment region + sampling method + window:
+`AdmissibleLatencyClaim := (region=US) ∧ (concurrency≤X) ∧ (payload≤Y) ∧ (W=5m) ∧ (M=HDRHistogram@v…) ∧ (P=requests that match filter F)`
+*(References L-API-01 for definition.)*
+
+**D-API-01 (Commitment).**
+`ServiceOwner` SHALL meet the latency target `p95_latency < 200ms` when `A-API-01` holds, adjudicated per `L-API-01` using the carriers/observation conditions in `E-API-01`.
+*(References L-API-01 and A-API-01 by ID; does not restate them.)*
+
+**D-API-02 (Operational duty).**
+`SRE_oncall` SHALL publish incident notes when the commitment `D-API-01` is violated, and SHALL avoid claiming compliance outside `A-API-01`.
+*(References D-API-01 and A-API-01 by ID.)*
+
+**E-API-01 (Evidence / carriers).**
+For decisions under `A-API-01`, the following carrier **classes** are produced/observable under the declared observation conditions: trace/span IDs, raw histogram artefacts (schema reference), percentile dashboard snapshots, and pinned sampling configuration for window `W`.  
+**Observation conditions (minimum):** workload/profile selector, sampling method/config pins, and computation method reference (`L-API-01`).  
+**Viewpoint/consumer (minimum):** the role/view that uses the carriers to adjudicate the gate and/or audit commitments (e.g., SRE/PerfReview).  
+*(References `A-API-01` and `L-API-01`; avoids RFC deontics; does not smuggle gates. Note: `E-*` MUST NOT cite `D-*`.)*
+
+**D-API-03 (Duty-to-evidence linkage).**
+`Operators` SHALL retain/expose the carrier classes referenced in `E-API-01` for the audit window required by policy.
+*(References E-API-01 by ID.)*
+
+**E-API-02 (Observed value claim).**
+For interval `Γ_time = [t1..t2]` under conditions pinned to `A-API-01` and using carriers in `E-API-01`, observed `p95_latency = 173ms` (computed per `L-API-01`).
+*(References A-API-01, L-API-01 and E-API-01.)*
+
+###### A.6.B:8.4.3.3 - Triangle decomposition (explicit)
+
+* **A-API-01** is “the predicate”.
+* **D-API-01 → A-API-01** states the commitment under the gate/envelope.
+* **E-API-01 → A-API-01** anchors adjudication (carriers used to decide the gate/commitment).
+* **D-API-03 → E-API-01** expresses retention/exposure obligations for those carriers.
+
+###### A.6.B:8.4.3.4 - Readable recomposition
+
+**Tech recomposition (contract bundle, short):**
+
+* `L-API-01` defines p95 latency computation.
+* `A-API-01` specifies when the latency claim is admissible.
+* `D-API-01` states the commitment under that envelope.
+* `E-API-01` lists adjudicable carriers/conditions used to adjudicate `A-API-01` (and therefore any commitments that reference it).
+* `D-API-02` assigns operational incident-note duties.
+* `D-API-03` assigns retention/exposure duties for carriers in `E-API-01`.
+* `E-API-02` reports observed performance under `A-API-01` for `Γ_time=[t1..t2]`.
+
+**Plain recomposition (one paragraph, readable):**
+“The API’s latency target uses the p95 definition in **L-API-01** and is only applicable under the declared operating envelope **A-API-01**. The service owner commits to meeting the <200ms target under that envelope (**D-API-01**). Adjudication uses the telemetry carriers listed in **E-API-01**, which operators must retain/expose (**D-API-03**), and the on-call SRE must publish incident notes when the commitment is violated (**D-API-02**). Under that envelope, the observed p95 over `Γ_time=[t1..t2]` was `173ms` (**E-API-02**).”
+
+##### A.6.B:8.4.4 - Example 2 — Mechanical engineering (fit / coaxiality)
+
+###### A.6.B:8.4.4.1 - Draft sentence (non-conformant)
+
+> “This fit ensures coaxiality.”
+
+###### A.6.B:8.4.4.2 - Atomize + Route
+
+**L-FIT-01 (Definition).**
+`coaxiality` is defined relative to a declared base axis and measurement method (datum scheme, instrument, tolerance zone).
+*(Truth-conditional: “what it means”.)*
+
+**L-FIT-02 (Interface/boundary structure).**
+The boundary relation involves shaft, bushing, datum axis, tolerance class, temperature window, assembly procedure class.
+*(Signature-level arity recovery / slots.)*
+
+**A-FIT-01 (Gate predicate).**
+The coaxiality claim is admissible only if manufacturing and assembly satisfy the declared process envelope: material batch, temperature window, tool calibration validity, surface finish class, alignment procedure version.
+*(Gate predicate; can be checked using evidence, but is not itself evidence.)*
+
+**D-FIT-01 (Duty).**
+`ProcessEngineer` SHALL ensure A-FIT-01 holds for the production lot and SHALL not release the lot for use when A-FIT-01 is false.
+*(References A-FIT-01.)*
+
+**E-FIT-01 (Evidence carriers).**
+Evidence carriers used to adjudicate `A-FIT-01` include CMM reports, tool calibration certificates, assembly logs, temperature traces, and datum scheme pins.
+*(References A-FIT-01 and L-FIT-01; avoids RFC deontics.)*
+
+**D-FIT-02 (Duty-to-evidence linkage).**
+`QualityEngineer` SHALL retain/expose the carriers referenced in `E-FIT-01` for the production lot.
+*(References E-FIT-01 by ID.)*
+
+**E-FIT-02 (Observed).**
+For lot `L123` and window `Γ_time=[t1..t2]`, under conditions pinned to `A-FIT-01` and using carriers in `E-FIT-01`, measured coaxiality was within tolerance zone `T` (interpreted per `L-FIT-01`).
+*(References A-FIT-01, L-FIT-01, and E-FIT-01.)*
+
+###### A.6.B:8.4.4.3 - Readable recomposition
+
+**Tech bundle:**
+
+* Meaning of coaxiality: `L-FIT-01`.
+* Boundary arity/participants: `L-FIT-02`.
+* When the claim is admissible: `A-FIT-01`.
+* Who is responsible: `D-FIT-01`.
+* What we observe and keep as carriers: `E-FIT-01` and measured outcome `E-FIT-02` (with retention duty `D-FIT-02`).
+
+**Plain paragraph:**
+“‘Ensures coaxiality’ is made precise by fixing the definition and datum scheme (**L-FIT-01**) and by making the boundary participants explicit (**L-FIT-02**). The coaxiality claim is only applicable under the declared manufacturing/assembly envelope (**A-FIT-01**), which the process engineer is accountable for maintaining (**D-FIT-01**). Compliance is adjudicated using the measurement and process carriers listed in **E-FIT-01**; for lot `L123` over `Γ_time=[t1..t2]`, the observed coaxiality was within tolerance **E-FIT-02**.”
+
+##### A.6.B:8.4.5 - Example 3 — Management (project “approved/aligned”)
+
+###### A.6.B:8.4.5.1 - Draft sentence (non-conformant)
+
+> “The project is approved.”
+
+###### A.6.B:8.4.5.2 - Atomize + Route
+
+**L-PRJ-01 (Definition).**
+`approved(project, approvalKind)` is defined as a relation kind; approval kinds include: “sponsor-signoff”, “stage-gate-pass”, “budget-authorized”, “staffing-assigned”, etc.
+*(Truth-conditional: disambiguates kind and polarity.)*
+
+**A-PRJ-01 (Gate predicate: stage entry).**
+For starting execution work, `ExecutionAdmissible(project)` holds iff required approvals are present *and* required prerequisites are satisfied (e.g., risk review completed, budget line exists, key roles staffed).
+*(This is the real “may start work” gate; references L-PRJ-01 for what counts as approvals.)*
+
+**D-PRJ-01 (Duty).**
+`ProjectOwner` SHALL not initiate execution unless `A-PRJ-01` holds, SHALL keep the approval registry current, and SHALL retain/expose the evidence carriers referenced in `E-PRJ-01`.
+*(References A-PRJ-01 and E-PRJ-01 by ID.)*
+
+**E-PRJ-01 (Evidence carriers).**
+Evidence carriers used to adjudicate `A-PRJ-01` include: signed decision record IDs, meeting minutes pins, budget system references, staffing assignment records, and gate checklist snapshots.
+*(References A-PRJ-01; avoids RFC deontics.)*
+
+**E-PRJ-02 (Observed state).**
+As of `Γ_time=snapshot(t)`, a resolvable gate-status carrier (e.g., `GateChecklistSnapshot#…`) indicates `A-PRJ-01` holds, with the referenced evidence set pinned as `{DecisionRecord#…, BudgetLine#…, StaffingAssignments#…}` (carrier classes as per `E-PRJ-01`).  
+*(Observed / pinned state; references `A-PRJ-01` and `E-PRJ-01`; includes carrier instance(s), not just carrier classes.)*
+
+###### A.6.B:8.4.5.3 - Readable recomposition
+
+**Tech bundle:**
+
+* “Approved” is not one relation: `L-PRJ-01` defines approval kinds.
+* “May start execution” is a gate predicate: `A-PRJ-01`.
+* Owner accountability: `D-PRJ-01`.
+* Carriers and adjudication: `E-PRJ-01` and observed snapshot `E-PRJ-02`.
+
+**Plain paragraph:**
+“Instead of a generic ‘approved’, we select an explicit approval kind as defined in **L-PRJ-01** and treat ‘may start execution’ as an admissibility gate (**A-PRJ-01**). The project owner is accountable for not starting execution unless that gate holds and for keeping the approval registry current (**D-PRJ-01**). Gate status is adjudicated using the pinned carriers listed in **E-PRJ-01**; as of snapshot `t`, the evidence indicates the gate holds (**E-PRJ-02**).”
+
+##### A.6.B:8.4.6 - A compact “recomposition pattern” you can reuse verbatim
+
+###### A.6.B:8.4.6.1 - Tech register (2–5 lines)
+
+> “This boundary claim is defined by **L-…**, is applicable only under **A-…**, is accountable under **D-…**, and is adjudicated using evidence carriers **E-…**. Observed status/value is **E-…** for `Γ_time=…`.”
+
+###### A.6.B:8.4.6.2 - Plain register (1 paragraph)
+
+> “We mean **[short label]** in the sense of **L-…**. It’s only meant to be used when **A-…** holds. **[Role]** is responsible for maintaining that condition (**D-…**). Whether it holds is checked using **E-…**, and the latest recorded status/value is **E-…**.”
+
 ### A.6.B:9 — Bias‑Annotation
 
 Lenses tested: **Gov**, **Arch**, **Onto/Epist**, **Prag**, **Did**. Scope: **Universal** for boundary descriptions.
@@ -6494,6 +7365,323 @@ By requiring atomicity and explicit cross‑quadrant references, the square conv
 * **Interacts with MVPK/E.17:** faces are projections that cite routed claims; faces must not mint new semantic commitments.
 
 ### A.6.B:End
+
+## A.6.C — Contract Unpacking for Boundaries
+
+> **Type:** Architectural (A)
+> **Status:** Stable
+> **Normativity:** Normative (unless explicitly marked informative)
+> **Placement:** Part A → **A.6 Signature Stack & Boundary Discipline**
+> **Builds on:** A.6 (stack + routing intent), **A.6.B** (L/A/D/E), **A.7** (Object≠Description≠Carrier), **A.2.3** (`U.Service`), **A.2.4** (`U.EvidenceRole`), **A.2.8** (`U.Commitment`), **A.2.9** (`U.SpeechAct`), **A.15.1** (`U.Work`), E.17 (MVPK “no new semantics” faces), F.12 (service acceptance/evidence discipline)
+> **Lexical anchor:** **F.18** (NQD front for the *service (promise) / utterance / commitment* triad; naming, not ontology)
+> **Mint/reuse (terminology):** Reuses “contract / SLA / guarantee” as Plain-level boundary shorthand; mints **Contract Bundle** as an unpacking lens (not a new entity kind), plus optional register columns (`bundleId` / `bundlePart` / `faceRefs`). **NQD-front seeds (informative):** contract packet, agreement bundle, boundary bundle (chosen: *Contract Bundle* for low collision with existing “bundle” terms).
+> **Purpose (one line):** Prevent “contract soup” and agency misattribution by unpacking contract-language into distinct promise‑content, utterance package, commitment, and work+evidence (adjudication substrate) parts and routing each part into the Boundary Norm Square.
+
+### A.6.C:1 — Problem frame
+
+Boundary descriptions frequently use “contract” as a shorthand for “the thing that governs the interaction”. That shorthand is useful in conversation, but it collapses distinct layers that FPF deliberately keeps separate:
+
+* **Promise-level intent** (what is promised to be true or provided),
+* **Published description** (what is written and versioned),
+ * **Deontic commitment relation** (who is accountable for which obligations/permissions),
+* **Operational work and evidence** (what actually happens and what can be observed).
+
+When these layers are collapsed, authors accidentally assign agency to epistemes (“the interface guarantees…”), encode runtime gates as if they were internal laws, or treat observability as a property of text rather than of carriers and work. A.6 and A.6.B already provide a routing discipline (L/A/D/E) for boundary claims, but “contract” language remains a recurring entry point for category mistakes.
+
+A.6.C makes contract-language usable inside the A.6 stack by providing a canonical unpacking that can be applied to APIs, hardware interfaces, protocols, and socio-technical boundaries.
+
+**Non‑goals (to preserve modularity).** A.6.C does **not**:
+* define “legal contract” doctrine (offer/acceptance/consideration, jurisdictional enforceability, etc.);
+* resolve conflicts between incompatible commitments across scales/contexts (capture them as separate `D-*` claims and route to conflict/mediation patterns when they exist);
+* redefine the core meanings of `U.Service`, `U.Work`, `U.SpeechAct`, or `U.Commitment`—it only makes “contract talk” routable into those objects/claims.
+* redefine quadrant semantics (`L/A/D/E`) or cross‑quadrant reference rules; those are defined normatively in A.6.B.
+
+### A.6.C:2 — Problem
+
+How can an author write (or repair) contract-language so that:
+
+1. **Agency is not misattributed** to descriptions (signatures, docs, specs, “interfaces”),
+2. **Governance statements** (obligations/commitments) are distinguishable from **admissibility gates** and from **semantic laws**,
+3. **Operational “guarantees”** become adjudicable via explicit evidence expectations, without smuggling evidence into semantics,
+4. **Multi-view publication** (MVPK faces) does not create “multiple contracts” by paraphrase drift?
+
+### A.6.C:3 — Forces
+
+| Force                      | Tension                                                                                                                                           |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Conversational convenience | People will keep saying “contract”; banning the term is unrealistic.                                                                              |
+| Ontological correctness    | “Contract” is a metaphor unless we explicitly locate who promises/commits and what can be evidenced.                                              |
+| Boundary diversity         | Software APIs, hardware connectors, protocols, and SLAs share the “contract” word but differ in what is adjudicated and how.                      |
+| Multi-view publication     | Faces are necessary for audience fit, but rephrasing easily creates new commitments.                                                              |
+| Adjudicability             | “Guarantee” claims must either be (i) semantic truths, (ii) deontic commitments, or (iii) evidenced properties—otherwise they are empty rhetoric. |
+| Minimality                 | The unpacking should be lightweight enough to apply during routine authoring and review.                                                          |
+
+### A.6.C:4 — Solution
+
+A.6.C introduces a **Contract Bundle** lens for boundary writing. It is not a new foundational entity kind; it is a disciplined way to interpret and rewrite contract-language so it becomes routable under A.6.B.
+
+#### A.6.C:4.1 — The Contract Bundle (four-part unpacking)
+
+Whenever a text uses “contract / guarantee / promise / SLA / interface agreement” language, unpack it into four parts:
+
+1. **Service Clause (Promise content)**
+
+   * The promised value/effect (the promise *content*) in the intended scope.
+   * In FPF terms (A.2.3), **`U.Service` is promise content**—a promise clause, not an execution event (`U.Work`) and not (by itself) an accountable deontic binding (`U.Commitment`).
+   * **Recommendation:** give the promise-content a stable local ID (e.g., `SVC-*`) so it can be cited from commitments, gates, evidence, and MVPK faces without paraphrase drift.
+   * **Routing discipline:** keep the semantics/definitions of the promised behavior in **L**; express *who is accountable for satisfying the promise* as a **D** claim (`U.Commitment`) that **references** the `U.Service` (plus any `A-*`/`E-*` claims as needed).
+
+2. **Utterance Package (speech act + published descriptions)**
+
+   * The work occurrence of stating/publishing/approving (a `U.SpeechAct <: U.Work`, A.2.9) **and** the utterance descriptions it produces or updates (versioned **epistemes** on carriers) that host the routed claim set.
+   * A speech act **may** institute/update commitments, but only under an explicit context policy that recognizes that `actType` as having such institutional force.
+   * The published utterance descriptions (signature/mechanism spec + MVPK faces) host routed claims (L/A/D/E). The act is not “the contract”; it is the work occurrence that created/updated the descriptions and (when recognized) the associated commitments.
+   * **Default interpretation rule (normative).** A conformant boundary model **MUST NOT** infer or assume any `U.Commitment` objects solely from the presence of a `Publish`/`Approve` `U.SpeechAct`. Publication creates/updates utterance descriptions and MAY institute publication/status claims (e.g., “Published”, “Approved as Standard”, “Deprecated”), but commitments exist only when represented explicitly as `U.Commitment` records (A.2.8).
+   * If a bounded context defines a policy that maps certain publish/approve act types to commitment-instituting effects (e.g., a named `SpecPublicationPolicy@Context`), the model **MUST** cite that policy, and any resulting commitments **MUST** still be represented explicitly as one or more `U.Commitment` objects with accountable subjects (not inferred from publication alone).
+
+3. **Commitment (Deontic accountability relation)**
+
+   * The accountable agent/role bound to obligations/permissions/prohibitions (including being accountable for satisfying a service clause).
+   * This bundle part is the **D‑side commitment object**: by default, one or more `U.Commitment` records (A.2.8).
+   * **Default checklist (A.2.8 minimal structure):**
+     * `id` (stable; often the `D-*` claim ID),
+     * `subject` (accountable role/party; never an episteme),
+     * `modality` (normalized deontic token / BCP‑14 family),
+     * `scope` (`U.ClaimScope`) and `validityWindow` (`U.QualificationWindow`),
+     * `referents` (by reference/ID: service clause IDs like `SVC-*`, plus `L-*`/`A-*`/`MethodDescriptionRef(...)`/`ServiceRef(...)` as needed),
+     * optional `owedTo` (beneficiary/counterparty),
+     * optional `adjudication.evidenceRefs` when the commitment is meant to be auditable (point to `E-*`),
+     * optional `source` when authority/provenance matters (issuer + instituting `speechActRef` + description reference),
+     * optional `notes` for explicitly informative commentary (not part of the binding).
+   * A commitment is not “the spec text”: utterance descriptions carry the statement, but the binding is the `U.Commitment` object (A.7 / A.2.8).
+4. **Work + Evidence (Adjudication substrate)**
+
+   * The executed work and the observable carriers/traces that can adjudicate whether a commitment was met.
+   * This is **E quadrant**: “what evidence is produced/exposed/retained, under what conditions, and how it is interpreted”.
+   * Work is not “the contract”; it is what makes any operational claim testable.
+   * In FPF terms, evidence is normally expressed as **carrier‑anchored `E-*` claims** (often backed by `U.EvidenceRole` assignments on epistemes with provenance from Work).
+
+#### A.6.C:4.2 — Routing recipe into A.6.B (L/A/D/E)
+
+After unpacking, route each **atomic** statement using the Boundary Norm Square as defined normatively in **A.6.B** (quadrant semantics + form constraints + cross‑quadrant reference discipline). A.6.C does not redefine `L/A/D/E`; it applies them to contract-language as follows:
+
+* **Service clause → L/A (promise semantics + eligibility).**
+  * Put meanings, invariants, and metric definitions for what is promised in **L** (`L-*` in signature laws/definitions).
+  * Put “eligible/covered/valid iff …” predicates as **A** (`A-*` admissibility/gate predicates), not as deontic obligations.
+* **Commitment → D (who is accountable).**
+  * Put “MUST/SHALL/commits to …” statements as **D** (`D-*`), preferably as `U.Commitment` payloads (A.2.8).
+  * If compliance requires satisfying/enforcing a gate, the commitment **MUST** reference the relevant `A-*` ID(s) (D→A).
+  * If the commitment is meant to be auditable, include evidence hooks by referencing `E-*` (D→E), preferably via `U.Commitment.adjudication.evidenceRefs`.
+* **Work + Evidence → E (how we can tell).**
+  * Put observable traces, audit records, measurement windows, and carrier semantics as **E** (`E-*`) with explicit carrier and observation/measurement conditions (A.6.B:5.4).
+**Keyword placement rule (canonical claim set).**
+Within the canonical routed claim set, BCP‑14 norm keywords (RFC 2119 + RFC 8174)—and their common synonyms (e.g., SHALL, REQUIRED, RECOMMENDED, OPTIONAL)—belong in **D** claims only, expressed as `U.Commitment.modality` and normalized per **A.2.8**. Authors **SHOULD** avoid using these keywords in **L/A/E** claims; phrase **L** as definitions/invariants (“is defined as…”, “holds iff…”), **A** as predicates (“is admissible iff…”), and **E** as observable/evidenced properties. If a BCP‑14 keyword (or synonym) appears in an **L/A/E** claim, it **SHOULD** be rewritten into predicate/definition form (or explicitly marked informative) before publication.
+
+A helpful rewrite rule:
+
+> If a sentence mixes “when allowed” + “who must comply” + “how we can tell”, decompose it into an **A** predicate, a **D** duty referencing that predicate, and an **E** evidence claim referencing that predicate (per A.6.B triangle decomposition).
+
+#### A.6.C:4.3 — “Guarantee” disambiguation
+
+Treat “guarantee” as ambiguous until routed:
+
+* **Semantic guarantee** → **L** (“by definition / invariant”).
+* **Governance guarantee** → **D** (“provider commits / implementer must”).
+* **Operational guarantee** → **E** (measured property with evidence expectations; optionally referenced by D as the adjudication target).
+
+If none of these fits, the statement is likely rhetorical and should be rewritten or explicitly marked as aspirational/informative.
+
+#### A.6.C:4.4 — MVPK faces are not second contracts
+
+A contract bundle has one canonical claim set. Publication faces are **views** of that set under viewpoints:
+
+* Faces may **select, summarize, and render** claims for audiences.
+* Faces must not **introduce new semantic commitments** beyond the underlying claim set.
+* Any face-level decision-relevant / normative-looking statement **SHOULD** cite the underlying claim ID(s). If it cannot be traced to claim IDs, it **MUST** be explicitly presented as informative commentary.
+
+**Keyword rule (faces).**
+If a face contains BCP‑14 norm keywords (RFC 2119 + RFC 8174), including common synonyms (SHALL, REQUIRED, RECOMMENDED, OPTIONAL), then each such sentence MUST be a projection of an existing **D‑*** claim (`U.Commitment`) and MUST cite the underlying **D** claim ID(s).
+If a sentence cannot be traced to **D‑*** claim IDs, it MUST be rewritten to remove BCP‑14 keywords (e.g., turn it into explanatory prose that cites the relevant claim IDs) or moved out of the face.
+To avoid keyword‑evasion, equivalent deontic phrasings (e.g., “is required to…”, “is prohibited from…”) SHOULD follow the same trace-by-ID discipline even when no BCP‑14 keyword is present.
+
+Projection may be paraphrased for audience fit, but it **MUST NOT** change the deontic/semantic content; if exactness is critical or disputed, use verbatim.
+
+This prevents faces from becoming “second contracts” by paraphrase drift.
+
+#### A.6.C:4.5 — Default artefact: Contract Claim Register (recommended)
+
+Use the **A.6.B Claim Register** (IDs + statements + quadrant + anchor). Add two optional columns that make A.6.C auditable without adding new ontology:
+
+* `bundleId: ContractBundleId` (local stable ID grouping the claims that constitute one boundary “contract bundle”)
+* `bundlePart ∈ {ServiceClause, Utterance, Commitment, WorkEvidence}`
+* `faceRefs = {PlainView|TechCard|InteropCard|AssuranceLane : …}` (where the claim is rendered)
+
+### A.6.C:5 — Archetypal Grounding (Tell–Show–Show)
+
+#### A.6.C:5.1 — Tell
+
+If you use contract-language for a boundary, do not treat “the interface/spec” as an agent. Instead:
+
+1. Identify the **Service** being promised,
+2. Identify the accountable **Commitment** holder(s) (roles/agents),
+3. Identify the **Utterance** surfaces that publish the boundary (signature/mechanism + MVPK views),
+4. Identify the **Work + Evidence** carriers that could adjudicate whether commitments were met,
+5. Route each claim through **L/A/D/E** and reference across quadrants rather than paraphrasing.
+
+#### A.6.C:5.2 — Show (System archetypes)
+
+**(A) Software API boundary**
+
+*Draft wording (contract soup):*
+“The Payments API guarantees idempotency. Clients must provide `Idempotency-Key`. We log all requests. Availability is 99.9%.”
+
+**Unpack + route:**
+
+* **Utterance:** signature/mechanism publication for `PaymentsAPI` (MVPK faces: TechCard, InteropCard).
+* **L:** define idempotency and the uniqueness semantics of `Idempotency-Key`.
+  (“Idempotent” is a semantic property, not a duty.)
+* **A:** admissibility predicate: request is admissible iff `Idempotency-Key` is present and valid.
+  (Gate belongs to mechanism.)
+* **D:** client implementers are obligated to satisfy the gate; provider implementers are accountable for the idempotency behavior **as defined in L** when the gate holds; provider commits to the availability target (scoped by window/exclusions).
+  (Name the committing role; do not say “the API commits”.)
+* **E:** evidence expectations: audit/log carriers include request id, idempotency key, rejection reason; availability measurement uses defined window and signal definition.
+
+**(B) Hardware interface boundary**
+
+*Draft wording:*
+“The connector guarantees safe operation. Devices must not exceed 20V. Negotiation must succeed before power is applied.”
+
+**Unpack + route:**
+
+* **Utterance:** published interface spec (pinout, electrical ranges, handshake procedure).
+* **L:** electrical invariants / allowable ranges are definitions and invariants (truth-conditional).
+* **A:** admissibility predicate: power delivery is admissible only after handshake state reaches an agreed mode.
+* **D:** manufacturer/integrator obligations: implement handshake; enforce voltage constraints.
+* **E:** evidence: test-report carriers; measurement traces; observable negotiation logs (if exposed), or lab measurements under a declared method.
+
+#### A.6.C:5.3 — Show (Episteme archetypes)
+
+**(C) Multiparty protocol boundary (behavioural/session type motif)**
+
+*Draft wording:*
+“The protocol guarantees progress. Participants must follow the sequence.”
+
+**Unpack + route:**
+
+* **Utterance:** protocol description (could be a type/protocol spec plus explanatory views).
+* **L:** safety/progress properties as laws over the protocol model (truth-conditional, within the theory).
+* **A:** admissibility: when an interaction trace is considered valid/admissible (e.g., runtime checks; compilation checks; gating conditions for entering a session).
+* **D:** obligations on implementers/operators: implement the protocol; do not send messages outside the allowed state machine; publish conformance artefacts if required.
+* **E:** evidence: message trace carriers; conformance test run artefacts; audit trails for disputed interactions.
+
+**(D) Socio-technical “SLA + audit trail” boundary**
+
+*Draft wording:*
+“Provider shall respond within 4 hours for Severity‑1 incidents. Only Severity‑1 is covered. Evidence is provided by ticket logs.”
+
+**Unpack + route:**
+
+* **Service (promise):** responsiveness promise for a defined incident class and window.
+* **Utterance:** SLA publication (and its views for different audiences).
+* **A:** admissibility predicate for the promise: ticket qualifies iff severity classification meets stated conditions.
+* **D:** provider commitment to meet the target; client duties (e.g., provide required info); auditor duties if applicable.
+* **E:** evidence: ticket carriers, timestamps, classification records, and the measurement procedure binding “4 hours” to a time window and clock source.
+
+### A.6.C:6 — Bias-Annotation
+
+Lenses tested: **Gov**, **Arch**, **Onto/Epist**, **Prag**, **Did**. Scope: **Universal** for “contract talk” in boundary descriptions.
+
+* **Gov bias:** prefers explicit accountability and adjudication hooks; increases clarity but adds authoring overhead.
+* **Arch bias:** optimises evolvability by preventing hidden coupling (contract soup) across stack layers.
+* **Onto/Epist bias:** enforces Object≠Description≠Carrier separation; discourages “interface-as-agent” metaphors in Tech prose.
+* **Prag bias:** accepts that “contract” is common vocabulary; offers a disciplined rewrite rather than prohibition.
+* **Did bias:** aims to be teachable via repeated unpacking examples across boundary types.
+
+### A.6.C:7 — Conformance Checklist
+
+A boundary description conforms to A.6.C iff it satisfies all items below:
+
+1. **CC‑A.6.C‑1 (Unpacking when contract-language appears).**
+   If the text uses “contract/guarantee/promise/SLA” language, it **SHALL** explicitly disambiguate the statement as referring to at least one of: **Service (promise)**, **Utterance (published description)**, **Commitment (deontic binding)**, **Work+Evidence (adjudication)**.
+
+2. **CC‑A.6.C‑2 (No agency to epistemes).**
+   The text **MUST NOT** attribute promising/committing/obligating agency to signatures, mechanisms, interfaces, or documents. Any duty/commitment **SHALL** name an accountable role/agent.
+
+3. **CC‑A.6.C‑3 (Route contract-bearing statements via A.6.B).**
+   Contract-bearing statements **SHALL** be routable as atomic claims to **L/A/D/E**, with dependencies expressed by explicit references rather than paraphrase.
+
+4. **CC‑A.6.C‑4 (Service ≠ Work discipline).**
+   Statements about what is executed/observed **SHALL** be expressed as **E** claims about work/evidence/carriers. “Service” language **SHALL** refer to promise content (`U.Service`, A.2.3) and its **L‑defined** semantics (and to explicit **D‑*** commitments represented as `U.Commitment`, A.2.8), not to execution events (`U.Work`) or runtime effects.
+
+5. **CC‑A.6.C‑5 (Evidence hook for operational guarantees).**
+   If a “guarantee” is operational (requires reality to decide), the text **SHALL** include an **E** claim that states what evidence would adjudicate it (even if the evidence surface is abstract/conceptual).
+
+6. **CC‑A.6.C‑6 (No second contracts via faces).**
+   MVPK faces **MUST NOT** add new commitments beyond the underlying routed claims; faces may only project/summarize/select from the canonical claim set under a viewpoint.
+
+7. **CC‑A.6.C‑7 (RFC‑keyword discipline inside faces).**
+   If an MVPK face contains BCP‑14 norm keywords, each BCP‑14 sentence **MUST** cite the underlying **D‑*** claim ID(s) (`U.Commitment`) it is projecting. If it cannot, the face is non‑conformant until rewritten (no BCP‑14 keyword) or moved out of the face.
+
+8. **CC‑A.6.C‑8 (No commitment-by-publication default).**
+   A `Publish`/`Approve` utterance (including publishing a `…Spec`) MUST NOT be treated as instituting `U.Commitment` objects by default. If a Context policy maps publication acts to binding effects, the policy SHALL be cited, and any resulting bindings SHALL still be represented explicitly as `U.Commitment` objects with accountable subjects.
+
+
+### A.6.C:8 — Common Anti-Patterns and How to Avoid Them
+
+| Anti-pattern                                        | Why it fails                                                   | Repair                                                                                      |
+| --------------------------------------------------- | -------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| **Interface-as-promiser** (“the API promises…”)     | Epistemes are descriptions; they do not commit                 | Name the committing role/agent; route as D claim; keep the signature as utterance substrate |
+| **Guarantee-without-substrate**                     | “Guarantee” is empty unless it is L, D, or E                   | Decide: semantic law (L), deontic commitment (D), or evidenced property (E)                 |
+| **SLA smuggled into laws**                          | Mixes governance with semantics; breaks substitution reasoning | Put SLA targets as D claims referencing L-defined metrics and E evidence                    |
+| **Gate written as obligation**                      | Confuses admissibility predicates with duties                  | Write predicate as A; write duty-to-gate as D→A reference                                   |
+| **Evidence as prose property** (“document proves…”) | Violates Object≠Description≠Carrier                            | State evidence as E claims about carriers produced/observed in work                         |
+| **Face-level paraphrase drift**                     | Creates multiple incompatible contracts                        | Faces should reference canonical claims; keep commitments centralized                       |
+| **Cross‑scale contract collapse**                   | Different agents claim incompatible “contracts” at different scales/contexts | Represent each as separate, scoped `D-*` claims (with accountable roles + Context); route conflicts to conflict/mediation patterns rather than collapsing them into one “contract”. |
+
+### A.6.C:9 — Consequences
+
+**Benefits**
+
+* Category mistakes (“contract soup”) become systematically repairable.
+* Commitments become accountable (named roles) and adjudicable (evidence expectations).
+* Boundaries remain evolvable: laws, gates, governance, and evidence can evolve with controlled coupling.
+
+**Trade-offs / mitigations**
+
+* Additional authoring effort; mitigated by applying the unpacking only when contract-language appears or when a claim is used for decision/publication.
+* Some stakeholders prefer “one sentence contract”; mitigated by MVPK faces that present curated projections while keeping the underlying claim set coherent.
+
+### A.6.C:10 — Rationale
+
+FPF already distinguishes signatures, mechanisms, and work/evidence layers. Contract-language is a high-frequency linguistic entry point that collapses these layers unless a disciplined unpacking is applied.
+
+F.18 provides the **naming** intuition (service/promise vs utterance vs commitment) via an NQD example; A.6.C makes that split **operational for boundaries** and extends it with the missing fourth part: **work+evidence as the adjudication substrate**. This keeps “contract” language routable under A.6.B and compatible with MVPK multi‑view discipline without relocating ontology into the naming chapter.
+
+### A.6.C:11 — SoTA‑Echoing (informative; post‑2015 alignment)
+
+> **Informative.** Alignment notes; not normative requirements.
+
+* **Adopt — BCP 14 (RFC 2119 + RFC 8174) norm keyword discipline for spec language.** Modern spec-writing practice treats these keywords as a disciplined modality family; A.6.C constrains where such modality belongs (D) versus where predicate-style constraints belong (A/L).
+* **Adopt — behavioural/session types for protocol boundaries (post‑2015 practice).** Protocols as typed interactions emphasize separating safety/progress properties (L) from runtime admission (A) and from implementer obligations (D), with trace-based evidence (E).
+* **Adopt/Adapt — algebraic effects & handlers / effect systems.** The “operation signature vs handler semantics” split mirrors “utterance substrate vs work/evidence”, preventing execution semantics from being conflated with contract surfaces.
+* **Adapt — ISO/IEC/IEEE 42010:2022 viewpoint discipline.** Multi-view publication is treated as viewpoints governing projections; A.6.C applies this to contract talk to avoid face-level semantic forks.
+
+### A.6.C:12 — Relations
+
+* **Uses / is used by**
+
+  * Uses **A.6.B** for routing (L/A/D/E), atomicity, and cross-quadrant reference discipline.
+  * Used by **A.6** cluster conformance (“contract unpacking”) as the detailed, reusable form of that discipline.
+  * Complements **A.6.S** (signature engineering): contract unpacking is a common constructor step when turning prose boundaries into publishable signatures.
+  * Coordinates with **A.6.P** families: when an RPR pattern touches “contract/guarantee” language, apply A.6.C to avoid category errors. (A.6.C is **not** a specialization of A.6.P; A.6.P is relation‑precision, A.6.C is boundary‑contract disambiguation.)
+
+* **Coordinates with**
+
+  * **A.7** (Object≠Description≠Carrier) for correct placement of evidence claims.
+  * **F.12** (service acceptance) for structuring how promise-level commitments connect to evidence and acceptance windows.
+  * **E.17** MVPK “no new semantics” rule to prevent publication faces from becoming new contracts.
+
+### A.6.C:End
 
 ## A.6.0 - U.Signature - Universal, law‑governed declaration for a SubjectKind on a BaseType
 
@@ -8505,7 +9693,7 @@ When you think you need “retargeting” in FPF, ask:
 ## A.6.P — U.RelationalPrecisionRestorationSuite — Relational Precision Restoration (RPR) — Kind‑Explicit Qualified Relation Discipline
 
 > **Type:** Architectural (A)
-> **Status:** Draft
+> **Status:** Stable
 > **Normativity:** Normative (Core)
 
 **Plain-name.** Relational precision restoration suite.
@@ -10297,7 +11485,7 @@ Umbrella metaphors are disallowed as substitutes for baseRelation tokens; prose 
 ## A.6.7 - `MechSuiteDescription` — Description of a set of distinct mechanisms
 
 > **Type:** Architectural pattern.
-> **Status:** Draft.
+> **Status:** Stable.
 > **Normativity:** Normative [A] (Core).
 
 **One-line summary.** A `MechSuiteDescription` is a Kernel **Description** token that names a **set of distinct** `U.Mechanism.Intension` (different mechanisms, not realizations of one mechanism) and declares **suite-level obligations**, **required contract pins**, and **allowed usage protocols**, without conflating this with `MechFamilyDescription` or with publication `Pack`s.
@@ -10745,7 +11933,7 @@ In modern multi-step evaluation pipelines (e.g., calibrated scoring, uncertainty
 ## A.6.S - U.SignatureEngineeringPair - Signature engineering via a ConstructorSignature and a TargetSignature
 
 > **Type:** Architectural (A)
-> **Status:** Draft
+> **Status:** Stable
 > **Normativity:** Mixed (normative where RFC 2119 keywords appear; quadrant routing is governed by A.6.B)
 > **One-liner:** **explicitly modelling signature engineering as a two‑signature arrangement** (TargetSignature + ConstructorSignature), with strict separation between **operator description** and **enactment as Work by transformer Systems**.
 
@@ -11860,9 +13048,9 @@ The system that produces or interprets evidence is **external** to the holon und
 * **Constrains / Used by:** B.1 (all Γ‑flavours: `Γ_sys`, `Γ_epist`, `Γ_method`, `Γ\_time`, `Γ_work`); B.1.1 (Dependency Graph & Proofs).
 * **Enables:** **B.3 Trust Calculus** (R/CL inputs, auditability); B.4 Canonical Evolution Loop (clean design/run bridges).
 
-### A.10:10 - Migration (this draft, practical and brief)
+### A.10:10 - Migration (practical and brief)
 
-Apply these text edits **only** in the holonic working file:
+Apply these text edits:
 
 1. **Terminology**
 
@@ -11870,10 +13058,6 @@ Apply these text edits **only** in the holonic working file:
    * `creator` / `observer` (as internal evidencer) → **`TransformerRole (external)`**.
    * “symbol register” (ambiguous) → **“Symbol Carrier Register (SCR)”**.
    * Keep **resource rosters** in `Γ_work` separate from SCR/RSCR.
-
-2. **Γ naming**
-
-   * `Γ_core` (legacy) → **`Γ_sys`** everywhere (note once: *formerly Γ\_core*).
 
 3. **Boilerplate inserts**
 
@@ -11887,7 +13071,6 @@ Apply these text edits **only** in the holonic working file:
 ## A.11 - Ontological Parsimony (C‑5)
 
 *“Add only what you cannot subtract.”*
-
 
 ### A.11:1 - Context
 
@@ -30845,6 +32028,7 @@ U :  X ──f──▶ Y ──g──▶ Z    X ──f──▶ Y ──g─�
 | **CC‑MVPK‑1 (Viewpoint explicit)** | Each view declares its **Viewpoint** (stakeholders, concerns, conformance) as a publication `U.Viewpoint`. | Cards show `PublicationVPId` (or equivalent publication‑viewpoint field) and concerns. |
 | **CC‑MVPK‑2 (Functoriality)** | `Emit_s(id)` is identity; `Emit_s(g∘f) = Emit_s(g)∘Emit_s(f)`. | Compose two cards and diff with the card of the composite. |
 | **CC‑MVPK‑3 (No content extension)** | `PlainView`, `TechCard`, and `InteropCard` add **no new claims** beyond the underlying D/S‑epistemes. | Red‑line vs D/S episteme output (`Describe_ID`/`Specify_DS`) shows only formatting/indexing. |
+| **CC‑MVPK‑3b (Boundary claim‑set integrity)** | If a published arrow is a boundary/interface/protocol and an A.6.B routed claim set exists (`L-* / A-* / D-* / E-*`), then any normative text on faces **MUST** be traceable to that claim set (prefer claim‑ID citations); faces **MUST NOT** become a second contract. | Lint flags uncited normative clauses; faces reduce to {claim‑ID citations + informative commentary}. |
 | **CC‑MVPK‑4 (Pins & anchors)** | Numbers/thresholds pin {… }. **Lean exception:** at MVPK‑Min/Lite profiles, EditionId MAY remain coarse; ordinal claims are legal only as compare‑only (no means/z‑scores). | Validation shows pins present or compare‑only mode engaged. |
 | **CC‑MVPK‑4b (Lean assurance)** | If `AssuranceLane‑Lite` is used, presence bits for {PathSliceId?, BridgeId?} suffice; full artefact lists are deferred. | Presence bits visible; deferred artefacts marked TODO. |
 | **CC‑MVPK‑4c (I/O vs publication)** | Faces **do not** restate I/O; they carry **presence‑pins + anchors + EditionId** only. | Face inspection shows no I/O duplication. |
@@ -38115,6 +39299,25 @@ Every Name Card **SHALL** declare its `CardMode ∈ {MintNew, DocumentLegacy}`. 
 | A7 | “One mega‑row for everything service‑like.”             | Bundles distinct concepts; harms teachability.                  | “One **Concept‑Set per idea**; group with a **Block Plan** for pedagogy.” (F.17 §7)                                 |
 
 
+
+#### F.18:16.1 - Canonical semantic unpacking for “contract” language (normative; used across FPF)
+
+In FPF, everyday “contract” talk is treated as shorthand for a bundle of distinct roles. When precision matters (architecture, audit, compliance), authors **SHALL** avoid mapping “contract” to a single concept and instead disambiguate at least:
+
+* **Service / promise clause (`U.Service`)** — the promised external effect + acceptance criteria (a spec/Standard), not a run (`U.Work`).
+* **Utterance (`U.SpeechAct`)** — the published statement (a Description) that declares or invokes the service clause.
+* **Commitment (`U.Commitment`)** — the deontic bond that binds an accountable agent/role to the service clause.
+* **Work & evidence (`U.Work` + carriers)** — the actual enactment and the traces/metrics used to adjudicate fulfilment.
+
+A “contract” bundle typically spans the whole A.6.B square; route each piece explicitly:
+
+* `L-*`: definitions/invariants of the signature (“what it means”).
+* `A-*`: admissibility/entry predicates (“when it can be applied”).
+* `D-*`: duties/SLAs/penalties and who is accountable (“who is bound to what”).
+* `E-*`: evidence/observability claims (“how fulfilment/violation is adjudicated”).
+
+Example 2 (§F.18:18.2) shows one naming instantiation of this unpacking.
+
 ### F.18:17 - Migration notes (renames, splits, merges, retirements)
 
 **M1 — Start from Contexts, not from the old global word.** When inheriting legacy names, first **re‑harvest** terms inside the chosen Contexts (F.2–F.3). Only then decide whether to **reuse** or **mint** (F.8).
@@ -38173,6 +39376,9 @@ Every Name Card **SHALL** declare its `CardMode ∈ {MintNew, DocumentLegacy}`. 
 * **Chosen from frontier (Unified Tech / Plain):**  
   `U.Service` / “service (promise)”; `U.SpeechAct` / “utterance”; `U.Commitment` / “commitment”.  
   *Discarded highlights:* **Offering** (business‑model connotations); **Declaration** (too narrow for performatives); **Obligation** (legalese; narrower than commitment envelope).
+* **Ontology note (informative):**
+  `U.SpeechAct` and `U.Commitment` are defined normatively in Part A (A.2.9 and A.2.8 respectively). This F.18 card is a lexical/NQD anchor, not the ontology definition site.
+
 * **Bridges:** utterance **institutes** commitment; commitment **binds** service clause; no synonymy claimed.
 * **Why it matters:** Status tracking becomes intelligible without pretending that a “service” acts; the NQD‑front yields neutral, cross‑tradition readable labels. (F.12; F.17 blocks D/R.)
 
