@@ -7769,14 +7769,14 @@ F.18 provides the **naming** intuition (service/promise vs utterance vs commitme
 ## A.6.0 - U.Signature - Universal, law‑governed declaration for a SubjectKind on a BaseType
 
 **Status.** Architectural pattern, kernel‑level and universal.  
-**Placement.** Part A (Kernel), **before A.6.A** (“Architheory Signature & Realization”) and **A.6.1** (“U.Mechanism”).  
+**Placement.** Part A (Kernel), **before A.6.1** (“U.Mechanism”).  
 **Builds on.** **A.2.6** (USM: context slices & scopes), **E.8** (authoring order), **E.10** LEX-BUNDLE (registers, naming, stratification), **E.10.D1** D.CTX (Context discipline).
   
-**Coordinates with.** **A.6.A** (architheory specialisation of signatures), **A.6.1** (mechanism as law-governed signature), **A.6.5** (`U.RelationSlotDiscipline` for n-ary arguments), **Part F** (Bridges & cross-context transport; naming). Conformance keywords: RFC 2119.
+**Coordinates with.** **A.6.1** (U.Mechanism), **E.5.3** (Unidirectional Dependency), **E.10** (LEX-BUNDLE), and **Part F** (harnesses & cross-context transport; naming). Conformance keywords: RFC 2119.
 
 ### A.6.0:1 - Problem frame
 
-FPF already uses “signatures” to stabilise public promises of **architheories** and, via **A.6.1**, of **mechanisms**. But authors also need stable, minimal declarations for **theories** (LOG), **methods** (operational families), and even **disciplines** (regulated vocabularies). Without **one** universal notion of signature:
+FPF already uses “signatures” to stabilise public promises of **reusable extension vocabularies** and, via **A.6.1**, of **mechanisms**. But authors also need stable, minimal declarations for **theories**, **methods** (operational families), and **disciplines** (regulated vocabularies). Without **one** universal notion of signature:
 * similar constructs proliferate under incompatible names;
 * readers cannot tell what is **declared** (intension & laws) versus what is **implemented** (specification);
 * cross‑context reuse lacks a canonical place to state **applicability** and **lawful vocabularies**.
@@ -7798,10 +7798,9 @@ If each family (architheories, mechanisms, methods, disciplines) invents its own
 
 | Force | Tension |
 | --- | --- |
-| **Universality vs. fitness** | One shape must fit **architheories**, **mechanisms**, **theories**, **methods**, **disciplines**, without over‑committing to any one of them. |
-| **Intension vs. specification (I/D/S)** | Signatures declare **what** and **the laws** (intension), not recipes or test harnesses (specification). |
-| **Simplicity vs. expressivity** | Keep the kernel small while leaving **normalized** slots for specialisations (e.g., Γ‑export in A.6.A; Transport in A.6.1). |  
-| **Locality vs. transport** | Meaning is context‑local (D.CTX), yet cross‑context use must be explicit and auditable via Bridges without smuggling implementation. |
+| **Universality vs. fitness** | One shape must fit **Kernel**, **Mechanisms**, **Protocols**, and other specialised signatures, without over‑committing to any one family. || **Intension vs. specification (I/D/S)** | Signatures declare **what** and **the laws** (intension), not recipes or test harnesses (specification). |
+| **Simplicity vs. expressivity** | Keep the kernel small while allowing family‑specific header metadata and readable projections (e.g., imports/provides DAGs, assurance matrices, transport views). |
+| **Locality vs. transport** | Meaning is context‑local (D.CTX); transport must remain explicit and auditable (Part F) without smuggling implementation. |
 
 ### A.6.0:4 - Solution — **Define `U.Signature` once, reuse everywhere**
 
@@ -7819,7 +7818,7 @@ where `SubjectBlock = ⟨SubjectKind, BaseType, SliceSet, ExtentRule, ResultKind
 
 **Naming discipline.** The `Subject` **MUST** be a **single‑sense** noun phrase; avoid synonyms/aliases within the same Signature.
 
-A `U.Signature` is **conceptual**: it contains **no implementation, no packaging/CI metadata, and no Γ‑builders**. Γ‑export, if any, is governed by **A.6.A** and only for architheories with `classification=CAL`.
+A `U.Signature` is conceptual: it contains no implementation, no packaging/CI metadata, and no Γ-builders. If a family wants to expose a Γ‑like *builder/aggregator*, publish it **outside** the Signature Block (typically as an **A.6.1** Mechanism‑level operator) and **namespace** it under the Signature id; do not treat Γ as part of the canonical Vocabulary.
 
 #### A.6.0:4.1 - The **Signature Block (universal form)**
 
@@ -7913,17 +7912,37 @@ If a Signature’s **Vocabulary** includes an **EffectDiscipline** (operation/ef
 * **I/D/S separation.** A signature **states intension and laws**; Realizations (if any) carry **specifications**. Do not mix tutorial text or operational recipes into the Block. Do **not** include **AdmissibilityConditions** or run‑time admissions here.
 * **Context discipline.** Bind Applicability to a **`U.BoundedContext`**. If cross‑context use is intended, **name** the crossing and **reference** the Bridge (Part F/B); A.6.0 does **not** prescribe **compatibility/loss tables (CL, including `CL^plane`)** or penalty formulas.
 * **Stratification.** Use LEX‑BUNDLE registers and strata; do not redefine Kernel names in lower strata (no cross‑bleed).  
-* **Imports location.** If your family requires an explicit **imports** list (e.g., A.6.A Architheory), place it in the **Signature header** or the **family‑specific view**, not inside the universal four‑row Block.
+* **Signature manifest.** If the signature is intended to be imported/reused, publish a `SignatureManifest` immediately above the Block with explicit `id`, `imports`, and `provides` lists (§4.4.1). Keep the universal four‑row Block free of dependency/export metadata.
 
-* **Token hygiene.** Do **not** mint new `U.*` tokens inside a Signature without a **DRR**; prefer referencing existing Kernel/Architheory `U.Type`s. 
+##### A.6.0:4.4.1 - SignatureManifest (imports/provides; normative)
+
+A `U.Signature` MAY be prefixed with a lightweight manifest that makes boundary dependencies explicit **without** introducing a separate “module system”.
+
+**SignatureManifest** fields (conceptual; concrete syntax is editorial):
+
+- `id : SignatureId` — stable identifier for cross-references.
+- `status : {draft | stable | deprecated}` (optional).
+- `imports : [SignatureId]` — other signatures whose **provides** are referenced by this signature (directed edges; possibly empty).
+- `provides : [SymbolId]`, where `SymbolId ∈ (U.TypeId ∪ OperatorId)` — the **only** new public symbols minted by this signature that downstream text may depend on.
+
+**Norms (boundary hygiene):**
+
+- **Acyclicity.** The directed graph induced by `imports` MUST be acyclic.
+- **No redeclare.** `provides(S)` MUST NOT re‑declare any symbol already provided by any transitive import of `S`.
+- **No ghost dependencies.** Any non‑Kernel symbol referenced in the Signature Block MUST be provided by some imported signature.
+- **Law anchoring.** When downstream text depends on laws/constraints from an imported signature, it SHOULD cite the corresponding **ClaimId** (A.6.B), not paraphrase prose.
+
+The A.6.0 four‑row Block remains the source of truth for meaning (Vocabulary/Laws/Applicability). The manifest only declares dependency edges and exported names.
+
+* **Token hygiene.** Do **not** mint new `U.*` tokens inside a Signature without a **DRR**; prefer referencing existing Kernel/Extension `U.Type`s. 
 
 *MVPK publication discipline for Signatures (normative).* When publishing a `U.Signature` via MVPK (E.17), faces **SHALL** be typed projections that add **no new claims**; any numeric/comparable statement **MUST** pin unit/scale/reference‑plane/**EditionId** to **CG‑Spec/MM‑CHR** where applicable. For deductive substrates, faces **MUST** carry a **No‑Realization pin** (handlers/realizers absent). For Principle‑level signatures, faces **MUST NOT** introduce units/ReferencePlane/Transport (first mention occurs in UNM).
 
 #### A.6.0:4.5 - Specialisation knobs (for downstream patterns)
 
-A.6.0 exposes **three** conceptual knobs; specialisations (A.6.A, A.6.1, method/discipline specs) may **tighten** them:
+A.6.0 exposes **three** conceptual knobs; downstream patterns (A.6.1, method/discipline specs) may **tighten** them:
 
-1. **Builder policy.** Whether a signature may commit to a builder `Γ_*` is not decided here; **A.6.A** governs this for architheories (`classification=CAL` only).
+1. **Builder policy.** The Block MUST NOT export Γ‑builders. If a family publishes a Γ‑like builder/aggregator, it MUST be outside the Block (typically as an **A.6.1** Mechanism‑level operator), explicitly marked optional, and namespaced under the Signature id.
     
 2. **Transport clause.** If cross‑context/plane use is part of the design, the signature **may declare** a conceptual Transport clause; **A.6.1** gives a concrete schema (Bridge, **CL/CL^k/CL^plane**—Bridges per **F.9**, penalties per **B.3**, **CL^plane** per **C.2.1**), but A.6.0 remains agnostic about penalty shapes.
     
@@ -8200,7 +8219,7 @@ and admits Realizations (kernel‑level or architheory‑level) that respect it.
 * **IntensionHeader.** `id` (PascalCase), `version` (SemVer), `status` (draft/review/stable/deprecated).  
   If realized as an **Architheory**, add the **A.6.A** header with `classification ∈ {CAL|LOG|CHR}` and `imports/provides`; **only CAL may export exactly one Γ**; **LOG/CHR export none**. For **Kernel‑level** realizations, do **not** mint an A.6.A header.
 
-* **Imports.** Architheory Signatures / `U.Types` this mechanism requires (notation‑independent; **acyclic**). When realized as an Architheory, **LOG/CHR may import CAL; CAL may import CAL** (A.6.A layering).
+* **Imports.** (Optional) SignatureIds that supply non‑Kernel symbols used by the referenced signature and/or this mechanism’s operation algebra. If present, the list MUST be acyclic and SHOULD match the referenced Signature’s `SignatureManifest.imports` (A.6.0:4.4.1).
 * **BaseType.** A `U.Type` the mechanism ranges over. CHR spaces (e.g., a `U.CharacteristicSpace`/chart family) appear here **as types**; outside CHR, use set‑typed `U.Type`s. A conformant `U.Mechanism` publication **MUST NOT** mint a new core type here; it **MUST** reference existing `U.Type`s. If planes differ, state the **ReferencePlane** policy (see *PlaneRegime*).
 * **SubjectKind / SliceSet / ExtentRule / ResultKind? / SlotIndex.**
   • **SubjectKind.** The intensional kind acted upon (C.3.1/3.2), separate from quantification.
@@ -9781,10 +9800,10 @@ When you think you need “retargeting” in FPF, ask:
 
 **Plain-name.** Relational precision restoration suite.
 
-**Intent.** Provide a family-level, reusable discipline for repairing a recurring defect in FPF texts: **under‑specified relational language** (often phrased as a seemingly binary verb) that actually hides **(i)** higher arity (missing participant positions), **(ii)** multiple semantic change classes, **(iii)** viewpoint/view asymmetry, and **(iv)** boundary obligations (laws vs admissibility vs deontics vs evidence/work).
+**Intent.** Provide a family-level, reusable discipline for repairing a recurring defect in FPF texts: **under‑specified relational language** (often phrased as a seemingly binary verb) that actually hides **(i)** higher arity (missing participant positions), **(ii)** multiple semantic change classes, **(iii)** viewpoint/view asymmetry, **(iv)** boundary obligations (laws vs admissibility vs deontics vs evidence/work), and **(v)** endpoint referential compression (pronominal/metonymic stand‑ins and over‑broad kinds).
 RPR patterns turn “umbrella relations” into **kind‑explicit, slot‑explicit, qualified relation records** with an explicit **change-class lexicon** and **lexical guardrails**, while respecting the **A.6 Signature Stack** and **A.6.B Boundary Norm Square** separation. 
 
-**Placement.** Part A → cluster **A.6 Signature Stack & Boundary Discipline** → header pattern for the **relation‑precision restoration family** (A.6.5, A.6.6, and future A.6.x patterns). 
+**Placement.** Part A → cluster **A.6 Signature Stack & Boundary Discipline** → header pattern for the **relation‑precision restoration family** (A.6.5, A.6.6, A.6.8, and future A.6.x patterns). 
 
 **Builds on.**
 
@@ -9808,12 +9827,14 @@ RPR patterns turn “umbrella relations” into **kind‑explicit, slot‑explic
 * **C.3.3 `U.KindBridge` + `CL^k` discipline** (repairing endpoint kind mismatches; kind-level congruence + loss notes).
 * **E.17 MVPK / multi‑view publication** (faces are views; “no new semantics”; viewpoint accountability).
 * **E.19 pattern quality gates** (review/refresh discipline for guardrails and conformance lists).
+* **F.17 `UTS`** (when ambiguity clusters become recurring vocabulary: publish stable `RelationKind` tokens and facet head phrases as UTS/LEX‑governed term assets, so rewrites don’t live only inside A‑patterns).
 * **F.9 Bridges + CL** for cross‑Context/plane reuse (no silent sameness). 
 
 **Specialisations already in Core.**
 
-* **A.6.5**: RPR for “putting something into a place” (explicit SlotKinds + ValueKind/RefKind + slot‑operation lexicon). 
+* **A.6.5**: RPR for n‑ary relations and slot discipline (archetype: “putting something into a place”; explicit SlotKinds + ValueKind/RefKind + slot‑operation lexicon). 
 * **A.6.6**: RPR for “relative‑to / basedness” claims (explicit `baseRelation` token + scoped, witnessed base declarations + base‑change lexicon; lexical red‑flags for `anchor*`). 
+* **A.6.8 (RPR‑SERV)**: RPR for the “service” cluster polysemy (facet‑explicit `serviceSituation` lens; canonical rewrites for `service`/`server`/`service provider`; routing tests for clause vs access point vs provider commitment vs work+evidence).
 
 ### A.6.P:0 — TERM/LEX token guards (local-first)
 
@@ -9832,7 +9853,7 @@ This pattern reserves the following tokens on Tech (normative) surfaces:
 
 Rename-guards (common collisions):
 
-* **contract** — Plain shorthand for “published boundary interface description”; it MUST NOT be read as a promise/obligation by an episteme. Promises, duties, and gates route via A.6.B.
+* **contract** — Plain shorthand for “published boundary interface description”; a conforming text MUST NOT treat the term *contract* as itself establishing a promise/obligation. Promises, duties, and gates route via A.6.B.
 * **bind/binding** — reserved for **name binding** (Identifier → SlotKind/slot-instance) and MUST NOT be used as a synonym for relation instance edits.
 * **same/synced/linked/connected/anchored/grounded** — treated as umbrella tokens; allowed as Plain gloss only when immediately mapped to an explicit RelationKind token (Tech) via rewrite rules.
 
@@ -9853,6 +9874,7 @@ Authors describe a situation with an apparently simple relational phrase:
 3. **Viewpoint fights.** Different stakeholders describe “the same” relation from incompatible viewpoints, creating polarity flips and silent re‑typing.
 4. **Unnameable change semantics.** Authors say “update/bind/anchor/sync”, but mean distinct semantic change classes (retarget vs revise vs rescope vs retime vs witness refresh).
 5. **Regression via prose.** Even after ontology repairs, umbrella language re‑enters and collapses distinctions unless structural precision is coupled to lexical guardrails.
+6. **Pronominal/metonymic endpoints.** Even when the relation verb is fixed, endpoints may be referred to via pronoun‑like or umbrella tokens (or metonymic pointers), so the relation cannot be typed or audited until endpoint facets/kinds are restored from context.
 
 A.6.P defines a **repeatable precision restoration recipe** that makes this defect repairable and reusable across future A.6.x patterns. 
 
@@ -9885,13 +9907,87 @@ A.6.P defines a **suite recipe**. A pattern is a **RPR‑pattern** (member of A.
 
 A relation mention is in-scope for A.6.P when **any** of the following holds:
 
-* the predicate/verb phrase is **lexically overloaded** (umbrella tokens such as “same/sync/link/connect/anchor/ground/align/map/depends”), OR
-* the statement implicitly relies on **scope / Γ_time / viewpoint-view / schemes** (reference, representation), OR
-* the relation is used for **assurance / admissibility / gating / publication** decisions, OR
-* the relation crosses **Contexts or planes** (requires Bridges + CL; no silent equivalence), OR
+* the predicate/verb phrase is **lexically overloaded** (umbrella tokens such as “same/sync/link/connect/anchor/ground/align/map/depends”), or
+* one or more endpoints/qualifiers are expressed via **pronominal / deictic / metonymic stand‑ins** or **over‑broad kind tokens** (e.g., “it/this/that”, “the service”, “the system”, “at the table”), such that multiple referents/facets remain plausible, or
+* the statement implicitly relies on **scope / Γ_time / viewpoint/view / schemes** (reference, representation), or
+* the relation is used for **assurance / admissibility / gating / publication** decisions, or
+* the relation crosses **Contexts or planes** (requires Bridges + CL; no silent equivalence), or
 * different stakeholders interpret endpoints differently (multi-view asymmetry and polarity fights).
 
-**So what? adoption test (review heuristic).** If a reviewer can reasonably ask any of: “Which kind is this?”, “What else participates?”, “Under what scope/time/view?”, “What changed?”, or “What makes this admissible?”, then authors SHOULD treat the mention as in-scope and rewrite it into explicit kind+slots form before using it for cross‑Context reuse or decision/publication claims.
+**Adoption test (review heuristic).** If a reviewer can reasonably ask any of: “Which kind is this?”, “What exactly does this span refer to (which facet/kind, and in which lane: Object vs Description vs Carrier)?”, “What else participates?”, “Under what scope/time/view?”, “What changed?”, or “What makes this admissible?”, then authors SHOULD treat the mention as in-scope and rewrite it into explicit kind+slots form before using it for cross‑Context reuse or decision/publication claims.
+
+#### A.6.P:4.0a — Operational pipeline (how repairs actually proceed)
+
+The suite is presented as **lens → slots → change lexicon → guardrails** because the *stable abstraction* is what keeps repairs reusable. In actual editing, repairs often start from a **triggering surface token** and proceed through a context‑reconstruction step.
+
+Operationally, authors SHOULD follow this pipeline when applying an RPR repair:
+
+1. **Trigger on surface form.** Detect umbrella relation predicates *and* pronominal/umbrella endpoint tokens or metonymic pointers (including domain clusters such as **service** in A.6.8).
+2. **Reconstruct the situation ontology from local context.** Enumerate candidate referents/facets for endpoints *(including A.7 lane: Object vs Description vs Carrier when it matters)* and candidate `RelationKind` tokens for the umbrella predicate, plus implied participants (scope/time/view/scheme/mediator artefacts). Capture the result as a **Candidate‑Set Note** (A.6.P:4.0b) so review has a checkable artifact: candidates → selected facet/kind → why. When metonymy is plausible, include both the *literal* and the *intended* candidates.
+3. **Choose a stable lens** that can represent the reconstructed arity/polarity without ad‑hoc role invention.
+4. **Refine the ontology under the lens.** Turn implied roles into SlotSpecs; repair endpoint kind mismatches explicitly (narrowing / KindBridge / retargetParticipant); make qualifiers explicit as slots.
+5. **Emit canonical rewrites + routing hooks.** Produce Tech‑form rewrites (`relationKind(…)` / arrow form) and state the A.6.B hooks: which parts are L vs A vs D vs E, and which witnesses/commitments/work claims are now demanded.
+
+**Decision/publication fail‑closed (normative).** If an in‑scope mention is used to justify an admissibility gate, publication claim, or cross‑Context reuse, authors MUST resolve the candidate sets to a selected `RelationKind` and selected endpoint facets/kinds and emit an explicit rewrite. If that cannot be done from available context and witnesses, keep the statement as Plain/informative gloss (or split into multiple explicit alternatives) and do not treat it as admissible input for the gate.
+
+**Informative: referential compression spectrum.** Many triggers live on a spectrum from high to low referential precision:
+pronouns/deictics → overloaded polysemes → coarse domain kinds → facet head phrases → precise domain terms.
+Metonymy often shifts the denotation (e.g., a place phrase standing in for an object or a role). The pipeline explicitly treats this as a **candidate‑set** problem, not as “the dictionary meaning”.
+
+**Metonymy micro-example (informative; endpoint-side trigger beyond anaphora).**
+
+Draft: “Alice is **at the table**.”
+
+`at the table` → candidates `{place, meeting, artifact, role}` → choose explicitly → rewrite into endpoint‑refs + qualifiers:
+
+```
+CandidateSetNote(triggerSpan="at the table", role=endpointFacet(p₂)):
+- candidates: {PlaceRef(Table#7), MeetingRef(NegotiationSession#3), ArtifactRef(AgendaDoc#12), RoleRef(DecisionMakerSeat#2)}
+- selected:   MeetingRef(NegotiationSession#3) + RoleRef(DecisionMakerSeat#2)  // metonymy: place → meeting/role
+- consequence: require explicit `meetingRef`, `roleRef`, `Γ_time`, `witnesses` (and route decision/admissibility separately via A.6.B)
+
+participatesInMeetingUnder(
+  personRef  = PersonRef(Alice),
+  meetingRef = MeetingRef(NegotiationSession#3),
+  roleRef    = RoleRef(DecisionMakerSeat#2),
+  Γ_time     = snapshot(t),
+  witnesses  = {attendanceLogPins}
+)
+```
+
+If the literal location reading is intended, select `PlaceRef(Table#7)` and rewrite as `locatedAt(…)` with an explicit `Γ_time` qualifier.
+
+This step is intentionally **not lexicon‑only**. The lexical rewrite is the *output* of an ontology‑ and lens‑constrained repair, not the starting point. If you cannot state the candidate referents/facets and the selected RelationKind token, the repair is incomplete.
+
+#### A.6.P:4.0b — Candidate‑Set Note (informative; review artifact)
+
+When endpoint identity (pronoun/deixis/metonymy/coarse kind) or relation‑kind selection is ambiguous, reviews can collapse into “lexicon debates”. A.6.P treats this as an ontology reconstruction step with an explicit, checkable intermediate artifact.
+
+**Candidate‑Set Note template (informative).**
+
+> **Collision note.** This “Candidate‑Set Note” is **not** the F.18 naming-process *candidate set* (NQD-front). It is a local disambiguation artifact for endpoint referents/facets and RelationKind selection during RPR repairs.
+
+For each ambiguous role (relation kind, endpoint facet/kind, qualifier, mediator), record:
+
+* **Trigger span:** the exact surface token(s) in the draft (copy/paste).
+* **Role being disambiguated:** `relationKind` | `endpointFacet(pᵢ)` | `endpointRef(pᵢ)` | `qualifier(qⱼ)` | `mediator`.
+* **Lane (A.7) (when endpoint‑side):** `Object` | `Description` | `Carrier` (state explicitly when live contenders span lanes; lane‑mixing is a common source of “contract” category errors).
+* **Candidate set:** a short list of plausible **kinds/facets** and/or **RelationKind tokens** (not synonyms), each with the local cue(s) that made it plausible.
+* **Selected facet/kind (and selected RelationKind, if relevant):** the chosen candidate(s).
+* **Why:** the discriminating test(s) that were applied, plus pointers to the specific local evidence/witness cues used (carriers, claims, artefacts).
+* **Consequence:** which SlotSpecs become required/forbidden and which A.6.B hooks are now triggered (L/A/D/E).
+
+Minimal one‑screen representation:
+
+| Candidates (kinds/facets/tokens) | Selected facet/kind | Why (tests + cues) | Consequence (slots + routing hooks) |
+| --- | --- | --- | --- |
+| C1 …; C2 …; C3 … | … | … | … |
+
+**Notes.**
+
+* For **metonymy**, list both the literal candidate and the intended target candidate (and make the shift explicit).
+* Keep the candidate set small: include only live contenders, and state the elimination test for the others.
+* This note is **informative**: it does not replace routed L/A/D/E claims. It exists to prevent “lexicon instead of ontology”.
 
 #### A.6.P:4.1 — Stable lens
 
@@ -9909,16 +10005,16 @@ The lens is a compression device: one stable abstraction that keeps the relation
 
 For every in‑scope relational claim, authors SHALL select (or mint) an explicit **RelationKind token** as a declared vocabulary element.
 
-A RelationKind token SHALL be usable as a `U.Signature`‑level vocabulary element with explicit SlotSpecs for its participant and qualifier positions (SlotKind/ValueKind/refMode). 
+A RelationKind token is authored as a `U.Signature`‑level vocabulary element with explicit SlotSpecs for its participant and qualifier positions (`⟨SlotKind, ValueKind, refMode⟩`). 
 
 **RelationKind contract skeleton (minimum, recipe-level).**
-For each `RelationKind` token, the Context SHALL publish a vocabulary entry whose **signature-level definition** is paired with (or points to) a **routed claim bundle** (“contract skeleton”) that declares (at minimum):
+For each `RelationKind` token, a conforming Context publication SHALL publish a vocabulary entry whose **signature-level definition** is paired with (or points to) a **routed claim bundle** (“contract skeleton”) that declares (at minimum):
 
 The leading **(L)/(A)/(D)/(E)** tags below indicate the intended **A.6.B quadrant routing** for each element of the skeleton.
 
 * **(L) applicability** (A.6.0): the Context/planes where the kind is defined (local meaning is first-class).
 * **(L) polarity**, and (if needed) explicit **inverse tokens** (no silent role flips in Tech prose).
-* **(L) SlotSpecs** for all participant positions (`⟨SlotKind, ValueKind, refMode⟩`).
+* **(L) SlotSpecs** for all participant positions (and any qualifier slots exposed by the family) (`⟨SlotKind, ValueKind, refMode⟩`, where `refMode` is either `ByValue` or a concrete `RefKind` token per A.6.5).
 * **(A) repair path for endpoint kind mismatches** (normative): allowed repairs are (i) explicit narrowing, (ii) a `KindBridge` (+ `CL^k` + loss notes), and/or (iii) explicit `retargetParticipant`. Renaming endpoints is not a repair.
 * **(L) qualifier expectations**: which qualifiers are required/optional/forbidden (scope, `Γ_time`, viewpoint/view, reference scheme, representation scheme).
 * **(D) qualifier placement discipline**: extra parameters belong in `scope` or explicit qualifier slots, not as adjectives attached to endpoint names.
@@ -9936,10 +10032,11 @@ Treat “contract” as a routed set of claims, not a single magical object:
 
 #### A.6.P:4.3 — Slot‑explicit qualified relation records (recover hidden arity)
 
-Each concrete occurrence of an A.6.P relation SHALL be representable as a **Qualified Relation Record** (a first‑class record/episteme in the relevant Context) that fills the relation’s slots.
+A conforming text SHALL ensure that each in‑scope relation instance is representable as a **Qualified Relation Record** (a first‑class record/episteme in the relevant Context) that fills the relation’s slots.
 
 Conceptual notation‑neutral shape:
 
+**Notation note (A.6.5 alignment).** In this family `refMode` is a slot‑content mode: either `ByValue` (inline value of the declared ValueKind) or a concrete `RefKind` token (slot holds a reference/pin of that RefKind).
 ```
 QualifiedRelationRecord :=
 ⟨ relationKind : RelationKind, // vocabulary token / registry entry (signature-level)
@@ -9971,7 +10068,7 @@ QualifiedRelationRecord :=
 * **WF‑A6P‑QR‑2 (No silent kind swap).** `relationKind` is part of a record’s identity/edition boundary. If the kind changes, the result is represented as a distinct record/edition linked by an explicit `changeRelationKind` (or an explicit withdrawal + re‑declaration), not as an in-place mutation that preserves identity.
 
 **Normative prose forms (Tech).**
-In Tech/normative prose, an in‑scope relation instance SHALL be expressed in one of the following equivalent forms:
+In Tech/normative prose, authors SHALL express an in‑scope relation instance in one of the following equivalent forms:
 
 * **Functional form:** `relationKind(p₁=…, …, pₙ=…, qualifiers…)`
 * **Arrow form (binary projection only):** `p_left --relationKind{qualifiers}--> p_right`
@@ -9979,7 +10076,7 @@ In Tech/normative prose, an in‑scope relation instance SHALL be expressed in o
 Passive umbrella voice (“X is synced/linked/anchored …”) is permitted only as Plain gloss when immediately rewritten into one of the above forms.
 
 **Cross‑Context/plane note (recipe-level).**
-If any participant/qualifier implies cross‑Context or cross‑plane reuse, the relation instance MUST cite the relevant Bridge ids + CL policy (and loss notes, when applicable) in the appropriate routed claims (typically `A-*` and/or `E-*`). Label identity is not an admissible substitute.
+If any participant/qualifier implies cross‑Context or cross‑plane reuse, the routed claim bundle MUST cite the relevant Bridge ids + CL policy (and loss notes, when applicable) in the appropriate routed claims (typically `A-*` and/or `E-*`). Label identity is not an admissible substitute.
 
 #### A.6.P:4.4 — Change‑class lexicon (operations are not adjectives)
 
@@ -9988,7 +10085,7 @@ A RPR‑pattern SHALL publish a **relation‑change lexicon**: a small set of se
 Minimum semantic change classes (conceptual; specialisations may add more):
 
 1. **declareRelation** — mint a new qualified relation record (slot‑explicit).
-2. **withdrawRelation** — retire a relation instance (or restrict its declared scope/time so downstream admissibility gates treat it as out-of-scope).
+2. **withdrawRelation** — retire a relation instance (render it inactive for downstream use). If the intent is narrowing (still valid within a smaller scope/window), use `rescope`/`retime` rather than overloading withdrawal.
 3. **retargetParticipant(slotKind, newRef)** — change a RefKind slot-content while preserving SlotKind and ValueKind (conceptually corresponds to slot‑level **retarget**). 
 4. **reviseByValue(slotKind, newValue)** — edit embedded by‑value content (conceptually corresponds to slot‑level assign/update or “by‑value edit”). 
 5. **rescope(newScope)** — change scope explicitly (no “in our context” prose).
@@ -10012,19 +10109,21 @@ Normative base rules (suite-level):
 * **“bind/binding” is reserved for name binding** (Identifier → SlotKind/slot‑instance) and MUST NOT be used as a synonym for declaring/changing a relation instance. Use the change‑class lexicon instead. 
 * Pattern-defined carve‑outs MAY exist (reserved primitives elsewhere), but they remain review triggers to ensure the reserved sense is intended (as in A.6.6’s `anchor*` carve‑out rule). 
 
+**Recommended publication move (no tooling implied).** For stable ambiguity clusters, publish the red‑flag token list and canonical rewrites as a LEX‑BUNDLE entry (PTG=Guarded) and, when the cluster introduces new `RelationKind` tokens or stable facet head phrases, include them in the relevant UTS rows (F.17). This keeps rewrite discipline shareable outside the A.6 cluster.
+
 #### A.6.P:4.6 — Progressive elaboration (the “precision dial” rule)
 
 A.6.P supports a controlled escalation path that preserves meaning and prevents drift:
 
-1) Start with a minimal explicit **RelationKind token** + principal endpoints (a binary projection is allowed only if the missing slots are truly irrelevant for the use-case).
+1) Start with a minimal explicit **RelationKind token** + principal endpoints (a binary projection is allowed only if every omitted participant/qualifier slot is contractually optional *and* irrelevant for the downstream lane(s)).
 
 2) When ambiguity emerges, **do one (or more) explicitly**:
    * add missing participants as additional slots (turn the projection into n‑ary),
-   * add explicit qualifiers (scope / `Γ_time` / viewpoint-view / schemes / witnesses),
+   * add explicit qualifiers (scope / `Γ_time` / viewpoint/view / schemes / witnesses),
    * refine the RelationKind token to a more specific one (new contract skeleton; `changeRelationKind`),
    * introduce Bridges + CL (and loss notes) when crossing Contexts/planes.
 
-3) The transition MUST be monotone:
+3) Authors MUST keep the transition monotone:
    * no silent re‑typing,
    * no implicit polarity flips,
    * no “edit‑in‑place” that changes meaning (use edition fences + explicit continuity/withdrawal links).
@@ -10045,6 +10144,24 @@ A RPR‑pattern SHALL include an actionable guide:
 > “If the draft says *X*, decide between relation kinds A/B/C, expand missing slots, and rewrite into explicit kind+slots notation.”
 
 For basedness families, A.6.6 provides an existence proof of such a guide (select baseRelation family; add scope/time/witnesses). A.6.P requires this move suite‑wide. 
+
+**Recommended format: RPR‑Disambiguation Guide (Winograd‑style, but ontology‑first).**
+To keep disambiguation from collapsing into dictionary debates, present the guide as a compact decision scaffold:
+
+* **trigger surface form** → **candidate RelationKinds / candidate facets (kinds)** → **discriminating questions/tests** → **canonical rewrite(s)** → **L/A/D/E routing hooks**
+
+Rules for the guide:
+
+* Triggers may be **relation umbrellas** (“same/synced/linked/anchored…”) *or* **participant umbrellas** (pronominal/metonymic/over‑broad kind tokens). The guide SHALL state which role(s) the trigger is standing in for (relation kind, endpoint kind, qualifier, mediator).
+* Candidate sets SHALL be stated as **kinds/facets/RelationKind tokens**, not as synonym lists. “Service” ⇒ {service clause, access point, provider principal, commitment, work+evidence, …} is the archetype (A.6.8).
+* When endpoint‑side ambiguity is present, the guide SHOULD recommend producing a **Candidate‑Set Note** (A.6.P:4.0b) as part of the rewrite, so the chosen facet/kind is reviewable.
+* Discriminating questions SHOULD be phrased as small **tests** that map directly to slot requirements (e.g., “Can you call it?” ⇒ `accessPointRef`; “Is it deontic?” ⇒ `commitmentRef` + accountable principal; “Is it actuals?” ⇒ `deliveryWorkRef` + witnesses).
+* Canonical rewrites SHALL land in the A.6.P Tech forms (functional/arrow) and SHALL specify any newly required qualifiers (scope, Γ_time, viewpoint/view, schemes, witnesses).
+* Routing hooks SHALL name which claim(s) are expected in each quadrant (L/A/D/E) so that “unpacking” reliably produces reviewable obligations rather than prose paraphrases.
+
+**Mini-row (metonymy; endpoint-side trigger, illustrative).**
+
+`"at the table"` → `{PlaceRef(Table#7), MeetingRef(NegotiationSession#3), RoleRef(DecisionMakerSeat#2)}` → tests `{Is the claim about physical location? about participation? about accountable role? which carrier-anchored witnesses exist (badge/access log, calendar invite, minutes/recording)?}` → rewrite `{locatedAt(personRef=…, placeRef=…, Γ_time=…, witnesses=…) | participatesInMeetingUnder(personRef=…, meetingRef=…, roleRef?=…, Γ_time=…, witnesses=…)}` → L/A/D/E hooks `{L: publish RelationKind tokens + SlotSpecs + polarity/inverses; A: decision/publication use requires explicit Γ_time + witness set; D: forbid metonymic endpoint spans in Tech prose (require explicit refs); E: cite carrier-anchored witnesses and their observation conditions}`.
 
 #### A.6.P:4.9 — A.6.B routing template for RPR relation families
 
@@ -10091,20 +10208,29 @@ An operations note says: “Staging is the same service as Production.” Months
 Treat “same” as a red-flag umbrella token. Rewrite into an explicit cross-Context relation kind,
 typed to the facet the draft actually uses (service delivery system sameness for actuals/evidence aggregation; not about service clauses).
 
+**Show (candidate‑set note; endpoint facet restoration).**
+
 ```
+CandidateSetNote(triggerSpan="service" in "same service", role=endpointFacet(p₁)):
+- candidates: {serviceClause, serviceAccessPoint, serviceProviderPrincipal, serviceDeliverySystem}
+- selected:   serviceDeliverySystem
+- why:        the claim is later used to justify mixing operational actuals/evidence (metrics + incident logs);
+  local cues point to delivery artefacts (manifests/config/test runs), not clause carriers
+- consequence: endpoints typecheck as `DeliverySystemRef` participants; clause/provider facets are explicitly out-of-scope
+
 sameDeliverySystemUnder(
   leftDeliverySystemRef  = SystemRef(staging_delivery_system),
   rightDeliverySystemRef = SystemRef(prod_delivery_system),
   scope     = ClaimScope{SLO_family = X, signals = {latency, error_rate}},
-  Γ_time    = Window(2025-12-01..2026-01-31),
+  Γ_time    = interval[2025-12-01, 2026-01-31],
   viewpoint = OpsViewpoint,
   witnesses = {deploymentManifestPins, configPins, testRunPins}
 )
 
 aggregationAdmissibleIff(
-  relationKind = sameDeliverySystemUnder@ed=…,
+  relationRef  = RelationRef(sameDeliverySystemUnder, SystemRef(staging_delivery_system), SystemRef(prod_delivery_system), ed=…),
   target       = deliveryWorkMetrics,                   // actuals
-  Γ_time       = Window(2025-12-01..2026-01-31),
+  Γ_time       = interval[2025-12-01, 2026-01-31],
   witnesses    = {metricCarrierPins, incidentLogPins}   // evidence carriers for the actuals
 )
 ```
@@ -10129,7 +10255,7 @@ entityMatchedBy(
   rightRef         = SystemRef(PhysicalTwin@ed=7),
   mappingArtifactRef = AlignmentModel_2025_11,
   scope            = ClaimScope{signals = S, metrics = M},
-  Γ_time           = Snapshot(t),
+  Γ_time           = snapshot(t),
   referenceScheme  = RefScheme(CustomerIdRegistry#EU),
   viewpoint        = DataEngineeringViewpoint,
   witnesses        = {evalRunPins, calibrationPins, mappingArtifactPins}
@@ -10148,7 +10274,7 @@ declareRelation(
     rightRef          = SystemRef(PhysicalTwin@ed=7),
     mappingArtifactRef= AlignmentModel_2026_01,
     scope             = ClaimScope{signals = S, metrics = M},
-    Γ_time            = Snapshot(t₂),
+    Γ_time           = snapshot(t₂),
     referenceScheme   = RefScheme(CustomerIdRegistry#EU),
     viewpoint         = DataEngineeringViewpoint,
     witnesses         = {evalRunPins_2026_01, calibrationPins_2026_01, mappingArtifactPins_2026_01}
@@ -10173,7 +10299,7 @@ Lenses tested: **Gov**, **Arch**, **Onto/Epist**, **Prag**, **Did**. Scope: **Un
 
 A pattern P conforms to A.6.P (i.e., is an RPR‑pattern) iff:
 
-> **Note.** This checklist defines conformance for **RPR specialisations** (e.g., A.6.5, A.6.6, and future A.6.x patterns). A.6.P itself is the **suite recipe**.
+ > **Note.** This checklist defines conformance for **RPR specialisations** (e.g., A.6.5, A.6.6, A.6.8, and future A.6.x patterns). A.6.P itself is the **suite recipe**.
 
 1. **CC‑A.6.P‑1 — Lens is explicit.**
    P SHALL name the stable lens used to stabilise the ambiguity cluster and justify its fit.
@@ -10183,7 +10309,7 @@ A pattern P conforms to A.6.P (i.e., is an RPR‑pattern) iff:
    The contract skeleton SHALL also declare admissible **repair paths for endpoint kind mismatches** (KindBridge / explicit narrowing / explicit retargeting) and enforce **qualifier placement discipline** (no adjective smuggling).
 
 3. **CC‑A.6.P‑3 — Slot‑explicit instances.**
-   Every in‑scope relation instance SHALL be expressible as a Qualified Relation Record filling all contract‑required participant slots (no hidden arity; see WF‑A6P‑QR‑1).
+   P SHALL ensure that every in‑scope relation instance is expressible as a Qualified Relation Record filling all contract‑required participant slots (no hidden arity; see WF‑A6P‑QR‑1).
 
 4. **CC‑A.6.P‑4 — Qualifiers are explicit when required.**
    If scope/time/viewpoint/reference-scheme assumptions matter (or the relation kind requires them), they SHALL be explicit; implicit “current/latest/in our context” SHALL NOT substitute.
@@ -10215,7 +10341,10 @@ A pattern P conforms to A.6.P (i.e., is an RPR‑pattern) iff:
     If a relation instance crosses Contexts/planes (or requires translation), the carrier SHALL cite Bridge ids + CL policy (and loss notes, when applicable). Label identity or “same anyway” prose SHALL NOT substitute.
 
 13. **CC‑A.6.P‑13 — Disambiguation guide is actionable.**
-    P SHALL include an explicit rewrite/selection guide that maps each red‑flag umbrella cluster to candidate `RelationKind` tokens, required qualifiers, and canonical rewrite forms.
+    P SHALL include an explicit rewrite/selection guide that maps each red‑flag umbrella cluster to candidate `RelationKind` tokens (and, when the ambiguity is endpoint‑side, to candidate endpoint facets/kinds), required qualifiers, and canonical rewrite forms.
+    The guide SHOULD follow the RPR‑Disambiguation format: **trigger → candidates → discriminating questions/tests → canonical rewrite → L/A/D/E routing hooks**.
+    
+    Where endpoint referential compression is a primary risk, the guide SHOULD also include (or point to) the **Candidate‑Set Note** template (A.6.P:4.0b) so instance‑level reviews have an auditable trail: candidates → selected facet/kind → why.
 
 14. **CC‑A.6.P‑14 — Grounding spans System and Episteme.**
     P SHALL include at least one Tell–Show–Show vignette in a **System** lane and at least one in an **Episteme** lane (per E.8), demonstrating a real ambiguity repair and a relation‑change narration using the change‑class lexicon.
@@ -10229,6 +10358,7 @@ A pattern P conforms to A.6.P (i.e., is an RPR‑pattern) iff:
 | ---------------------------------------------- | --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | “Just define the umbrella word”                | Definitions don’t separate arity, operation classes, or viewpoint asymmetry | Replace umbrella use with explicit RelationKind + qualified record + change lexicon |
 | Keep the umbrella verb, add adjectives         | Adjectives are not contracts; invariants remain unstated                    | Mint/select distinct RelationKind tokens; enforce rewrite discipline                |
+| Leave pronominal/metonymic endpoints implicit  | Endpoint identity/facet remains guesswork; slot typing cannot stabilise     | Reconstruct candidate referents/facets (**capture as a Candidate‑Set Note**); add explicit slots/refs; then rewrite (A.6.8 is the archetype for “service” polysemy) |
 | Ontology only, no lexical guardrails           | Prose re‑collapses meaning                                                  | Add red‑flag tokens + prohibited umbrella use in Tech/normative prose               |
 | Lexicon only, no structural lens               | Becomes subjective policing                                                 | Introduce stable lens + slot schema; then attach guardrails                         |
 | Solve viewpoint mismatch by renaming endpoints | Silent re‑typing breaks cross‑pattern reuse                                 | Keep roles stable; use explicit kind selection + explicit repair paths              |
@@ -10282,6 +10412,7 @@ These echoes justify why A.6.P is structured as: **stable lens → explicit slot
 
 * **A.6.5 `U.RelationSlotDiscipline`** — slot precision restoration for n‑ary relations. 
 * **A.6.6 `U.BaseDeclarationDiscipline`** — base‑dependence precision restoration (SWBD + base‑change lexicon + `anchor*` red‑flags). 
+* **A.6.8 (RPR‑SERV)** — service polysemy unpacking as a relation/facet precision restoration discipline (serviceSituation lens + canonical rewrites + service‑specific tests and change narration).
 
 **Coordinates with**
 
