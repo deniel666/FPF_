@@ -3,7 +3,7 @@
 > **An Operating System for Thought**  
 > *Architecting transdisciplinary reasoning for systems, epistemes, and communities.*
 
-**Version:** December 2025  
+**Version:** January 2026  
 **Primary Author:** Anatoly Levenchuk (with LLM assistance)  
 **Status:** Normative kernel, "eternal alpha" — already used in working projects and increasingly acting as an MVP for working development programmes, while still evolving as a research framework.
 
@@ -12,6 +12,9 @@
 The **First Principles Framework (FPF)** is a rigorous, transdisciplinary architecture for thinking, written in human- and machine-readable pseudo-code (the informal "language of technical standards" with multiple "May", "Should", "Must"). It provides a generative pattern language to model complex systems, manage knowledge evolution, and ensure auditable assurance across engineering, research, and management domains. Internally, FPF also serves as a conceptual data schema for rational work that you look at, resonate with, and mine for patterns than a narrative textbook. 
 
 FPF is not a specific methodology (like Agile or Waterfall) nor a static encyclopedia. It is an **episteme of method** — a structured specification of how to think — packaged as a set of architecture decision records (ADRs) and patterns that can be executed by humans and LLMs and consumed as pseudo-code by LLMs. It bridges the gap between **rigorous assurance** (audits, proofs) and **open-ended creativity** (innovation, novelty) by treating them as complementary engines within a single evolution.
+
+FPF is a file (around 4MB, 50000lines) and should be added only as a file (to the RAG), not to as a prompt (to the LLM context!).
+Use it with a prompt in you preferable language: "You have FPF in a file. Use it but answer with no FPF-specific terminology. Answer as to engineer-manager."
  
 
 ### 🧠 FPF as an "Operating System for Thought"
@@ -24,9 +27,9 @@ Using the OS metaphor:
 * **Manages memory and protects meaning.** `U.BoundedContext`, Evidence Graphs and context passports keep track of *where* statements hold, under which editions and planes, so that reasoning remains auditable instead of becoming folklore. 
 * **Prepares resource management.** `Γ_work` (Gamma, composition operator) and the planned Resrc-CAL describe how time, money, energy, and other resources flow through work streams.
 * **Provides a "conceptual file system" and I/O.** Cards, tables, records (RSR/RSCR, F-cluster) are the conceptual "files" and journals through which thinking interacts with the world, independently of any specific notation or tool. This is how FPF supports "thinking by modelling": you externalise thought into structured artefacts instead of keeping everything in your head. 
-* **Uses a micro-kernel architecture.** At the core is a minimal transdisciplinary set of types and Γ-operators; domain-specific calculi, logics, CHR-packs and SoTA-packs (`Part C`, `Part G`) plug in like drivers and services above the micro-kernel.
+* **Uses an extendable architecture.** At the core is a minimal transdisciplinary set of types and Γ-operators; domain-specific calculi, logics, CHR-packs and SoTA-packs (`Part C`, `Part G`) plug in like drivers and services above the kernel.
 
-Loaded as a file into an LLM, FPF acts as a *bias-assistant* or "grimoire": it steers the model toward first-principles, SoTA-oriented reasoning instead of generic marketing/management/pop-psychology boilerplate — but it will not think instead of you, and without good questions you can still get very confident, well-structured nonsense. 
+Loaded as a file into RAG subsystem of AI-assystant (ChatGPT, Gemini, etc.), FPF acts as a *bias-assistant* or "grimoire": it steers the model toward first-principles, SoTA-oriented reasoning instead of generic marketing/management/pop-psychology boilerplate — but it will not think instead of you, and without good questions you can still get very confident, well-structured nonsense. 
 
 ## 🎯 Who is this for?
 
@@ -36,7 +39,7 @@ Loaded as a file into an LLM, FPF acts as a *bias-assistant* or "grimoire": it s
 
 ## 🔑 Key Concepts & Commitments
 
-FPF is built on a micro-kernel of non-negotiable principles. If you are new, start with these core ideas:
+FPF is built on a small kernel of non-negotiable "zero and first principles". If you are new, start with these core ideas, but these are not neded for using of FPF, only for understending what is inside:
 
 1.  **Holonic Foundation (`A.1`):** Everything is a `U.Holon`—simultaneously a whole and a part. We strictly distinguish between physical actors (**Systems**) and knowledge artifacts (**Epistemes**).
 2.  **Contextual Meaning (`A.1.1`, `F.0.1`):** Meaning is local. A term like "Service" or "Process" is defined strictly within a `U.BoundedContext`. Cross-context communication happens only via explicit **Bridges** with declared translation loss.
@@ -69,7 +72,7 @@ FPF is built on a micro-kernel of non-negotiable principles. If you are new, sta
 
 ## 📂 Repository Structure
 
-The specification is divided into clusters of patterns:
+The specification is divided into clusters of patterns (think about it as a code for "expert system", you are in no need to read this code for usage of FPF):
 
 ### **Part A: Kernel Architecture Cluster**
 The immutable ontological core.
@@ -109,11 +112,11 @@ Tools for harvesting "State of the Art" (SoTA) knowledge, benchmarking methods, 
 
 > *"A principle that works in only one world is local folklore; a first principle architects every world."* — **Pattern A.8**
 
-## 🚀 Using FPF with LLMs (Worked Prompt Examples)
+## 🚀 Using FPF within LLM environment (Worked Prompt Examples)
 
-FPF is designed to be loaded as a file into an LLM (ChatGPT, Gemini, local models with RAG, etc.) and then *asked to think with you* about concrete projects. There is no magic "prompt library" for FPF: what matters is your ability to have a rational conversation with the model about real problems, not memorise incantations. LLM+FPF will not "solve everything automatically": you remain the principal, the model is an agent that follows your problem framing and constraints.
+FPF is designed to be loaded as a file into an AI-assistand with LLM and RAG (ChatGPT, Gemini, local models with RAG, etc.). It is too huge for loading as a prompt, so load it only as a file (it is RAG-optimized). Then *ask to think with you* about concrete projects. There is no magic "prompt library" for FPF: what matters is your ability to have a rational conversation with the model about real problems, not memorise incantations. LLM+FPF will not "solve everything automatically": you remain the principal, the model is an agent that follows your problem framing and constraints. Start with "You have FPF in file, use it, but not answer with terminology of FPF" in your preferable language.
 
-In practice the most productive usage is not "summarise the spec", but "treat the spec as a grimoire": ask for concrete chains, patterns, UTS blocks, P2W paths and Q-bundles for your domain and iterate.
+In practice the most productive usage is treat the FPF as a grimoire: ask for concrete name cards, chains of thoughts, patterns, UTS blocks, P2W paths and Q-bundles for your domain and iterate (but you should be knowing about this "skills".
 
 Below are example prompts that have been used in practice; adapt them to your domain and language.
 
