@@ -1,81 +1,65 @@
+# Erzy Sales Machine (DFM) - Core Implementation
 
-Sales Machine built on FPF principles
-# First Principles Framework (FPF) — Core Conceptual Specification
+This repository contains the core logic and data models for the Erzy Sales Machine (DFM), built on the First Principles Framework (FPF).
 
-> **An Operating System for Thought**  
-> *Architecting transdisciplinary reasoning for systems, epistemes, and communities.*
+## Structure
 
-**Version:** September 2025  
-**Primary Author:** Anatoly Levenchuk (with LLM assistance)  
-**Status:** Stable / Normative Core / Constantly Evolving (eternal alpha)
+- `src/fpf/`: Core FPF ontology (System, Episteme, Trust Calculus).
+- `src/models/`: Data models for Attio (Lead) and Work (Shot).
+- `src/methods/`: MethodDescriptions, including the Vapi Agent Prompt.
+- `src/logic/`: Core business logic (Gate Logic, Scoring).
+- `tests/`: Unit tests for verification.
 
----
+## Core Components
 
-## 📖 Overview
+### 1. Vapi Agent (Phase 1)
+The Vapi Agent prompt is defined in `src/methods/vapi.py`. It implements the qualification script:
+- Identity Confirmation
+- Need Establishment
+- Product Demo (The Reveal)
+- Qualification (Need, Pain, Budget, Timeline)
+- Booking
 
-The **First Principles Framework (FPF)** is a rigorous, transdisciplinary architecture for thinking. It provides a generative pattern language to model complex systems, manage knowledge evolution, and ensure auditable assurance across engineering, research, and management domains.
+### 2. Trust Calculus
+Implemented in `src/fpf/trust.py`. It calculates Trust Scores `<F, G, R>` and handles aggregation with Congruence Level (CL) penalties.
 
-FPF is not a specific methodology (like Agile or Waterfall) nor a static encyclopedia. It is a **generative scaffold**—a set of architectural decisions that enables you to construct, evolve, and verify concepts with precision. It bridges the gap between **rigorous assurance** (audits, proofs) and **open-ended creativity** (innovation, novelty) by treating them as complementary engines within a single evolution.
+### 3. Gate Logic
+Implemented in `src/logic/gate.py`. It determines the next action based on Vapi outcome and Lead Warmth ($R_{eff}$).
 
-## 🎯 Who is this for?
+## Usage
 
-*   **Engineers** building reliable physical or cyber-physical systems (`U.System`).
-*   **Researchers** constructing trustworthy knowledge and theories (`U.Episteme`).
-*   **Managers** orchestrating collective intelligence, budgets, and evolutionary cycles.
+To use this logic in your orchestration layer (e.g., Make.com via Cloud Functions or a generic webhook handler):
 
-## 🔑 Key Concepts & Commitments
+```python
+from src.models.lead import Lead
+from src.logic.gate import process_vapi_outcome
 
-FPF is built on a micro-kernel of non-negotiable principles. If you are new, start with these core ideas:
+# 1. Load Lead from Attio Payload
+lead = Lead(id="lead_123", stage="sourced", ...)
 
-1.  **Holonic Foundation (`A.1`):** Everything is a `U.Holon`—simultaneously a whole and a part. We strictly distinguish between physical actors (**Systems**) and knowledge artifacts (**Epistemes**).
-2.  **Contextual Meaning (`A.1.1`, `F.0.1`):** Meaning is local. A term like "Service" or "Process" is defined strictly within a `U.BoundedContext`. Cross-context communication happens only via explicit **Bridges** with declared translation loss.
-3.  **Strict Distinction (`A.7`):** We never confuse the map with the territory.
-    *   **Role** (Assignment/Mask) $\neq$ **Method** (Recipe) $\neq$ **Work** (Execution/Occurrence).
-    *   Documents do not "act"; only Systems enact Work.
-4.  **Trust & Assurance Calculus (`B.3`):** Trust is not a feeling; it is a computed tuple **$\langle F, G, R \rangle$**:
-    *   **F (Formality):** How rigorously is it expressed?
-    *   **G (Claim Scope):** Where does it apply? (Set-valued over context slices).
-    *   **R (Reliability):** How well is it supported by evidence?
-5.  **Evolution & Creativity (`B.4`, `C.18`):** Systems must evolve. FPF operationalizes the "Bitter Lesson" by favoring general, scalable search methods (**NQD**: Novelty-Quality-Diversity) over hand-tuned heuristics, governed by explicit **Explore-Exploit policies**.
-6.  **Universal Aggregation ($\Gamma$):** A single algebra (`B.1`) governs how parts combine into wholes, ensuring invariants like "Weakest-Link" reliability are preserved across scales.
+# 2. Receive Vapi Webhook Payload
+vapi_payload = {
+    "outcome": "interested",
+    "qualification": {
+        "R_interest": 0.9,
+        "R_authority": 0.8,
+        "R_budget": 0.7,
+        "R_timeline": 0.8
+    }
+}
 
-## 📂 Repository Structure
+# 3. Process Outcome
+new_stage, action = process_vapi_outcome(lead, vapi_payload)
 
-The specification is divided into clusters of patterns:
+# 4. Execute Action (e.g. update Attio, send booking link)
+print(f"Update Stage to: {new_stage}")
+print(f"Execute Action: {action}")
+```
 
-### **Part A: Kernel Architecture Cluster**
-The immutable ontological core.
-*   **Ontology:** Holons, Systems, Epistemes, and Bounded Contexts.
-*   **Transformation:** The `Transformer` quartet (Agent, Method, Description, Work).
-*   **State Space:** Characteristics, Scales, and Dynamics.
+## Testing
 
-### **Part B: Trans-disciplinary Reasoning Cluster**
-The logic of composition and trust.
-*   **$\Gamma$ Algebra:** How to aggregate systems (`Γ_sys`), knowledge (`Γ_epist`), and resources (`Γ_work`).
-*   **Assurance:** The `F-G-R` calculus and evidence graphs.
-*   **Evolution:** The canonical loops for observing, refining, and deploying updates.
-
-### **Part C: Architheory Specifications**
-Pluggable domain-specific calculi (CAL), logics (LOG), and characterizations (CHR).
-*   **Sys-CAL:** Physics and conservation laws.
-*   **KD-CAL:** Knowledge dynamics and truth-maintenance.
-*   **NQD-CAL:** Novelty, Quality, and Diversity search.
-*   **Kind-CAL:** Typed reasoning and taxonomy.
-
-### **Part D: Ethics & Conflict-Optimisation**
-*   Multi-scale ethics (from agent to planetary).
-*   Bias audits and trust-aware mediation.
-
-### **Part E: Constitution & Authoring**
-The governance of the framework itself.
-*   **The 11 Pillars:** Constitutional invariants (e.g., *Cognitive Elegance*, *Didactic Primacy*).
-*   **Guard-Rails:** DevOps Lexical Firewall, Notational Independence.
-*   **MVPK:** Multi-View Publication Kit for generating consistent views/documents.
-
-### **Part F: The Unification Suite**
-Techniques for aligning vocabularies across disciplines using **SenseCells**, **Concept-Sets**, and **Alignment Bridges**.
-
-### **Part G: Discipline SoTA Kit**
-Tools for harvesting "State of the Art" (SoTA) knowledge, benchmarking methods, and creating selector-ready portfolios of solutions.
-
-> *"A principle that works in only one world is local folklore; a first principle architects every world."* — **Pattern A.8**
+Run tests with:
+```bash
+export PYTHONPATH=$PYTHONPATH:.
+python3 -m pytest
+```
